@@ -1,5 +1,5 @@
 Date: 23/06/2013
-Title: Elixir: Debugging and Inspectiion - week 1
+Title: Elixir: Debugging and Inspection - week 1
 Tags: gsoc2013, elixir
 
 Today was over the first week of development of Summer of Code, and I worked mostly getting pretty-printing on Elixir. 
