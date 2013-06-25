@@ -7,7 +7,7 @@ tricks me many times with :wq and :%s lapses, but I must say: it feels good.
 The Finger yoga can be quite tricky when coming from the distinct vi-style editing
 logic.
 
-![POV of this post](img/meta-emacs-post-image.png)
+![POV of this post](static/img/meta-emacs-post-image.png)
 
 I'm still setting up my environment (including getting wombat instead of this bizarre colorscheme), 
 but my main concern now is grasp this distinct buffer mobility. 

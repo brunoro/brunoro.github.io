@@ -12,27 +12,27 @@ of the Wadler pretty printer on strict languages, I figured it could be the main
 I adapted the `wadler.ex` module from the pull request to follow the OCaml implementation proposed by Lindig. 
 As those tweaks didn't bring any performance gains, I moved on profiling the code.
 
-!["First attempt at optimizing the pretty-printer"](http://i.imgur.com/7Z1j3JM.png "Oops, no performance gains with Lindig approach.")
+!["First attempt at optimizing the pretty-printer"](static/img/gsoc-week1-small.png "Oops, no performance gains with Lindig approach.")
 
 Profiling showed that the exponential behaviour on the code arouse from the usage of the string concatenation operator in Elixir, 
 which has performance linear on length of the left-hand string. Therefore, I patched both pretty printing implementations (Wadler's and Lindig's) 
 to build lists of strings and make a one single `List.join` call at the end of the process. Those changes made the pretty printer show the expected 
 linear behaviour, and the strict implementation showed better performance than the one original lazy one.
 
-!["String concatenation was the problem"](http://i.imgur.com/SGeO6HS.png "Linear at last, removing string concatenation.")
+!["String concatenation was the problem"](static/img/gsoc-week1-big.png "Linear at last, removing string concatenation.")
 
 Some optimizations followed: @devinus pointed out that using `iolist_to_binary` would bring even more performance gains over `List.join`, 
 and that using `List.duplicate` over `String.duplicate` to generate indent strings would also make the pretty printer faster. 
 I benchmarked the suggestions, and indeed the version using `iolist_to_binary` got better results. 
 
-!["iolist_to_binary over List.join"](http://i.imgur.com/EUzREMC.png "String list joining: serious business")
+!["iolist_to_binary over List.join"](static/img/gsoc-week1-join.png "String list joining: serious business")
 
 However, a strange fact came up measuring `List.duplicate` vs `String.duplicate`: the usage List.duplicate brought back the exponential 
 performance to the function. Profiling showed that the `List.duplicate` version ended up making a massive amount of `:lists.duplicate/3` calls; 
 to check that, I changed the `List.duplicate` call to an equivalent `:lists.duplicate/2` call, and the number of `:lists.duplicate/3` got back to normal! 
 @josevalim pointed that we should keep the `:lists.duplicate/2` version of the code and further investigate the behaviour or List.duplicate afterwards.
 
-!["strange List.duplicate behaviour"](http://i.imgur.com/bfePdgP.png "List.duplicate just calls :lists.duplicate. Oh, wait...")
+!["strange List.duplicate behaviour"](static/img/gsoc-week1-dup.png "List.duplicate just calls :lists.duplicate. Oh, wait...")
 
 The regression tests for the new implmentation were getting stuck on some Mix tests, which were caused by inspect calls relying on unformatted string results. 
 I've added the pretty: false option to all the Kernel.inspect calls on Mix, but the tests still failed. After that, I've verified that the `pretty: false` 

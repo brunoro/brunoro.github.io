@@ -1,5 +1,6 @@
 # site info
 SITENAME = 'machine burning'
+SITEURL  = 'http://brunoro.org/log'
 
 # author info
 AUTHOR = 'Gustavo Brunoro'

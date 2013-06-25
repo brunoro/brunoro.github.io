@@ -5,7 +5,7 @@ CREATE_PATH=rm -rf $(URL_PATH); mkdir $(URL_PATH);
 
 all: compile
 compile: 
-	$(GENERATOR) -s $(SETTINGS) .
+	$(GENERATOR) -v -s $(SETTINGS) .
 clean:
 	rm -rf output
 
