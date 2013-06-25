@@ -21,7 +21,7 @@ the proprietary NVIDIA driver reads
 
 Some precious information regarding booting from UEFI devices may be found on the [Ubuntu documentation](https://help.ubuntu.com/community/UEFIBooting). There are quite a few forum threads with no conclusive answers about this issue, such as
 [this one](http://www.nvnews.net/vbulletin/showthread.php?t=180737&highlight=linux+EFI), [this one](http://forums.gentoo.org/viewtopic-p-7071700.html?sid=57d7b854338e2647b9ba910f7674263a) and [this one](https://bbs.archlinux.org/viewtopic.php?id=142664) only to mention a few. A NVIDIA developer already spoke about
-the problem at [nvnews forum thread ](http://www.nvnews.net/vbulletin/showthread.php?t=174006&page=2&highlight=linux+EFI) saying that they have plans on addressing it.
+the problem at [nvnews forum thread](http://www.nvnews.net/vbulletin/showthread.php?t=174006&page=2&highlight=linux+EFI) saying that they have plans on addressing it.
 
 The **nouveau** reverse engineered driver does an excellent job for daily use of the machine. The lack
 of support of the official driver closes the door to massive parallel CUDA programming, and also causes 
