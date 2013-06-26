@@ -22,3 +22,4 @@ DISPLAY_NAV = False
 
 # static content 
 STATIC_PATHS = ['img']
+RELATIVE_URLS = False
