@@ -30,7 +30,7 @@ The solution to that problem would require a bit of name mangling and corner cas
 PIDs have to be provided to the binding just after they're evaluated, as there's no literal representation for them<sup>1</sup>, so
 with some name mangling we generate a very distinctive variable name for a process identifier and filter everything coming
 off our slick `:elixir_code.eval_quoted` calls.
-So, turning `#PID<0.27.0>` into a variable called `__PID_0_27_0__` bound to the PID's value (and not a representation) pretty
+In the end, turning `#PID<0.27.0>` into a variable called `__PID_0_27_0__` bound to the PID's value (and not a representation) pretty
 much solves the problem.
 
 <sub><sup>1</sup>well, as a matter of fact one could use a char list as a PID literal using the `list_to_pid/1` and `pid_to_list/1` functions,
