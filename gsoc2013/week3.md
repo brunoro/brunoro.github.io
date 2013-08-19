@@ -8,6 +8,7 @@ This is quite exciting for me, as it's my first expressive contribution to an op
 An [issue](https://github.com/elixir-lang/elixir/issues/1383) was raised on the behavior of the pretty printer when printing lists.
 This kind of output is expected from the Wadler pretty printing algorithm, as it can seen on the Ruby implementation as well:
 
+    :::RubyConsoleLexer
     irb(main):001:0> require 'pp'
     => true
     irb(main):002:0> pp (1..100).to_a
