@@ -8,7 +8,7 @@
 @import url("pygment.css");
 
 @import url(http://fonts.googleapis.com/css?family=Inconsolata);
-@import url(http://fonts.googleapis.com/css?family=Dosis:200);
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
 
 /***** Global *****/
 /* Body */
@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 200;
 	line-height: 1.1;
 	margin-bottom: .8em;
-	font-family: 'Dosis', 'Helvetica Neue', 'Lucida Sans Unicode', Helvetica, 'Trebuchet MS', Arial, sans-serif;
+	font-family: 'Roboto', 'Helvetica Neue', 'Lucida Sans Unicode', Helvetica, 'Trebuchet MS', Arial, sans-serif;
 }
 
 h3, h4, h5, h6 { margin-top: .8em; }
@@ -186,10 +186,6 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		padding: 0;
 		text-align: center;
 		width: 800px;
-		
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
 	}
 	
 	#banner nav ul {list-style: none; margin: 0 auto; width: 800px;}
@@ -208,17 +204,6 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		color: #fff;
 		text-shadow: none !important;
 	}
-	
-	#banner nav li:first-child a {
-		border-top-left-radius: 5px;
-		-moz-border-radius-topleft: 5px;
-		-webkit-border-top-left-radius: 5px;
-		
-		border-bottom-left-radius: 5px;
-		-moz-border-radius-bottomleft: 5px;
-		-webkit-border-bottom-left-radius: 5px;
-	}
-
 /*
 	Featured
 *****************/
@@ -228,10 +213,6 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	overflow: hidden;
 	padding: 20px;
 	width: 760px;
-	
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 #featured figure {
@@ -257,10 +238,6 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	overflow: hidden;
 	padding: 20px 20px;
 	width: 760px;
-	
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 /*
@@ -389,10 +366,6 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 		font-style: normal;
 		margin: 2em 0;
 		padding: 10px 20px 15px 20px;
-		
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
 	}
 	
 	#about-author strong {
@@ -412,10 +385,6 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 		font-style: normal;
 		margin: 0;
 		padding: 15px 20px;
-		
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
 	}
 	#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
 	
