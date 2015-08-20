@@ -1,13 +1,13 @@
 # site info
 SITENAME = 'machine burning'
-SITEURL  = 'http://brunoro.org/log'
+SITEURL  = 'http://hitnail.net/'
 
 # author info
-AUTHOR = 'Gustavo Brunoro'
+AUTHOR = 'gus'
 
 # datetime
-TIMEZONE = 'America/Sao_Paulo'
-DEFAULT_DATE_FORMAT = '%d %b %Y'
+TIMEZONE = 'Europe/Berlin'
+DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 
 # analytics
 GOOGLE_ANALYTICS = 'UA-32411032-1'
@@ -23,3 +23,6 @@ DISPLAY_NAV = False
 # static content 
 STATIC_PATHS = ['img']
 RELATIVE_URLS = True
+
+# article structure
+USE_FOLDER_AS_CATEGORY = True
