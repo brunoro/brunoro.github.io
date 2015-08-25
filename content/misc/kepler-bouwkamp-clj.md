@@ -16,5 +16,5 @@ the construction that'd result from the process.
 I really like those kind of constructions, so I implemented it using [Quil](https://github.com/quil/quil)
 to get an idea how it looks. The code used is on a [gist](https://gist.github.com/brunoro/6984849), and here's the result:
 
-![The prime Kepler-Bouwkamp constant](|filename|../img/prime-kepler-bouwkamp.png)
+![The prime Kepler-Bouwkamp constant](img/prime-kepler-bouwkamp.png)
 

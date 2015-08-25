@@ -10,7 +10,7 @@ Macbook 7,1 using a EFI boot. The lack of support of the NVIDIA drivers is alrea
 from many recent facts such as [that Linus Torvalds interview](ihttp://www.youtube.com/watch?v=MShbP3OpASA) 
 and the [10 million GPU order](http://www.phoronix.com/scan.php?page=news_item&px=MTEyNTE) they've lost to AMD.
 
-!["A picture is worth a thousand words"](|filename|../img/fuck-you-nvidia.jpg "A picture is worth a thousand words")
+!["A picture is worth a thousand words"](img/fuck-you-nvidia.jpg "A picture is worth a thousand words")
 
 Apple decided to ship the Macbooks using a different boot technology than the old BIOS that
 we see on most hardware; Mac OS X boots using a wonky EFI (Extended Firmware Interface) implementation.
