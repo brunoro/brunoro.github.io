@@ -1,4 +1,4 @@
-Date: 27/05/2013
+Date: 2013-05-27
 Title: Debugging and Inspecting Elixir on Summer of Code 2013!
 Tags: gsoc2013, elixir
 

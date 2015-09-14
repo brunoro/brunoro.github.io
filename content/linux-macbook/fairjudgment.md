@@ -1,4 +1,4 @@
-Date: 04/06/2012
+Date: 2012-06-04
 Title: Linux on a Macbook part I: the fair jugdement
 Tags: linux, mac os x, macbook
 

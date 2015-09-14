@@ -1,4 +1,4 @@
-Date: 14/07/2013
+Date: 2013-07-14
 Title: Elixir: Debugging and Inspection - week 4
 Tags: gsoc2013, elixir
 

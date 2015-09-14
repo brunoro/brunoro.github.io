@@ -1,4 +1,4 @@
-Date: 07/06/2012
+Date: 2012-07-06
 Title: Linux on a Macbook part II: the drill
 Tags: linux, mac os x, macbook
 

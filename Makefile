@@ -32,6 +32,4 @@ dcc: compile
 	$(SYNC) output/ brunoro@login.dcc.ufmg.br:/www/users/grad/ccomp/09/brunoro/public_html/$(URL_PATH)
 
 s3: compile
-#s3cmd sync --acl-public output/ s3://hitnail.net/$(URL_PATH)
-#s3cmd sync --acl-public s3://hitnail.net/$(URL_PATH) s3://www.hitnail.net/$(URL_PATH)
 	s3cmd sync --acl-public output/ s3://hitnail.net

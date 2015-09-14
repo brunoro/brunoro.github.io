@@ -1,4 +1,4 @@
-Date: 14/10/2013
+Date: 2013-10-14
 Title: The Kepler-Bouwkamp Constant
 Tags: clojure, quil, math
 

@@ -1,4 +1,4 @@
-Date: 19/09/2012
+Date: 2012-09-19
 Title: Hello from Emacsland
 Tags: emacs, text editor
 

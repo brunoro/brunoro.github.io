@@ -1,4 +1,4 @@
-Date: 11/07/2012
+Date: 2012-11-07
 Title: NVIDIA blob, Macbook 7,1 and EFI boot
 Tags: linux, mac os x, macbook, efi, nvidia
 

@@ -1,4 +1,4 @@
-Date: 24/06/2012
+Date: 2012-06-24
 Title: I'm giving emacs a shot
 Tags: emacs, text editor
 
