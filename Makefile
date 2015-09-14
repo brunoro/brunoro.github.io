@@ -1,4 +1,5 @@
-GENERATOR=pelican content
+ENV_PATH=env/
+GENERATOR=$(ENV_PATH)bin/pelican content
 SETTINGS=settings.py
 URL_PATH=
 CREATE_PATH=rm -rf $(URL_PATH); mkdir $(URL_PATH);
@@ -6,9 +7,11 @@ SYNC=rsync -avc
 
 all: compile
 
+virtualenv: $(ENV_PATH)
+	@sudo pip install virtualenv
+	@virtualenv env
 deps:
-	@pip install markdown
-	@pip install pelican
+	@env/bin/pip install -r requirements.txt
 
 compile: deps
 	LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 $(GENERATOR) -v -s $(SETTINGS)
@@ -29,4 +32,6 @@ dcc: compile
 	$(SYNC) output/ brunoro@login.dcc.ufmg.br:/www/users/grad/ccomp/09/brunoro/public_html/$(URL_PATH)
 
 s3: compile
-	s3cmd sync --acl-public output/ s3://machine-burning/$(URL_PATH)/
+#s3cmd sync --acl-public output/ s3://hitnail.net/$(URL_PATH)
+#s3cmd sync --acl-public s3://hitnail.net/$(URL_PATH) s3://www.hitnail.net/$(URL_PATH)
+	s3cmd sync --acl-public output/ s3://hitnail.net
