@@ -1,6 +1,6 @@
 Date: 2012-06-04
 Title: Linux on a Macbook part I: the fair jugdement
-Tags: linux, mac os x, macbook
+Tags: linux, osx, macbook
 
 It wasn't hard to embrace Mac OS X when I bought my Macbook, back in 2010.
 It's a very good looking and practical UNIX flavor running on sexy designed hardware.

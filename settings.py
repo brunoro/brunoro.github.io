@@ -13,7 +13,7 @@ DEFAULT_DATE_FORMAT = '%Y-%m-%d'
 GOOGLE_ANALYTICS = 'UA-32411032-1'
 
 # comments
-DISQUS_SITENAME = 'machineburning'
+#DISQUS_SITENAME = 'machineburning'
 
 # page appearance 
 THEME = 'theme/'

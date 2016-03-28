@@ -1,6 +1,6 @@
 Date: 2012-11-07
 Title: NVIDIA blob, Macbook 7,1 and EFI boot
-Tags: linux, mac os x, macbook, efi, nvidia
+Tags: linux, osx, macbook, efi, nvidia
 
 The user experience for a developer under Linux is way more flexible than under Mac OS X,
 specially talking about package management, which is light-years more evolved on the open

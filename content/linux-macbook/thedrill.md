@@ -1,6 +1,6 @@
 Date: 2012-07-06
 Title: Linux on a Macbook part II: the drill
-Tags: linux, mac os x, macbook
+Tags: linux, osx, macbook
 
 The Arch Linux installation process wasn't much different on a Macbook than it would be on another laptop.
 Installing the bootloader comes as the main issue, but even though it was quickly solved. It's always helpful
