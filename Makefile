@@ -7,13 +7,15 @@ SYNC=rsync -avc
 
 all: compile
 
+init: virtualenv deps
+
 virtualenv: 
 	@sudo pip install virtualenv
 	@virtualenv $(ENV_PATH)
 deps:
-	@env/bin/pip install -r requirements.txt
+	@$(ENV_PATH)/bin/pip install -r requirements.txt
 
-compile: deps
+compile: 
 	LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 $(GENERATOR) -v -s $(SETTINGS)
 
 clean:

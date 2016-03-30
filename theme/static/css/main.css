@@ -13,8 +13,8 @@
 /***** Global *****/
 /* Body */
 body {
-    background: #6A6B69;
-    /*background: url(../images/hex.gif) repeat #FDFDFD;*/
+    /*background: #6A6B69;*/
+    background: url(../images/hex.png) repeat #777877;
     color: #FFF1EE;
     font-size: 87.5%; /* Base font size: 14px */
     font-family: 'Roboto', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -24,6 +24,28 @@ body {
     text-align: left;
 }
 
+#banner h1 span {
+    float: left;
+    margin-bottom: 0;
+}
+
+#title0 {
+    color: #4d4e4d;
+}
+
+#title1 {
+    /*color: #8f53b9; */ /* purple */
+    /*color: #b43430; *//* green */
+    /*color: #53b95e; */ /* red */
+    color: #536cb9; /* blue */
+    padding-left: 5px;
+}
+
+#title2 {
+    color: #F6CF74;
+    padding-left: 10px;
+}
+
 /* code */
 pre {
   font-family: 'Inconsolata', 'Monaco', 'Consolas', monospace;
@@ -31,11 +53,11 @@ pre {
 
 /* Headings */
 h1 {font-size: 2.5em }
-h2 {font-size: 1.571em}	/* 22px */
-h3 {font-size: 1.429em}	/* 20px */
-h4 {font-size: 1.286em}	/* 18px */
-h5 {font-size: 1.143em}	/* 16px */
-h6 {font-size: 1em}		/* 14px */
+h2 {font-size: 1.429em}
+h3 {font-size: 1.286em}
+h4 {font-size: 1.200em}	
+h5 {font-size: 1.143em}	
+h6 {font-size: 1em}	
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 200;
