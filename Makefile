@@ -20,10 +20,3 @@ compile:
 
 clean:
 	rm -rf output
-
-devious: compile
-	@#ssh brunoro@devio.us "cd ~/public_html/; $(CREATE_PATH)"
-	$(SYNC) output/ brunoro@devio.us:~/public_html/$(URL_PATH)
-
-s3: compile
-	s3cmd sync --acl-public output/ s3://hitnail.net
