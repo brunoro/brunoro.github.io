@@ -1,6 +1,6 @@
 Date: 2016-01-09
 Title: A Demons of the Cyclic Space l0dable for the rad1o
-Tags: rad1o, cellular automata, sdl, 32c3
+Tags: rad1o, cellular automata, 32c3
 
 I was one of the lucky ones that got hold of an amazing [rad1o](https://rad1o.badge.events.ccc.de/) on the last [Chaos Communication Camp](https://events.ccc.de/camp/2015/wiki/Main_Page),
 but, apart from following some [SDR tutorials](https://greatscottgadgets.com/sdr/) and messing around with transmitting and recieving FM signals, I couldn't
