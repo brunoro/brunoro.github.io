@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>machine burning</title><link href="http://hitnail.net/" rel="alternate"></link><link href="http://hitnail.net/feeds/misc.atom.xml" rel="self"></link><id>http://hitnail.net/</id><updated>2015-09-14T00:00:00+02:00</updated><entry><title>Do Androids Dream In Pixels?</title><link href="http://hitnail.net/do-androids-dream-in-pixels.html" rel="alternate"></link><updated>2015-09-14T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2015-09-14:do-androids-dream-in-pixels.html</id><summary type="html">&lt;p&gt;So, almost 2 years since my last post, I finally have something worth sharing on machine burning again.
+I'm starting a new project: &lt;a href="http://androidsdreaminpixels.tumblr.com"&gt;Do Androids Dream In Pixels?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="datamoshing to space" src="http://41.media.tumblr.com/2d4a0fdf711871718b2ebac71c40913a/tumblr_nwofskUntb1ugrpdno1_1280.png" /&gt;&lt;/p&gt;
+&lt;p&gt;The idea is posting some experiments I've been doing with digital art, mostly glitches and neural networks.
+Check it out!&lt;/p&gt;</summary><category term="glitch"></category><category term="art"></category><category term="machine learning"></category><category term="computer vision"></category></entry><entry><title>The Kepler-Bouwkamp Constant</title><link href="http://hitnail.net/the-kepler-bouwkamp-constant.html" rel="alternate"></link><updated>2013-10-14T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2013-10-14:the-kepler-bouwkamp-constant.html</id><summary type="html">&lt;p&gt;Follow this construction: draw a circle and inscribe a triangle inside it; inscribe a circle inside
+this triangle and repeat the process, now inscribing a square. Continue this steps using pentagons,
+hexagons, heptagons, etc.
+The ratio between the radius of the outer circle and the inner limit circle is called the
+&lt;a href="http://en.wikipedia.org/wiki/Kepler%E2%80%93Bouwkamp_constant"&gt;Kepler-Bouwkamp constant&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As described by Adrian R. Kitson's paper &lt;a href="http://arxiv.org/abs/math/0608186"&gt;The prime analog of the Kepler-Bouwkamp constant&lt;/a&gt;,
+that same steps can be done using other sequences, including that of prime numbers. 
+On that article, Adrian derives the value of the constant, but doesn't include any image of the 
+the construction that'd result from the process. &lt;/p&gt;
+&lt;p&gt;I really like those kind of constructions, so I implemented it using &lt;a href="https://github.com/quil/quil"&gt;Quil&lt;/a&gt;
+to get an idea how it looks. The code used is on a &lt;a href="https://gist.github.com/brunoro/6984849"&gt;gist&lt;/a&gt;, and here's the result:&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The prime Kepler-Bouwkamp constant" src="img/prime-kepler-bouwkamp.png" /&gt;&lt;/p&gt;</summary><category term="clojure"></category><category term="quil"></category><category term="math"></category></entry></feed>
