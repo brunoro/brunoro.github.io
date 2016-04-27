@@ -25,6 +25,21 @@
 <body id="index" class="home">
 {% include 'github.html' %}
         <header id="banner" class="body">
+                <div class="social">
+                            {% if FEED_RSS %}
+				    <a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate">
+					    <span></span>
+				    </a>
+                            {% endif %}
+
+			    {% if SOCIAL %}
+                            {% for link in SOCIAL %}
+				    <a href="{{ link }}">
+					    <span></span>
+				    </a>
+                            {% endfor %}
+			    {% endif %}
+                </div>
                 <h1><a href="{{ SITEURL }}"><span id="title0">{{ SITENAME }}</span><span id="title1">{{ SITENAME }}</span><span id="title2">{{ SITENAME }}</span> {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
                 {% if DISPLAY_NAV %}
                 <nav><ul>
@@ -52,22 +67,7 @@
                         </ul>
                 </div><!-- /.blogroll -->
         {% endif %}
-        {% if SOCIAL %}
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="{{ SITEURL }}/{{ FEED }}" rel="alternate">atom feed</a></li>
-                            {% if FEED_RSS %}
-                            <li><a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate">rss feed</a></li>
-                            {% endif %}
-
-                        {% for name, link in SOCIAL %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.social -->
-        {% endif %}
-        </section><!-- /#extras -->
+       </section><!-- /#extras -->
 
         <footer id="about" class="body">
             <p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.</p>
