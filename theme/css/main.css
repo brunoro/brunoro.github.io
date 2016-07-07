@@ -76,6 +76,12 @@ pre {
 .social a[href*='github.com'] span {
     background-image: url('../images/icons/github.png');
 }
+.social a[href*='soundcloud.com'] span {
+    background-image: url('../images/icons/soundcloud.png');
+}
+.social a[href*='linkedin.com'] span {
+    background-image: url('../images/icons/linkedin.png');
+}
 .social a[href*='feed.rss'] span {
     background-image: url('../images/icons/rss.png');
 }
