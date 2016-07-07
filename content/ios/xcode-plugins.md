@@ -7,19 +7,30 @@ All the crashes, the eternal indexing, the terrible refactoring functionality, t
 build fails solved by re-opening the editor, the inability to (sometimes) run individual
 unit tests, and other annoyances are already well-known by daily users of the tool.
 To some, like me, switching to AppCode isn't a viable solution. The toolchain used by
-the Jetbrains still relies on XCode for many tasks, and you might end up switching between 
+the JetBrains suite still relies on XCode for many tasks, and you might end up switching between 
 both IDEs most of the time.
 
-To be fair, XCode inherits its codebase from [PBX](http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/DevTools/02_ProjectBuilder/ProjectBuilder.htmld/index.html), the NeXTSTEP's Project Builder
-Luckily, some plugins can ease this suffering and fill the gaps left by Apple on the
-_mandatory_ IDE for iOS, OS X and Watch OS development.
+The awkwardness of the Apple development tools is understandable when looking at its history. 
+OS X, and, more recently, iOS follow the lineage of the operating system developed by another
+company by Steve Jobs, NeXT. A more detailed look on how the legacy of the [NeXTSTEP operating system](https://en.wikipedia.org/wiki/NeXTSTEP)
+is still living in our Macs and iPhones is available on this [Ars Technica article](http://arstechnica.com/apple/2012/12/the-legacy-of-next-lives-on-in-os-x/).
+XCode is the successor of the NeXT development tools, bundling the 
+[Interface Builder](http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/DevTools/03_InterfaceBuilder/InterfaceBuilder.htmld/index.html)
+(the .nib extension used on Cocoa and Carbon interface files stands for _NeXT Interface Builder_) and 
+the [Project Builder](http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/DevTools/02_ProjectBuilder/ProjectBuilder.htmld/index.html)
+(guess where the cluttered and unmergeable .pbxproj project format comes from).
+
+Although a notable and innovative development suite for its time -- Tim Berners-Lee used it to develop the first WorldWideWeb browser at the CERN -- it's still a piece of software designed in the late 80s.
+Apart from adding support to new mobile platforms and programming languages, Apple hasn't done much 
+to bring the development evironment to the 21st century. The featureset still lags behind contemporary alternatives,
+like Microsoft's Visual Studio or even Google's Android Builder, which is based on IDEA's IntelliJ.
+Luckily, some plugins can ease this suffering and fill some of the usability gaps left by the Cupertino company.
 
 ### Alcatraz
 [Alcatraz](https://github.com/alcatraz/Alcatraz) is a plugin manager for XCode and your
 starting point on pimping up your development environment. Installing it is as simple as
 running the install script found at `https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh`.
-
-![Alcatraz menu](https://camo.githubusercontent.com/70505dece9a75af5ca4715fff66271127f7d5b78/687474703a2f2f616c63617472617a2e696f2f696d616765732f6d656e754032782e706e67)
+The plugin manager window can be opened by the shortcut **⌘ + ⇧ + 9**.
 
 ![Alcatraz window](https://camo.githubusercontent.com/919efe4e1e53237df51d7010c862bd5c04fd6a70/687474703a2f2f616c63617472617a2e696f2f696d616765732f73637265656e73686f744032782e706e67)
 
@@ -40,7 +51,8 @@ Luckily, the [Backlight](https://github.com/limejelly/Backlight-for-XCode) plugi
 I always wondered why the autocomplete dialog from from XCode didn't use the same algorithm as the quick open
 functionality (accessed at **⌘ + ⇧ + O**). The [FuzzyAutocomplete](https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin) 
 plugin does exactly that, using Xcode's own `IDEOpenQuicklyPattern` to implement a better autocomplete algorithm. 
-A [fascinating writeup by chendo](http://chen.do/blog/2013/10/22/reverse-engineering-xcode-with-dtrace/?utm_source=github&utm_campaign=fuzzyautocomplete) explains how to use dtrace to inspect what the infamous IDE is doing under the hood.
+A [fascinating writeup by chendo](http://chen.do/blog/2013/10/22/reverse-engineering-xcode-with-dtrace/?utm_source=github&utm_campaign=fuzzyautocomplete) explains how he used `dtrace` to inspect what the infamous IDE is doing under the hood
+and implement this great plugin.
 
 ![Fuzzy Autocomplete demo](https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin/raw/master/demo.gif)
 
@@ -59,4 +71,5 @@ allows the output of a running app to be filtered using regexes.
 ### Peckham
 Another basic IDE use-case overlooked by Apple on XCode that I'm sure most iOS developers will identify with, is 
 scrolling all the way to the top of a source file to add new import statments.
-[Peckham](https://github.com/markohlebar/Peckham) solves that by adds a tiny menu with fuzzy autocompletion accessible by the *⌘ + Ctrl + P* shortcut.
+[Peckham](https://github.com/markohlebar/Peckham) solves that by adds a tiny menu with fuzzy autocompletion accessible by 
+the **⌘ + Ctrl + P** shortcut.
