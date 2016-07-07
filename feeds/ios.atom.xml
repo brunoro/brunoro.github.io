@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>machine burning</title><link href="http://hitnail.net/" rel="alternate"></link><link href="http://hitnail.net/feeds/ios.atom.xml" rel="self"></link><id>http://hitnail.net/</id><updated>2016-07-06T00:00:00+02:00</updated><entry><title>Making XCode bearable: a plugin list</title><link href="http://hitnail.net/making-xcode-bearable-a-plugin-list.html" rel="alternate"></link><updated>2016-07-06T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2016-07-06:making-xcode-bearable-a-plugin-list.html</id><summary type="html">&lt;p&gt;Let's face it, using XCode in 2016 is a burden that iOS developers are forced to bear. 
+All the crashes, the eternal indexing, the terrible refactoring functionality, the weird
+build fails solved by re-opening the editor, the inability to (sometimes) run individual
+unit tests, and other annoyances are already well-known by daily users of the tool.
+To some, like me, switching to AppCode isn't a viable solution. The toolchain used by
+the JetBrains suite still relies on XCode for many tasks, and you might end up switching between 
+both IDEs most of the time.&lt;/p&gt;
+&lt;p&gt;The awkwardness of the Apple development tools is understandable when looking at its history. 
+OS X, and, more recently, iOS follow the lineage of the operating system developed by another
+company by Steve Jobs, NeXT. A more detailed look on how the legacy of the &lt;a href="https://en.wikipedia.org/wiki/NeXTSTEP"&gt;NeXTSTEP operating system&lt;/a&gt;
+is still living in our Macs and iPhones is available on this &lt;a href="http://arstechnica.com/apple/2012/12/the-legacy-of-next-lives-on-in-os-x/"&gt;Ars Technica article&lt;/a&gt;.
+XCode is the successor of the NeXT development tools, bundling the 
+&lt;a href="http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/DevTools/03_InterfaceBuilder/InterfaceBuilder.htmld/index.html"&gt;Interface Builder&lt;/a&gt;
+(the .nib extension used on Cocoa and Carbon interface files stands for &lt;em&gt;NeXT Interface Builder&lt;/em&gt;) and 
+the &lt;a href="http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/DevTools/02_ProjectBuilder/ProjectBuilder.htmld/index.html"&gt;Project Builder&lt;/a&gt;
+(guess where the cluttered and unmergeable .pbxproj project format comes from).&lt;/p&gt;
+&lt;p&gt;Although a notable and innovative development suite for its time -- Tim Berners-Lee used it to develop the first WorldWideWeb browser at the CERN -- it's still a piece of software designed in the late 80s.
+Apart from adding support to new mobile platforms and programming languages, Apple hasn't done much 
+to bring the development evironment to the 21st century. The featureset still lags behind contemporary alternatives,
+like Microsoft's Visual Studio or even Google's Android Builder, which is based on IDEA's IntelliJ.
+Luckily, some plugins can ease this suffering and fill some of the usability gaps left by the Cupertino company.&lt;/p&gt;
+&lt;h3&gt;Alcatraz&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/alcatraz/Alcatraz"&gt;Alcatraz&lt;/a&gt; is a plugin manager for XCode and your
+starting point on pimping up your development environment. Installing it is as simple as
+running the install script found at &lt;code&gt;https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh&lt;/code&gt;.
+The plugin manager window can be opened by the shortcut &lt;strong&gt;⌘ + ⇧ + 9&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Alcatraz window" src="https://camo.githubusercontent.com/919efe4e1e53237df51d7010c862bd5c04fd6a70/687474703a2f2f616c63617472617a2e696f2f696d616765732f73637265656e73686f744032782e706e67" /&gt;&lt;/p&gt;
+&lt;h3&gt;AutoHighlightSymbol&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="https://github.com/chiahsien/AutoHighlightSymbol"&gt;Auto Highlight Symbol&lt;/a&gt; improves drastically the
+built-in symbol highlighting from XCode by using a configurable background color to highlight the text,
+instead of the barely visible underlining.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Auto Highlight Symbol screenshot" src="https://github.com/chiahsien/AutoHighlightSymbol/raw/master/screenshot.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Backlight&lt;/h3&gt;
+&lt;p&gt;One simple feature overlooked by the XCode text editor is highlighting the current line where the cursor is placed.
+Luckily, the &lt;a href="https://github.com/limejelly/Backlight-for-XCode"&gt;Backlight&lt;/a&gt; plugin fixes that.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Backlight" src="https://raw.githubusercontent.com/limejelly/Backlight-for-XCode/master/screenshot.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;Fuzzy Autocomplete&lt;/h3&gt;
+&lt;p&gt;I always wondered why the autocomplete dialog from from XCode didn't use the same algorithm as the quick open
+functionality (accessed at &lt;strong&gt;⌘ + ⇧ + O&lt;/strong&gt;). The &lt;a href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin"&gt;FuzzyAutocomplete&lt;/a&gt; 
+plugin does exactly that, using Xcode's own &lt;code&gt;IDEOpenQuicklyPattern&lt;/code&gt; to implement a better autocomplete algorithm. 
+A &lt;a href="http://chen.do/blog/2013/10/22/reverse-engineering-xcode-with-dtrace/?utm_source=github&amp;amp;utm_campaign=fuzzyautocomplete"&gt;fascinating writeup by chendo&lt;/a&gt; explains how he used &lt;code&gt;dtrace&lt;/code&gt; to inspect what the infamous IDE is doing under the hood
+and implement this great plugin.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Fuzzy Autocomplete demo" src="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin/raw/master/demo.gif" /&gt;&lt;/p&gt;
+&lt;h3&gt;IconMaker&lt;/h3&gt;
+&lt;p&gt;I've created the habit to curse Apple and their lack of love towards developers using their platform everytime I have to resize, crop 
+and rename images to generate app icons. After dealing with a suite of imagemagick scripts, I've decided to use &lt;a href="https://github.com/kaphacius/IconMaker"&gt;IconMaker&lt;/a&gt; for the job. It adds a tool that allows on to easily create asset catalogs from a source image.&lt;/p&gt;
+&lt;h3&gt;MCLog&lt;/h3&gt;
+&lt;p&gt;A very necessary and basic feature lacking on XCode is filtering the output of the console.  Android developers can easily 
+do that using UNIX tools such as &lt;code&gt;grep&lt;/code&gt;, but iOS developers are hostages to Apple's walled garden. 
+&lt;a href="https://github.com/yuhua-chen/MCLog"&gt;MCLog&lt;/a&gt; comes to the rescue, adding a search bar to the bottom of the console that
+allows the output of a running app to be filtered using regexes.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MCLog demo" src="https://camo.githubusercontent.com/ecbdebd01af366c9a7d3c3d0850a164f127030a9/68747470733a2f2f7261776769746875622e636f6d2f79756875612d6368656e2f4d434c6f672f6d61737465722f4d434c6f6753637265656e73686f742e676966" /&gt;&lt;/p&gt;
+&lt;h3&gt;Peckham&lt;/h3&gt;
+&lt;p&gt;Another basic IDE use-case overlooked by Apple on XCode that I'm sure most iOS developers will identify with, is 
+scrolling all the way to the top of a source file to add new import statments.
+&lt;a href="https://github.com/markohlebar/Peckham"&gt;Peckham&lt;/a&gt; solves that by adds a tiny menu with fuzzy autocompletion accessible by 
+the &lt;strong&gt;⌘ + Ctrl + P&lt;/strong&gt; shortcut.&lt;/p&gt;</summary><category term="xcode"></category><category term="ios"></category><category term="osx"></category><category term="objective-c"></category></entry></feed>

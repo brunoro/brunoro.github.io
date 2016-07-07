@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>machine burning</title><link href="http://hitnail.net/" rel="alternate"></link><link href="http://hitnail.net/feeds/misc.atom.xml" rel="self"></link><id>http://hitnail.net/</id><updated>2015-09-14T00:00:00+02:00</updated><entry><title>Do Androids Dream In Pixels?</title><link href="http://hitnail.net/do-androids-dream-in-pixels.html" rel="alternate"></link><updated>2015-09-14T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2015-09-14:do-androids-dream-in-pixels.html</id><summary type="html">&lt;p&gt;So, almost 2 years since my last post, I finally have something worth sharing on machine burning again.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>machine burning</title><link href="http://hitnail.net/" rel="alternate"></link><link href="http://hitnail.net/feeds/misc.atom.xml" rel="self"></link><id>http://hitnail.net/</id><updated>2016-06-28T00:00:00+02:00</updated><entry><title>A list of symbols for keys found on most keyboards</title><link href="http://hitnail.net/a-list-of-symbols-for-keys-found-on-most-keyboards.html" rel="alternate"></link><updated>2016-06-28T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2016-06-28:a-list-of-symbols-for-keys-found-on-most-keyboards.html</id><summary type="html">&lt;p&gt;This is a handy list of symbols that can help a lot when laying down keyboard shortcuts on 
+tutorials or README pages. The * marks symbols that are not commonly used; those keys
+are usually referred by their names or an abbreviation.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Symbol&lt;/th&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;^&lt;/td&gt;
+&lt;td&gt;Ctrl/Control (Mac notation)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⎈&lt;/td&gt;
+&lt;td&gt;Ctrl/Control (Unicode symbol)*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⇧&lt;/td&gt;
+&lt;td&gt;Shift&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⇪&lt;/td&gt;
+&lt;td&gt;Caps Lock&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;↵&lt;/td&gt;
+&lt;td&gt;Enter/Return&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⎇&lt;/td&gt;
+&lt;td&gt;Alt*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⌥&lt;/td&gt;
+&lt;td&gt;Option (Alt on Mac)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;←&lt;/td&gt;
+&lt;td&gt;Backspace*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⌫&lt;/td&gt;
+&lt;td&gt;Delete (Backspace on Mac)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;↹&lt;/td&gt;
+&lt;td&gt;Tab&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⎋&lt;/td&gt;
+&lt;td&gt;Esc*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⊞&lt;/td&gt;
+&lt;td&gt;Win/Windows (Super on Windows)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;⌘&lt;/td&gt;
+&lt;td&gt;Cmd/Command (Super on Mac)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</summary><category term="keyboards"></category><category term="unicode"></category></entry><entry><title>Do Androids Dream In Pixels?</title><link href="http://hitnail.net/do-androids-dream-in-pixels.html" rel="alternate"></link><updated>2015-09-14T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2015-09-14:do-androids-dream-in-pixels.html</id><summary type="html">&lt;p&gt;So, almost 2 years since my last post, I finally have something worth sharing on machine burning again.
 I'm starting a new project: &lt;a href="http://androidsdreaminpixels.tumblr.com"&gt;Do Androids Dream In Pixels?&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt="datamoshing to space" src="http://41.media.tumblr.com/2d4a0fdf711871718b2ebac71c40913a/tumblr_nwofskUntb1ugrpdno1_1280.png" /&gt;&lt;/p&gt;
 &lt;p&gt;The idea is posting some experiments I've been doing with digital art, mostly glitches and neural networks.

@@ -41,22 +41,131 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="./sdl-dem0ns-or-a-tiny-emulat0r.html">SDL dem0ns, or: a tiny emulat0r</a></h1> 
+                    <h1 class="entry-title"><a href="./making-xcode-bearable-a-plugin-list.html">Making XCode bearable: a plugin list</a></h1> 
+<div class="post-info">
+        <abbr class="published" title="2016-07-06T00:00:00+02:00">
+                2016-07-06
+        </abbr>
+
+<p>in <a href="./category/ios.html">ios</a>. </p>
+<p>tags: <a href="./tag/xcode.html">xcode</a><a href="./tag/ios.html">ios</a><a href="./tag/osx.html">osx</a><a href="./tag/objective-c.html">objective-c</a></p></div><!-- /.post-info --><p>Let's face it, using XCode in 2016 is a burden that iOS developers are forced to bear. 
+All the crashes, the eternal indexing, the terrible refactoring functionality, the weird
+build fails solved by re-opening the editor, the inability to (sometimes) run individual
+unit tests, and other annoyances are already well-known by daily users of the tool.
+To some, like me, switching to AppCode isn't a viable solution. The toolchain used by
+the JetBrains suite still relies on XCode for many tasks, and you might end up switching between 
+both IDEs most of the time.</p>
+<p>The awkwardness of the Apple development tools is understandable when looking at its history. 
+OS X, and, more recently, iOS follow the lineage of the operating system developed by another
+company by Steve Jobs, NeXT. A more detailed look on how the legacy of the <a href="https://en.wikipedia.org/wiki/NeXTSTEP">NeXTSTEP operating system</a>
+is still living in our Macs and iPhones is available on this <a href="http://arstechnica.com/apple/2012/12/the-legacy-of-next-lives-on-in-os-x/">Ars Technica article</a>.
+XCode is the successor of the NeXT development tools, bundling the 
+<a href="http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/DevTools/03_InterfaceBuilder/InterfaceBuilder.htmld/index.html">Interface Builder</a>
+(the .nib extension used on Cocoa and Carbon interface files stands for <em>NeXT Interface Builder</em>) and 
+the <a href="http://www.cilinder.be/docs/next/NeXTStep/3.3/nd/DevTools/02_ProjectBuilder/ProjectBuilder.htmld/index.html">Project Builder</a>
+(guess where the cluttered and unmergeable .pbxproj project format comes from).</p>
+<p>Although a notable and innovative development suite for its time -- Tim Berners-Lee used it to develop the first WorldWideWeb browser at the CERN -- it's still a piece of software designed in the late 80s.
+Apart from adding support to new mobile platforms and programming languages, Apple hasn't done much 
+to bring the development evironment to the 21st century. The featureset still lags behind contemporary alternatives,
+like Microsoft's Visual Studio or even Google's Android Builder, which is based on IDEA's IntelliJ.
+Luckily, some plugins can ease this suffering and fill some of the usability gaps left by the Cupertino company.</p>
+<h3>Alcatraz</h3>
+<p><a href="https://github.com/alcatraz/Alcatraz">Alcatraz</a> is a plugin manager for XCode and your
+starting point on pimping up your development environment. Installing it is as simple as
+running the install script found at <code>https://raw.github.com/alcatraz/Alcatraz/master/Scripts/install.sh</code>.
+The plugin manager window can be opened by the shortcut <strong>⌘ + ⇧ + 9</strong>.</p>
+<p><img alt="Alcatraz window" src="https://camo.githubusercontent.com/919efe4e1e53237df51d7010c862bd5c04fd6a70/687474703a2f2f616c63617472617a2e696f2f696d616765732f73637265656e73686f744032782e706e67" /></p>
+<h3>AutoHighlightSymbol</h3>
+<p>The <a href="https://github.com/chiahsien/AutoHighlightSymbol">Auto Highlight Symbol</a> improves drastically the
+built-in symbol highlighting from XCode by using a configurable background color to highlight the text,
+instead of the barely visible underlining.</p>
+<p><img alt="Auto Highlight Symbol screenshot" src="https://github.com/chiahsien/AutoHighlightSymbol/raw/master/screenshot.png" /></p>
+<h3>Backlight</h3>
+<p>One simple feature overlooked by the XCode text editor is highlighting the current line where the cursor is placed.
+Luckily, the <a href="https://github.com/limejelly/Backlight-for-XCode">Backlight</a> plugin fixes that.</p>
+<p><img alt="Backlight" src="https://raw.githubusercontent.com/limejelly/Backlight-for-XCode/master/screenshot.png" /></p>
+<h3>Fuzzy Autocomplete</h3>
+<p>I always wondered why the autocomplete dialog from from XCode didn't use the same algorithm as the quick open
+functionality (accessed at <strong>⌘ + ⇧ + O</strong>). The <a href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin">FuzzyAutocomplete</a> 
+plugin does exactly that, using Xcode's own <code>IDEOpenQuicklyPattern</code> to implement a better autocomplete algorithm. 
+A <a href="http://chen.do/blog/2013/10/22/reverse-engineering-xcode-with-dtrace/?utm_source=github&amp;utm_campaign=fuzzyautocomplete">fascinating writeup by chendo</a> explains how he used <code>dtrace</code> to inspect what the infamous IDE is doing under the hood
+and implement this great plugin.</p>
+<p><img alt="Fuzzy Autocomplete demo" src="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin/raw/master/demo.gif" /></p>
+<h3>IconMaker</h3>
+<p>I've created the habit to curse Apple and their lack of love towards developers using their platform everytime I have to resize, crop 
+and rename images to generate app icons. After dealing with a suite of imagemagick scripts, I've decided to use <a href="https://github.com/kaphacius/IconMaker">IconMaker</a> for the job. It adds a tool that allows on to easily create asset catalogs from a source image.</p>
+<h3>MCLog</h3>
+<p>A very necessary and basic feature lacking on XCode is filtering the output of the console.  Android developers can easily 
+do that using UNIX tools such as <code>grep</code>, but iOS developers are hostages to Apple's walled garden. 
+<a href="https://github.com/yuhua-chen/MCLog">MCLog</a> comes to the rescue, adding a search bar to the bottom of the console that
+allows the output of a running app to be filtered using regexes.</p>
+<p><img alt="MCLog demo" src="https://camo.githubusercontent.com/ecbdebd01af366c9a7d3c3d0850a164f127030a9/68747470733a2f2f7261776769746875622e636f6d2f79756875612d6368656e2f4d434c6f672f6d61737465722f4d434c6f6753637265656e73686f742e676966" /></p>
+<h3>Peckham</h3>
+<p>Another basic IDE use-case overlooked by Apple on XCode that I'm sure most iOS developers will identify with, is 
+scrolling all the way to the top of a source file to add new import statments.
+<a href="https://github.com/markohlebar/Peckham">Peckham</a> solves that by adds a tiny menu with fuzzy autocompletion accessible by 
+the <strong>⌘ + Ctrl + P</strong> shortcut.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h2>Other articles</h2>
+                    <hr />
+                        <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h2><a href="./a-list-of-symbols-for-keys-found-on-most-keyboards.html" rel="bookmark" title="Permalink to A list of symbols for keys found on most keyboards">A list of symbols for keys found on most keyboards</a></h2>
+                </header>
+                
+                <div class="entry-content">
+<div class="post-info">
+        <abbr class="published" title="2016-06-28T00:00:00+02:00">
+                2016-06-28
+        </abbr>
+
+<p>in <a href="./category/misc.html">misc</a>. </p>
+<p>tags: <a href="./tag/keyboards.html">keyboards</a><a href="./tag/unicode.html">unicode</a></p></div><!-- /.post-info -->                <p>This is a handy list of symbols that can help a lot when laying down keyboard shortcuts on 
+tutorials or README pages. The * marks symbols that are not commonly used; those keys
+are usually referred by their names or an abbreviation.</p>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^</td>
+<td>Ctrl/Control (Mac notation)</td>
+</tr>
+<tr>
+<td>⎈</td>
+<td>Ctrl/Control (Unicode ...</td></tr></tbody></table>
+                <a class="readmore" href="./a-list-of-symbols-for-keys-found-on-most-keyboards.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h2><a href="./sdl-dem0ns-or-a-tiny-emulat0r.html" rel="bookmark" title="Permalink to SDL dem0ns, or: a tiny emulat0r">SDL dem0ns, or: a tiny emulat0r</a></h2>
+                </header>
+                
+                <div class="entry-content">
 <div class="post-info">
         <abbr class="published" title="2016-03-20T00:00:00+01:00">
                 2016-03-20
         </abbr>
 
 <p>in <a href="./category/rad1o.html">rad1o</a>. </p>
-<p>tags: <a href="./tag/rad1o.html">rad1o</a><a href="./tag/cellular automata.html">cellular automata</a><a href="./tag/sdl.html">sdl</a></p></div><!-- /.post-info --><p>While writing my little l0dable, I faced a small inconvenient: compiling and flashing the
-f1rmware at every iteration of the development. The easiest solution for this would be running the code on some kind of emulator for development purposes. With a little research, I found a mention of a <a href="http://r0ket.de/l0dable">simulat0r for the r0ket</a>. As much of the code of the rad1o standard library comes from the r0ket one, it shouldn't be difficult to run my l0dable with minor changes on this simulator. Turns out it wasn't the case.</p>
-<p><img alt="&quot;SDL dem0ns&quot;" src="img/dem0ns-sdl.png" title="SDL dem0ns" /></p>
-<p>After a quick download-read-compile-run of the <a href="https://github.com/r0ket/r0ket/tree/master/simulat0r">simulat0r code</a>, I realized that the work of modfiying this existing code -- which provides much more than the l0dable environment, actually running the whole firmware -- would be more difficult than just writing a quick and dirty emulation layer providing the functions I used on dem0ns. I chose SDL for the job with portability in mind, so although I only tested this on OSX and Linux, this should run in most operating systems. The code can be found at <a href="https://github.com/brunoro/dem0ns-sdl">github</a> alongside my demons of the cyclic space implementation using it.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h2>Other articles</h2>
-                    <hr />
-                        <ol id="posts-list" class="hfeed">
+<p>tags: <a href="./tag/rad1o.html">rad1o</a><a href="./tag/cellular automata.html">cellular automata</a><a href="./tag/sdl.html">sdl</a></p></div><!-- /.post-info -->                <p>While writing my little l0dable, I faced a small inconvenient: compiling and flashing the
+f1rmware at every iteration of the development. The easiest solution for this would be running the code on some kind of emulator for development purposes. With a little research, I found a mention of a <a href="http://r0ket.de/l0dable">simulat0r ...</a></p>
+                <a class="readmore" href="./sdl-dem0ns-or-a-tiny-emulat0r.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
         
 
  
