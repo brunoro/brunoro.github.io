@@ -4,7 +4,12 @@ SITEURL  = 'http://hitnail.net'
 
 # author info
 AUTHOR = 'gus'
-SOCIAL = ['http://last.fm/user/gbrunoro', 'http://github.com/brunoro']
+SOCIAL = [
+            'https://www.linkedin.com/in/gbrunoro',
+            'http://github.com/brunoro', 
+            'http://last.fm/user/gbrunoro', 
+            'http://soundcloud.com/beise'
+         ]
 
 # datetime
 TIMEZONE = 'Europe/Berlin'
