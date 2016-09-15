@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>machine burning - linux-macbook</title>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="../theme/images/fire.png">
+        <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+        <link href="../feed.rss" type="application/rss+xml" rel="alternate" title="machine burning RSS Feed" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie.css"/>
+                <script src="../js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <div class="social">
+				    <a href="../feed.rss" rel="alternate">
+					    <span></span>
+				    </a>
+
+				    <a href="https://www.linkedin.com/in/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://github.com/brunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://last.fm/user/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://soundcloud.com/beise">
+					    <span></span>
+				    </a>
+                </div>
+                <h1><a href=".."><span id="title0">machine burning</span><span id="title1">machine burning</span><span id="title2">machine burning</span> </a></h1>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+        
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../nvidia-blob-macbook-71-and-efi-boot.html">NVIDIA blob, Macbook 7,1 and EFI boot</a></h1> 
+<div class="post-info">
+        <abbr class="published" title="2012-11-07T00:00:00+01:00">
+                2012-11-07
+        </abbr>
+
+<p>in <a href="../category/linux-macbook.html">linux-macbook</a>. </p>
+<p>tags: <a href="../tag/linux.html">linux</a><a href="../tag/osx.html">osx</a><a href="../tag/macbook.html">macbook</a><a href="../tag/efi.html">efi</a><a href="../tag/nvidia.html">nvidia</a></p></div><!-- /.post-info --><p>The user experience for a developer under Linux is way more flexible than under Mac OS X,
+specially talking about package management, which is light-years more evolved on the open
+source world. But, on the other hand, some hassle can be experienced from bad hardware 
+support and buggy drivers. That's definetely the case with the NVIDIA 320m card on the 
+Macbook 7,1 using a EFI boot. The lack of support of the NVIDIA drivers is already known
+from many recent facts such as <a href="ihttp://www.youtube.com/watch?v=MShbP3OpASA">that Linus Torvalds interview</a> 
+and the <a href="http://www.phoronix.com/scan.php?page=news_item&amp;px=MTEyNTE">10 million GPU order</a> they've lost to AMD.</p>
+<p><img alt="&quot;A picture is worth a thousand words&quot;" src="img/fuck-you-nvidia.jpg" title="A picture is worth a thousand words" /></p>
+<p>Apple decided to ship the Macbooks using a different boot technology than the old BIOS that
+we see on most hardware; Mac OS X boots using a wonky EFI (Extended Firmware Interface) implementation.
+That said, it does not use the old MBR partition tables, but the more flexible GUID Partition Tables.
+Not to care about the true intentions of switching to EFI boot and the bizarre hybrid MBR setup Apple
+proposes for booting Windows and other legacy software (sic), the main issue resides on the fact that
+the proprietary NVIDIA driver reads</p>
+<p>Some precious information regarding booting from UEFI devices may be found on the <a href="https://help.ubuntu.com/community/UEFIBooting">Ubuntu documentation</a>. There are quite a few forum threads with no conclusive answers about this issue, such as
+<a href="http://www.nvnews.net/vbulletin/showthread.php?t=180737&amp;highlight=linux+EFI">this one</a>, <a href="http://forums.gentoo.org/viewtopic-p-7071700.html?sid=57d7b854338e2647b9ba910f7674263a">this one</a> and <a href="https://bbs.archlinux.org/viewtopic.php?id=142664">this one</a> only to mention a few. A NVIDIA developer already spoke about
+the problem at <a href="http://www.nvnews.net/vbulletin/showthread.php?t=174006&amp;page=2&amp;highlight=linux+EFI">nvnews forum thread</a> saying that they have plans on addressing it.</p>
+<p>The <strong>nouveau</strong> reverse engineered driver does an excellent job for daily use of the machine. The lack
+of support of the official driver closes the door to massive parallel CUDA programming, and also causes 
+bad perfomance when up to OpenGL development and playing games, as hardware acceleration
+is very much needed to guarantee a smooth ride on those applications.</p>
+<p>It's quite a shame that NVIDIA still haven't fixed this issue on a 2009 machine, given that
+the UEFI booting is to become the standard for newer hardware. Also, gaming on Linux is getting
+a lot of attention with <a href="http://www.phoronix.com/scan.php?page=article&amp;item=valve_linux_dampfnudeln&amp;num=1">Valve's initiative</a>
+and the great <a href="http://humblebundle.com">Humble Indie Bundle</a> with great games for the platform.</p>
+<p>This whole experience just showed me that getting Apple hardware, despite its beauty and hype factor,
+may not be a good option if you have plans on using it as a serious Linux box.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h2>Other articles</h2>
+                    <hr />
+                        <ol id="posts-list" class="hfeed">
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h2><a href="../linux-on-a-macbook-part-ii-the-drill.html" rel="bookmark" title="Permalink to Linux on a Macbook part II: the drill">Linux on a Macbook part II: the drill</a></h2>
+                </header>
+                
+                <div class="entry-content">
+<div class="post-info">
+        <abbr class="published" title="2012-07-06T00:00:00+02:00">
+                2012-07-06
+        </abbr>
+
+<p>in <a href="../category/linux-macbook.html">linux-macbook</a>. </p>
+<p>tags: <a href="../tag/linux.html">linux</a><a href="../tag/osx.html">osx</a><a href="../tag/macbook.html">macbook</a></p></div><!-- /.post-info -->                <p>The Arch Linux installation process wasn't much different on a Macbook than it would be on another laptop.
+Installing the bootloader comes as the main issue, but even though it was quickly solved. It's always helpful
+to have another device connected to the internet so you can read ...</p>
+                <a class="readmore" href="../linux-on-a-macbook-part-ii-the-drill.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+        
+
+ 
+            <li><article class="hentry">    
+                <header>
+                        <h2><a href="../linux-on-a-macbook-part-i-the-fair-jugdement.html" rel="bookmark" title="Permalink to Linux on a Macbook part I: the fair jugdement">Linux on a Macbook part I: the fair jugdement</a></h2>
+                </header>
+                
+                <div class="entry-content">
+<div class="post-info">
+        <abbr class="published" title="2012-06-04T00:00:00+02:00">
+                2012-06-04
+        </abbr>
+
+<p>in <a href="../category/linux-macbook.html">linux-macbook</a>. </p>
+<p>tags: <a href="../tag/linux.html">linux</a><a href="../tag/osx.html">osx</a><a href="../tag/macbook.html">macbook</a></p></div><!-- /.post-info -->                <p>It wasn't hard to embrace Mac OS X when I bought my Macbook, back in 2010.
+It's a very good looking and practical UNIX flavor running on sexy designed hardware.
+And it is pretty usable out-of-the box, unless you like tweaking your system to the last 
+variable and ...</p>
+                <a class="readmore" href="../linux-on-a-macbook-part-i-the-fair-jugdement.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+    </ol><!-- /#posts-list -->
+    </section><!-- /#content -->
+        <section id="extras" class="body">
+       </section><!-- /#extras -->
+
+        <footer id="about" class="body">
+            <p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.</p>
+            <p>Theme based on <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-32411032-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

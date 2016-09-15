@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>machine burning</title><link href="http://hitnail.net/" rel="alternate"></link><link href="http://hitnail.net/feeds/emacs.atom.xml" rel="self"></link><id>http://hitnail.net/</id><updated>2012-09-19T00:00:00+02:00</updated><entry><title>Hello from Emacsland</title><link href="http://hitnail.net/hello-from-emacsland.html" rel="alternate"></link><updated>2012-09-19T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2012-09-19:hello-from-emacsland.html</id><summary type="html">&lt;p&gt;This is my first post from the Emacs (+ Markdown mode) side of the world. Muscle memory still
+tricks me many times with :wq and :%s lapses, but I must say: it feels good.
+The Finger yoga can be quite tricky when coming from the distinct vi-style editing
+logic.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="POV of this post" src="img/meta-emacs-post-image.png" /&gt;&lt;/p&gt;
+&lt;p&gt;I'm still setting up my environment (including getting wombat instead of this bizarre colorscheme), 
+but my main concern now is grasp this distinct buffer mobility. 
+This &lt;a href="http://hyperpolyglot.org/text-mode-editors"&gt;hyperpolyglot.org page on text editors&lt;/a&gt; has shown
+itself amazingly useful.&lt;/p&gt;
+&lt;p&gt;I'll draft a new post when I get to show off one of those
+&lt;a href="http://www.youtube.com/watch?v=EQAd41VAXWo"&gt;amazing emacs tricks&lt;/a&gt;.&lt;/p&gt;</summary><category term="emacs"></category><category term="text editor"></category></entry><entry><title>I'm giving emacs a shot</title><link href="http://hitnail.net/im-giving-emacs-a-shot.html" rel="alternate"></link><updated>2012-06-24T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2012-06-24:im-giving-emacs-a-shot.html</id><summary type="html">&lt;p&gt;Since the beggining of my adventures on the Lisp side of the universe with Clojure and Scheme,
+I've seen a lot of tutorials made by developers with seemly ninja skills on emacs doing some
+magical text editing (for instance &lt;a href="http://vimeo.com/22798433"&gt;this one from Sam Aaron&lt;/a&gt;).
+But after seeing a live showcase of the emacs possibilities for LaTeX editing, similar to 
+&lt;a href="http://www.youtube.com/watch?v=LJgOWxwrEMw"&gt;this video&lt;/a&gt;, I really got motivated to give emacs
+a fresh try.&lt;/p&gt;
+&lt;p&gt;So, I'm starting to learn the emacs-fu and finger yoga in order to get to reproduce that workflow
+at least for my Clojure and LaTex needs. Initally I'll try not to use any vim-like solution for emacs
+such as &lt;a href="http://emacswiki.org/emacs/ViperMode"&gt;Viper&lt;/a&gt; and &lt;a href="http://emacswiki.org/emacs/Evil"&gt;Evil&lt;/a&gt;.
+My goal is to have some strong emacsy editing skills in order to compare the achievable productivity of both.&lt;/p&gt;
+&lt;p&gt;I have to say that the emacs community seems much more aware of the capabilities of the tool. It is
+still kept like a hidden treasure under the siege of a Lisp dialect.&lt;/p&gt;</summary><category term="emacs"></category><category term="text editor"></category></entry></feed>

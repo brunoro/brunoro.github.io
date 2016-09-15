@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>Elixir: Debugging and Inspection - week 1</title>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="./theme/images/fire.png">
+        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+        <link href="./feed.rss" type="application/rss+xml" rel="alternate" title="machine burning RSS Feed" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
+                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <div class="social">
+				    <a href="./feed.rss" rel="alternate">
+					    <span></span>
+				    </a>
+
+				    <a href="https://www.linkedin.com/in/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://github.com/brunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://last.fm/user/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://soundcloud.com/beise">
+					    <span></span>
+				    </a>
+                </div>
+                <h1><a href="."><span id="title0">machine burning</span><span id="title1">machine burning</span><span id="title2">machine burning</span> </a></h1>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">    
+<article>
+        <header> <h1 class="entry-title"><a href=""
+        rel="bookmark" title="Permalink to Elixir: Debugging and Inspection - week 1">Elixir: Debugging and Inspection - week 1</a></h1>  </header>
+<div class="post-info">
+        <abbr class="published" title="2013-06-23T00:00:00+02:00">
+                2013-06-23
+        </abbr>
+
+<p>in <a href="./category/gsoc2013.html">gsoc2013</a>. </p>
+<p>tags: <a href="./tag/gsoc2013.html">gsoc2013</a><a href="./tag/elixir.html">elixir</a></p></div><!-- /.post-info -->        <div class="entry-content">
+        <p>Today was over the first week of development of Summer of Code, and I worked mostly getting pretty-printing on Elixir. 
+There was already a <a href="https://github.com/elixir-lang/elixir/pull/1047">pull request</a> implementing the algorithm proposed 
+by <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.19.635">Wadler (2003)</a>, but some performance issues still needed
+to be taken care of before merging it to upstream.</p>
+<p>After reading the <a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.34.2200">Lindig (2000)</a> paper on the exponential behaviour 
+of the Wadler pretty printer on strict languages, I figured it could be the main issue, as the original implementation relies on Haskell's lazy evaluation.
+I adapted the <code>wadler.ex</code> module from the pull request to follow the OCaml implementation proposed by Lindig. 
+As those tweaks didn't bring any performance gains, I moved on profiling the code.</p>
+<p><img alt="&quot;First attempt at optimizing the pretty-printer&quot;" src="img/gsoc-week1-small.png" title="Oops, no performance gains with Lindig approach." /></p>
+<p>Profiling showed that the exponential behaviour on the code arouse from the usage of the string concatenation operator in Elixir, 
+which has performance linear on length of the left-hand string. Therefore, I patched both pretty printing implementations (Wadler's and Lindig's) 
+to build lists of strings and make a one single <code>List.join</code> call at the end of the process. Those changes made the pretty printer show the expected 
+linear behaviour, and the strict implementation showed better performance than the one original lazy one.</p>
+<p><img alt="&quot;String concatenation was the problem&quot;" src="img/gsoc-week1-big.png" title="Linear at last, removing string concatenation." /></p>
+<p>Some optimizations followed: @devinus pointed out that using <code>iolist_to_binary</code> would bring even more performance gains over <code>List.join</code>, 
+and that using <code>List.duplicate</code> over <code>String.duplicate</code> to generate indent strings would also make the pretty printer faster. 
+I benchmarked the suggestions, and indeed the version using <code>iolist_to_binary</code> got better results. </p>
+<p><img alt="&quot;iolist_to_binary over List.join&quot;" src="img/gsoc-week1-join.png" title="String list joining: serious business" /></p>
+<p>However, a strange fact came up measuring <code>List.duplicate</code> vs <code>String.duplicate</code>: the usage List.duplicate brought back the exponential 
+performance to the function. Profiling showed that the <code>List.duplicate</code> version ended up making a massive amount of <code>:lists.duplicate/3</code> calls; 
+to check that, I changed the <code>List.duplicate</code> call to an equivalent <code>:lists.duplicate/2</code> call, and the number of <code>:lists.duplicate/3</code> got back to normal! 
+@josevalim pointed that we should keep the <code>:lists.duplicate/2</code> version of the code and further investigate the behaviour or List.duplicate afterwards.</p>
+<p><img alt="&quot;strange List.duplicate behaviour&quot;" src="img/gsoc-week1-dup.png" title="List.duplicate just calls :lists.duplicate. Oh, wait..." /></p>
+<p>The regression tests for the new implmentation were getting stuck on some Mix tests, which were caused by inspect calls relying on unformatted string results. 
+I've added the pretty: false option to all the Kernel.inspect calls on Mix, but the tests still failed. After that, I've verified that the <code>pretty: false</code> 
+option had to be reimplemented, which resulted on adding a corner case to the <code>Wadler.fits?</code> and <code>Wadler.format</code> methods to handle lines with "infinite width", 
+disabling any formatting done by the pretty printer.</p>
+<p>There are still two pending issues to merge the pretty printer on upstream:</p>
+<ul>
+<li>Making the records used on wadler.ex private. I'm still wondering about the best way to handle the typespecs with defrecordp, which doesn't generate types.</li>
+<li>Documenting the Binary.Inspect.Util module, which contain functions that'll be made public, allowing custom pretty printers to be written.</li>
+</ul>
+<p>The benchmark code I used is available <a href="https://gist.github.com/brunoro/5786164">here</a>.</p>
+        </div><!-- /.entry-content -->
+
+</article>
+</section>
+        <section id="extras" class="body">
+       </section><!-- /#extras -->
+
+        <footer id="about" class="body">
+            <p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.</p>
+            <p>Theme based on <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-32411032-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

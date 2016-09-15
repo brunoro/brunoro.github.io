@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>machine burning</title><link href="http://hitnail.net/" rel="alternate"></link><link href="http://hitnail.net/feeds/rad1o.atom.xml" rel="self"></link><id>http://hitnail.net/</id><updated>2016-03-20T00:00:00+01:00</updated><entry><title>SDL dem0ns, or: a tiny emulat0r</title><link href="http://hitnail.net/sdl-dem0ns-or-a-tiny-emulat0r.html" rel="alternate"></link><updated>2016-03-20T00:00:00+01:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2016-03-20:sdl-dem0ns-or-a-tiny-emulat0r.html</id><summary type="html">&lt;p&gt;While writing my little l0dable, I faced a small inconvenient: compiling and flashing the
+f1rmware at every iteration of the development. The easiest solution for this would be running the code on some kind of emulator for development purposes. With a little research, I found a mention of a &lt;a href="http://r0ket.de/l0dable"&gt;simulat0r for the r0ket&lt;/a&gt;. As much of the code of the rad1o standard library comes from the r0ket one, it shouldn't be difficult to run my l0dable with minor changes on this simulator. Turns out it wasn't the case.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="&amp;quot;SDL dem0ns&amp;quot;" src="img/dem0ns-sdl.png" title="SDL dem0ns" /&gt;&lt;/p&gt;
+&lt;p&gt;After a quick download-read-compile-run of the &lt;a href="https://github.com/r0ket/r0ket/tree/master/simulat0r"&gt;simulat0r code&lt;/a&gt;, I realized that the work of modfiying this existing code -- which provides much more than the l0dable environment, actually running the whole firmware -- would be more difficult than just writing a quick and dirty emulation layer providing the functions I used on dem0ns. I chose SDL for the job with portability in mind, so although I only tested this on OSX and Linux, this should run in most operating systems. The code can be found at &lt;a href="https://github.com/brunoro/dem0ns-sdl"&gt;github&lt;/a&gt; alongside my demons of the cyclic space implementation using it.&lt;/p&gt;</summary><category term="rad1o"></category><category term="cellular automata"></category><category term="sdl"></category></entry><entry><title>A Demons of the Cyclic Space l0dable for the rad1o</title><link href="http://hitnail.net/a-demons-of-the-cyclic-space-l0dable-for-the-rad1o.html" rel="alternate"></link><updated>2016-01-09T00:00:00+01:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2016-01-09:a-demons-of-the-cyclic-space-l0dable-for-the-rad1o.html</id><summary type="html">&lt;p&gt;I was one of the lucky ones that got hold of an amazing &lt;a href="https://rad1o.badge.events.ccc.de/"&gt;rad1o&lt;/a&gt; on the last &lt;a href="https://events.ccc.de/camp/2015/wiki/Main_Page"&gt;Chaos Communication Camp&lt;/a&gt;,
+but, apart from following some &lt;a href="https://greatscottgadgets.com/sdr/"&gt;SDR tutorials&lt;/a&gt; and messing around with transmitting and recieving FM signals, I couldn't
+invest much time in doing cool stuff using it.
+After watching the amazing &lt;a href="https://media.ccc.de/v/32c3-7154-iridium_update"&gt;Iridium Update by sec and schneider&lt;/a&gt; at the &lt;a href="https://events.ccc.de/congress/2015/wiki/Static:Main_Page"&gt;32c3&lt;/a&gt;, I decided to roll up my sleeves and implement something)
+(although not SDR related) to run on my rad1o. It'd be something neat looking yet quick to implement, that I could use to keep my badge's
+display busy when I was walking around on the congress. One algorithm quickly popped to my mind: the Demons of Cyclic Space.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="&amp;quot;it's alive!&amp;quot;" src="img/demons-rad1o.jpg" title="it runs!" /&gt;&lt;/p&gt;
+&lt;h3&gt;Cyclic cycles in spaces&lt;/h3&gt;
+&lt;p&gt;I first found out about this cellular automata though reading a collection of A.K. Dewdney's column "Computer Recreation" for Scientific American.
+The algorithm described in the article, called "A cellular universe of debris, droplets, defects, and demons", and later on his book
+&lt;a href="http://www.amazon.com/The-Magic-Machine-Handbook-Computer/dp/0716721449"&gt;"Computer Magic"&lt;/a&gt;, is pretty simple:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Populate a 2D grid with out of random &lt;em&gt;n&lt;/em&gt; states.&lt;/li&gt;
+&lt;li&gt;At each step &lt;em&gt;t&lt;/em&gt;, for every position &lt;em&gt;p&lt;/em&gt; on the grid, check if any neighboring position (up, down, left, right) has the successor state &lt;em&gt;n + 1&lt;/em&gt;.
+   The successiong of states is cyclic, so the successor of the state &lt;em&gt;n&lt;/em&gt; is the state &lt;em&gt;0&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;If yes, the state of &lt;em&gt;p&lt;/em&gt; on step &lt;em&gt;t + 1&lt;/em&gt; becomes it's successor.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Writing a l0dable&lt;/h3&gt;
+&lt;p&gt;The rad1o &lt;a href="https://github.com/rad1o/f1rmware"&gt;f1rmware&lt;/a&gt; provides an easy way to write small interactive applications that can use the built-in joystick and display things on
+the tiny Nokia 6100 screen -- the l0dables. Those are C programs that get dynamically loaded by the f1rmware through a navigable menu.
+Their entry point is the &lt;code&gt;void ram(void)&lt;/code&gt; function, that, for all effects, acts like the main method. The l0dable standard library is forked
+from the one developed for the &lt;a href="http://www.r0ket.de/l0dable"&gt;r0cket&lt;/a&gt;, and provides a clear API for basic build blocks like handling the display
+(initializing, drawing and closing), getting events from the joystick (4 directions + press), rendering fonts, etc.
+I couldn't find any text documentation, but the &lt;a href="https://github.com/rad1o/f1rmware/blob/master/r0ketlib/display.h"&gt;source code&lt;/a&gt; is
+&lt;a href="https://github.com/rad1o/f1rmware/blob/master/r0ketlib/keyin.h"&gt;available&lt;/a&gt; on &lt;a href="https://github.com/rad1o/f1rmware/blob/master/r0ketlib/fonts.h"&gt;github&lt;/a&gt;
+and is a breeze to understand if you have some knowledge of C. &lt;/p&gt;
+&lt;p&gt;Deploying a l0dable on your rad1o is as simple as including the name of your &lt;code&gt;.c&lt;/code&gt; file to the &lt;code&gt;C1D&lt;/code&gt; array on the firmware Makefile, compiling and flashing again.
+Instructions on the dependencies and how to compile and flash the f1rmware can be found in the &lt;a href="https://github.com/rad1o/f1rmware/blob/master/doc/build.md"&gt;rad1o wiki&lt;/a&gt;.
+Notice that the name displayed on the menu will be the name of the &lt;code&gt;.c1d&lt;/code&gt; file.&lt;/p&gt;
+&lt;h3&gt;dem0ns&lt;/h3&gt;
+&lt;p&gt;The implementation of the algorithm is pretty straightforward, but there are still some learnings worth highlighting:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;memory size:&lt;/em&gt; the automata needs two buffers to run, in order to keep the state at &lt;em&gt;t&lt;/em&gt; and &lt;em&gt;t + 1&lt;/em&gt;. As a rookie in microcontroller
+programming, I allocated two &lt;code&gt;uint8_t&lt;/code&gt; buffers with the size of the screen 130x130 straight away. As it happens, the rad1o wouldn't even
+have memory one of such buffers. The solution involved using the video memory directly as the one of the buffers, and using a grain size of
+at least 2 pixels -- meaning 2x2 blocks, or a buffer size of at most 65x65.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;color palette:&lt;/em&gt; in order to display the the automata on the screen, it's necessary to have a mapping between colors and state. To keep
+things simple, I used a linear mapping to the 8-bit (RRRGGGBB) color representation used on the device, ignoring the color component information.
+Surprisingly, this method yielded some pleasant colorschemes that I'd probably otherwise not think of myself.
+An important part of this step is ensuring that the range of possible colors is a multiple of the numer of states, so that the modular arithmetic
+works fine and the states cycle correctly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The code for the l0dable is available on &lt;a href="https://github.com/brunoro/f1rmware/commit/a9818fa7e3af40f21f76bcf715da61e823682f8e"&gt;my fork of the f1rmware&lt;/a&gt;&lt;/p&gt;</summary><category term="rad1o"></category><category term="cellular automata"></category><category term="32c3"></category></entry></feed>
