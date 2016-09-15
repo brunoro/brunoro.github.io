@@ -10,7 +10,6 @@ SOCIAL = [
             'http://last.fm/user/gbrunoro', 
             'http://soundcloud.com/beise'
          ]
-
 # datetime
 TIMEZONE = 'Europe/Berlin'
 DEFAULT_DATE_FORMAT = '%Y-%m-%d'
@@ -35,3 +34,10 @@ USE_FOLDER_AS_CATEGORY = True
 # feeds
 FEED_ATOM = None
 FEED_RSS = 'feed.rss'
+
+# gists
+GIST_PYGMENTS_STYLE = 'bw'
+
+PLUGINS = [
+    'pelican_gist',
+]
