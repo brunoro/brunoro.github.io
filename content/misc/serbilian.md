@@ -2,6 +2,8 @@ Date: 2016-09-15
 Title: Serbilian: writing Brazilian Portuguese in Serbian Cyrilic
 Tags: languages, cyrilic, serbian, portuguese
 
+EDIT (2016-09-16): as of a great suggestion from [hisham](http://hisham.hm/), I reused some symbols from Russian Cyrilic (Э э for /ɛ/, X x for /x/) instead of using Latin alphabet or IPA replacements. I still kept S s for /z/ with readability in mind, as З з looks *very* similar to Э э for non-seasoned cyrilic readers like me).
+
 I recently attented [BalCCon2k16](https://2k16.balccon.org/index.php?title=Main_Page) in Novi Sad, Serbia with 
 my good friend [@daltojr](https://twitter.com/daltojr) and, apart from the amazing people and delicious food, 
 something that we both enjoyed was reading [Serbian Cyrilic](https://en.wikipedia.org/wiki/Serbian_Cyrillic_alphabet).
@@ -18,55 +20,56 @@ Serbilian (Alfabeto Serbileiro/Auфабεтu Сербилeрu).
 My process was simple: I started off with the [Portuguese phonemes in IPA](https://en.wikipedia.org/wiki/Help:IPA_for_Portuguese), then matched those to the Serbian Cyrilic characters and finally added the missing symbols. 
 At that point, I followed some guidelines to fill the gaps:
 
-1. reuse symbols from sounds similar sounds in Serbian not present in pt-BR: /v/ is written as "В" or "в", which originally represent /ʋ/
-2. use latin letters not used in the Serbian Cyrilic script: 
-3. using the IPA symbol rather than adding an accent over a letter: /ɐ/ is written as "∀" or "ɐ", rather than "â"
-4. groping sounds with negligible pronounciation differences:, like /r/, /ɾ/ and /x/ are all written by "Р" or "р"
+1. reuse symbols from sounds similar sounds in Serbian not present in pt-BR: /v/ is written as "В" or "в", which originally represent /ʋ/.
+2. group sounds with negligible pronounciation differences: /r/ and /ɾ/ are both written as "Р" or "р".
+3. use latin letters not used in the Serbian Cyrilic script: /w/, /ʊ/ and /ʊ̃/ are represented as "U" or "u".
+4. grab Russian cyrilic letters that represent sounds that are not present in Serbian: /ɛ/ becomes "Э" or "э".
+5. use the IPA symbol rather than adding an accent over a letter: /ɐ/ is written as "∀" or "ɐ", rather than "â".
 
 One downside of the result is that the stress mark, normally written with acute accents in pt-BR, is totally lost.
 This could be easily solved by adding stress marks like a dot under the letter (I didn't implement this in my code).
 
-IPA           | Example                                                            | Serbilian 
---------------|--------------------------------------------------------------------| ---------------------------------------------
-/a/ /æ/       | d**á**, J**a**ime                                                  | А а
-/ɐ/           | and**a**ime                                                        | ∀ ɐ (not in Serbian)
-/ã/ /ɐ̃/       | itapu**ã**, p**ã**o                                                | Ã ã (not in Serbian)
-/b/           | **b**eiço, ca**b**eça                                              | Б б
-/k/           | **c**or, **qu**ente, **k**iwi                                      | К к
-/d/           | **d**edo, i**d**ade                                                | Д д
-/dʒ/          | **d**igo, ida**d**e                                                | Џ џ
-/e/           | pr**ê**mio, m**e**do                                               | Е е
-/ɛ/           | m**e**ta, s**é**, **É**merson, cafezinho                           | Ɛ ε (not in Serbian)
-/f/           | **f**ado, ca**f**é                                                 | Ф ф
-/ɡ/           | **g**ato, **gu**erra                                               | Г г
-/j/ /ɪ/       | sa**i**a, pa**i**s, nuve**m**                                      | Ј ј
-/i/ /y/       | d**i**a, ra**i**nha, pa**i**s                                      | И и
-/l/           | **l**ua, a**l**ô                                                   | Л л
-/ʒ/           | **j**á, **g**ente                                                  | Ж ж
-/ʎ/           | **lh**e, ve**lh**o                                                 | Љ љ
-/w/ /ʊ/ /ʊ̃/   | ma**l**, ma**u**, freq**u**ente, q**u**ã**o**, Ca**u**ã, veja**m** | U u (not in Serbian)
-/m/           | **m**ês, so**m**o                                                  | М м
-/n/           | **n**ão, so**n**o                                                  | Н н
-/ɲ/           | **nh**oque, so**nh**o                                              | Њ њ
-/ɔ/           | av**ó**, fam**o**sa                                                | Ɔ ɔ (not in Serbian)
-/o/           | av**ô**, fam**o**so                                                | О о
-/õ/           | p**õ**e                                                            | Õ õ (not in Serbian)
-/p/           | **p**ó, so**p**a                                                   | П п
-/ʁ/           | **r**io, ca**rr**o, po**r** favo**r**                              | R r (not in Serbian)
-/r/ /ɾ/ /x/   | f**r**io, ca**r**o, po**r** acaso                                  | Р р
-/s/           | **s**aco, i**ss**o, bra**ç**o, má**x**imo, e**s**cola              | С с
-/z/           | ca**s**a, o**s**, do**z**e, e**x**istir                            | S s (not in Serbian)
-/ʃ/           | **ch**ave, bai**x**o, su**sh**i                                    | Ш ш
-/tʃ/          | **tch**au, ri**t**mo, pon**t**e                                    | Ч ч
-/t/           | **t**empo, á**t**omo                                               | Т т
-/u/           | r**u**a, l**ú**cido, sa**ú**de                                     | У у
-/v/           | **v**ela, li**v**ro                                                | В в (reused from /ʋ/, which is not in pt-BR)
+IPA             | Example                                                                   | Serbilian
+----------------|---------------------------------------------------------------------------|----------------------------------------
+/a/ /æ/         | d**á**, J**a**ime                                                         | А а
+/ã/ /ɐ/ /ɐ̃/     | **a**ndaime, itapu**ã**, p**ã**o                                          | ∀ ɐ (not in Serbian)
+/b/             | **b**eiço, ca**b**eça                                                     | Б б
+/k/             | **c**or, **qu**ente, **k**iwi                                             | К к
+/d/             | **d**edo, i**d**ade                                                       | Д д
+/dʒ/            | **d**igo, ida**d**e                                                       | Џ џ
+/e/             | pr**ê**mio, m**e**do                                                      | Е е
+/ɛ/             | m**e**ta, s**é**, **É**merson, caf**e**zinho                              | Э э (not in Serbian)
+/f/             | **f**ado, ca**f**é                                                        | Ф ф
+/ɡ/             | **g**ato, **gu**erra                                                      | Г г
+/j/ /ɪ/         | sa**i**a, pa**i**s,                                                       | Ј ј
+/i/ /y/         | d**i**a, ra**i**nha, pa**i**s                                             | И и
+/l/             | **l**ua, a**l**ô                                                          | Л л
+/ʒ/             | **j**á, **g**ente                                                         | Ж ж
+/ʎ/             | **lh**e, ve**lh**o                                                        | Љ љ
+/w/ /ʊ/ /ʊ̃/ /y/ | **o**, ma**l**, ma**u**, freq**u**ente, q**u**ã**o**, Ca**u**ã, veja**m** | У y
+/m/             | **m**ês, so**m**o                                                         | М м
+/n/             | **n**ão, so**n**o                                                         | Н н
+/ɲ/             | **nh**oque, so**nh**o                                                     | Њ њ
+/ɔ/             | av**ó**, fam**o**sa                                                       | Ɔ ɔ (not in Serbian)
+/o/             | av**ô**, fam**o**so                                                       | О о
+/õ/             | p**õ**e                                                                   | Õ õ (not in Serbian)
+/p/             | **p**ó, so**p**a                                                          | П п
+/ʁ/ /χ/ /x/     | **r**io, ca**rr**o, po**r** favo**r**                                     | X x (not in Serbian)
+/r/ /ɾ/         | f**r**io, ca**r**o, po**r** acaso                                         | Р р
+/s/             | **s**aco, i**ss**o, bra**ç**o, má**x**imo, e**s**cola                     | С с
+/z/             | ca**s**a, o**s**, do**z**e, e**x**istir                                   | S s (not in Serbian)
+/ʃ/             | **ch**ave, bai**x**o, su**sh**i                                           | Ш ш
+/tʃ/            | **tch**au, ri**t**mo, pon**t**e                                           | Ч ч
+/t/             | **t**empo, á**t**omo                                                      | Т т
+/u/             | r**u**a, l**ú**cido, sa**ú**de                                            | У у
+/v/             | **v**ela, li**v**ro                                                       | В в (reused from /ʋ/, which is not in pt-BR)
 
 Some example transliterations:
 
-* _Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca._: Ашu а велосидаџi ун пrаsеr џi кrечинuс. Аинда консεрвu ɔ делeчi дuс бонџiс кi нão шегão нунка.
-* _Ao vencedor, as batatas_: Au вeнседоr, ас бататас.
-* _Nada separa as classes como a língua. Fora a renda, claro_: Нада сепара ас класiс комu а лингuа. Фɔра а рeнда, кларu
+* _Foi o cão que botou pra nós beber_: Фoи у кɐo кi ботоу пра нɔс бебер.
+* _Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca._: Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.
+* _Ao vencedor, as batatas_: Aу вeнседор, ас бататас.
+* _Nada separa as classes como a língua. Fora a renda, claro_: Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.
 
 ## Implementation
 Now that I had a clear specification of the script, I could put together some code to transliterate pt-BR from the Latin
@@ -81,6 +84,8 @@ Ruby handles this by just not handling natively at all, i.e.: `'é'.upcase == '�
 For this reason, I also used the [unicode_utils](https://github.com/lang/unicode_utils) gem, which does the locale-aware conversion.
 
 I also got some [pangrams](https://en.wikipedia.org/wiki/Pangram) from [this website](http://clagnut.com/blog/2380/#Portuguese)to test out if I had at least most of the phonemes covered by my script. 
+
+One shortcoming of this approach is that sounds in pt-BR that depend on the context ("por favor" vs "por acaso", where r change4s it sound when before a vowel on the next word) get the wrong phonetic transliteration. This is a though problem to tackle: either we give up on having a 1x1 phonetic transcription, or we get words that have multiple forms, depending on the next word on the phrase. I won't go there for my little fun project -- if you have an easy solution please let me know!
 
 Finally, the code:
 
