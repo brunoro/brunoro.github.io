@@ -2,7 +2,7 @@ Date: 2016-09-15
 Title: Serbilian: writing Brazilian Portuguese in Serbian Cyrilic
 Tags: languages, cyrilic, serbian, portuguese
 
-EDIT (2016-09-16): as of a great suggestion from [hisham](http://hisham.hm/), I reused some symbols from Russian Cyrilic (Э э for /ɛ/, X x for /x/) instead of using Latin alphabet or IPA replacements. I still kept S s for /z/ with readability in mind, as З з looks *very* similar to Э э for non-seasoned cyrilic readers like me).
+EDIT (2016-09-16): as of a great suggestion from [hisham](http://hisham.hm/), I reused some symbols from Russian Cyrilic (Э э for /ɛ/, X x for /x/) instead of using Latin alphabet or IPA replacements. I still kept S s for /z/ with readability in mind, as З з looks *very* similar to Э э to non-seasoned cyrilic readers like me.
 
 I recently attented [BalCCon2k16](https://2k16.balccon.org/index.php?title=Main_Page) in Novi Sad, Serbia with 
 my good friend [@daltojr](https://twitter.com/daltojr) and, apart from the amazing people and delicious food, 
@@ -16,14 +16,14 @@ some software to translate pt-BR into cyrilic.
 ## Сербилeрu
 Before writing any line of code, I had to define how each sound in Brazilian Portuguese would be written.
 I was sure that some of the sounds would have a corresponding cyrilic letter, so that also meant creating a new script: the
-Serbilian (Alfabeto Serbileiro/Auфабεтu Сербилeрu). 
+*Serbilian* (Alfabeto Serbileiro/Auфабεтu Сербилeрu). 
 My process was simple: I started off with the [Portuguese phonemes in IPA](https://en.wikipedia.org/wiki/Help:IPA_for_Portuguese), then matched those to the Serbian Cyrilic characters and finally added the missing symbols. 
 At that point, I followed some guidelines to fill the gaps:
 
 1. reuse symbols from sounds similar sounds in Serbian not present in pt-BR: /v/ is written as "В" or "в", which originally represent /ʋ/.
 2. group sounds with negligible pronounciation differences: /r/ and /ɾ/ are both written as "Р" or "р".
 3. use latin letters not used in the Serbian Cyrilic script: /w/, /ʊ/ and /ʊ̃/ are represented as "U" or "u".
-4. grab Russian cyrilic letters that represent sounds that are not present in Serbian: /ɛ/ becomes "Э" or "э".
+4. grab Russian alphabet letters that represent sounds that are not present in Serbian: /ɛ/ becomes "Э" or "э".
 5. use the IPA symbol rather than adding an accent over a letter: /ɐ/ is written as "∀" or "ɐ", rather than "â".
 
 One downside of the result is that the stress mark, normally written with acute accents in pt-BR, is totally lost.
@@ -85,7 +85,7 @@ For this reason, I also used the [unicode_utils](https://github.com/lang/unicode
 
 I also got some [pangrams](https://en.wikipedia.org/wiki/Pangram) from [this website](http://clagnut.com/blog/2380/#Portuguese)to test out if I had at least most of the phonemes covered by my script. 
 
-One shortcoming of this approach is that sounds in pt-BR that depend on the context ("por favor" vs "por acaso", where r change4s it sound when before a vowel on the next word) get the wrong phonetic transliteration. This is a though problem to tackle: either we give up on having a 1x1 phonetic transcription, or we get words that have multiple forms, depending on the next word on the phrase. I won't go there for my little fun project -- if you have an easy solution please let me know!
+One shortcoming of this approach is that sounds in pt-BR that depend on the context ("por favor" vs "por acaso", where the "r" changes its sound when before a vowel on the next word) get the wrong phonetic transliteration. This is a though problem to tackle: either we give up on having a 1x1 phonetic transcription, or we get words that have multiple forms, depending on the next word on the phrase. I won't go there for my little fun project -- if you have an easy solution please let me know!
 
 Finally, the code:
 
