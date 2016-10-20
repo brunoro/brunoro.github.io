@@ -16,7 +16,7 @@ body {
     /*background: #6A6B69;*/
     background: url(../images/hex.png) repeat #777877;
     color: #FFF1EE;
-    font-size: 87.5%; /* Base font size: 14px */
+    font-size: 9.5pt; /* Base font size: 14px */
     font-family: 'Roboto', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     line-height: 1.429;
     margin: 0;
