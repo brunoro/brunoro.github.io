@@ -12,6 +12,7 @@ init: virtualenv deps
 virtualenv: 
 	@sudo pip install virtualenv
 	@virtualenv $(ENV_PATH)
+
 deps:
 	@$(ENV_PATH)/bin/pip install -r requirements.txt
 
@@ -20,3 +21,8 @@ compile:
 
 clean:
 	rm -rf output
+
+deploy:
+	git subtree split --prefix output/ -b deploy
+	git push -f https://github.com/brunoro/brunoro.github.io.git deploy:master
+	git branch -D deploy
