@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>machine burning - serbian</title>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="../theme/images/fire.png">
+        <link rel="stylesheet" href="../theme/css/main.css" type="text/css" />
+        <link href="../feed.rss" type="application/rss+xml" rel="alternate" title="machine burning RSS Feed" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie.css"/>
+                <script src="../js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="../css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <div class="social">
+				    <a href="../feed.rss" rel="alternate">
+					    <span></span>
+				    </a>
+
+				    <a href="https://www.linkedin.com/in/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://github.com/brunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://last.fm/user/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://soundcloud.com/beise">
+					    <span></span>
+				    </a>
+                </div>
+                <h1><a href=".."><span id="title0">machine burning</span><span id="title1">machine burning</span><span id="title2">machine burning</span> </a></h1>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+        
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="../serbilian-writing-brazilian-portuguese-in-serbian-cyrilic.html">Serbilian: writing Brazilian Portuguese in Serbian Cyrilic</a></h1> 
+<div class="post-info">
+        <abbr class="published" title="2016-09-15T00:00:00+02:00">
+                2016-09-15
+        </abbr>
+
+<p>in <a href="../category/misc.html">misc</a>. </p>
+<p>tags: <a href="../tag/languages.html">languages</a><a href="../tag/cyrilic.html">cyrilic</a><a href="../tag/serbian.html">serbian</a><a href="../tag/portuguese.html">portuguese</a></p></div><!-- /.post-info --><p>EDIT (2016-09-16): as of a great suggestion from <a href="http://hisham.hm/">hisham</a>, I reused some symbols from Russian Cyrilic (Э э for /ɛ/, X x for /x/) instead of using Latin alphabet or IPA replacements. I still kept S s for /z/ with readability in mind, as З з looks <em>very</em> similar to Э э to non-seasoned cyrilic readers like me.</p>
+<p>I recently attented <a href="https://2k16.balccon.org/index.php?title=Main_Page">BalCCon2k16</a> in Novi Sad, Serbia with 
+my good friend <a href="https://twitter.com/daltojr">@daltojr</a> and, apart from the amazing people and delicious food, 
+something that we both enjoyed was reading <a href="https://en.wikipedia.org/wiki/Serbian_Cyrillic_alphabet">Serbian Cyrilic</a>.
+The fact that every sound was represented directly by one letter made it very easy for us to (badly) read with the Serbian
+language very quickly. Due to the similarities of the sounds between Serbian and Portuguese, we quickly started joking
+around writing portuguese words in that script. After hearing from one of the cool staff members on the hostel we were staying
+that Brazilians and Serbs were very much alike -- the so called Serbilians -- I decided to roll up my sleeves and write
+some software to translate pt-BR into cyrilic.</p>
+<h2>Сербилeрu</h2>
+<p>Before writing any line of code, I had to define how each sound in Brazilian Portuguese would be written.
+I was sure that some of the sounds would have a corresponding cyrilic letter, so that also meant creating a new script: the
+<em>Serbilian</em> (Alfabeto Serbileiro/Auфабεтu Сербилeрu). 
+My process was simple: I started off with the <a href="https://en.wikipedia.org/wiki/Help:IPA_for_Portuguese">Portuguese phonemes in IPA</a>, then matched those to the Serbian Cyrilic characters and finally added the missing symbols. 
+At that point, I followed some guidelines to fill the gaps:</p>
+<ol>
+<li>reuse symbols from sounds similar sounds in Serbian not present in pt-BR: /v/ is written as "В" or "в", which originally represent /ʋ/.</li>
+<li>group sounds with negligible pronounciation differences: /r/ and /ɾ/ are both written as "Р" or "р".</li>
+<li>use latin letters not used in the Serbian Cyrilic script: /w/, /ʊ/ and /ʊ̃/ are represented as "U" or "u".</li>
+<li>grab Russian alphabet letters that represent sounds that are not present in Serbian: /ɛ/ becomes "Э" or "э".</li>
+<li>use the IPA symbol rather than adding an accent over a letter: /ɐ/ is written as "∀" or "ɐ", rather than "â".</li>
+</ol>
+<p>One downside of the result is that the stress mark, normally written with acute accents in pt-BR, is totally lost.
+This could be easily solved by adding stress marks like a dot under the letter (I didn't implement this in my code).</p>
+<table>
+<thead>
+<tr>
+<th>IPA</th>
+<th>Example</th>
+<th>Serbilian</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/a/ /æ/</td>
+<td>d<strong>á</strong>, J<strong>a</strong>ime</td>
+<td>А а</td>
+</tr>
+<tr>
+<td>/ã/ /ɐ/ /ɐ̃/</td>
+<td><strong>a</strong>ndaime, itapu<strong>ã</strong>, p<strong>ã</strong>o</td>
+<td>∀ ɐ (not in Serbian)</td>
+</tr>
+<tr>
+<td>/b/</td>
+<td><strong>b</strong>eiço, ca<strong>b</strong>eça</td>
+<td>Б б</td>
+</tr>
+<tr>
+<td>/k/</td>
+<td><strong>c</strong>or, <strong>qu</strong>ente, <strong>k</strong>iwi</td>
+<td>К к</td>
+</tr>
+<tr>
+<td>/d/</td>
+<td><strong>d</strong>edo, i<strong>d</strong>ade</td>
+<td>Д д</td>
+</tr>
+<tr>
+<td>/dʒ/</td>
+<td><strong>d</strong>igo, ida<strong>d</strong>e</td>
+<td>Џ џ</td>
+</tr>
+<tr>
+<td>/e/</td>
+<td>pr<strong>ê</strong>mio, m<strong>e</strong>do</td>
+<td>Е е</td>
+</tr>
+<tr>
+<td>/ɛ/</td>
+<td>m<strong>e</strong>ta, s<strong>é</strong>, <strong>É</strong>merson, caf<strong>e</strong>zinho</td>
+<td>Э э (not in Serbian)</td>
+</tr>
+<tr>
+<td>/f/</td>
+<td><strong>f</strong>ado, ca<strong>f</strong>é</td>
+<td>Ф ф</td>
+</tr>
+<tr>
+<td>/ɡ/</td>
+<td><strong>g</strong>ato, <strong>gu</strong>erra</td>
+<td>Г г</td>
+</tr>
+<tr>
+<td>/j/ /ɪ/</td>
+<td>sa<strong>i</strong>a, pa<strong>i</strong>s,</td>
+<td>Ј ј</td>
+</tr>
+<tr>
+<td>/i/ /y/</td>
+<td>d<strong>i</strong>a, ra<strong>i</strong>nha, pa<strong>i</strong>s</td>
+<td>И и</td>
+</tr>
+<tr>
+<td>/l/</td>
+<td><strong>l</strong>ua, a<strong>l</strong>ô</td>
+<td>Л л</td>
+</tr>
+<tr>
+<td>/ʒ/</td>
+<td><strong>j</strong>á, <strong>g</strong>ente</td>
+<td>Ж ж</td>
+</tr>
+<tr>
+<td>/ʎ/</td>
+<td><strong>lh</strong>e, ve<strong>lh</strong>o</td>
+<td>Љ љ</td>
+</tr>
+<tr>
+<td>/w/ /ʊ/ /ʊ̃/ /y/</td>
+<td><strong>o</strong>, ma<strong>l</strong>, ma<strong>u</strong>, freq<strong>u</strong>ente, q<strong>u</strong>ã<strong>o</strong>, Ca<strong>u</strong>ã, veja<strong>m</strong></td>
+<td>У y</td>
+</tr>
+<tr>
+<td>/m/</td>
+<td><strong>m</strong>ês, so<strong>m</strong>o</td>
+<td>М м</td>
+</tr>
+<tr>
+<td>/n/</td>
+<td><strong>n</strong>ão, so<strong>n</strong>o</td>
+<td>Н н</td>
+</tr>
+<tr>
+<td>/ɲ/</td>
+<td><strong>nh</strong>oque, so<strong>nh</strong>o</td>
+<td>Њ њ</td>
+</tr>
+<tr>
+<td>/ɔ/</td>
+<td>av<strong>ó</strong>, fam<strong>o</strong>sa</td>
+<td>Ɔ ɔ (not in Serbian)</td>
+</tr>
+<tr>
+<td>/o/</td>
+<td>av<strong>ô</strong>, fam<strong>o</strong>so</td>
+<td>О о</td>
+</tr>
+<tr>
+<td>/õ/</td>
+<td>p<strong>õ</strong>e</td>
+<td>Õ õ (not in Serbian)</td>
+</tr>
+<tr>
+<td>/p/</td>
+<td><strong>p</strong>ó, so<strong>p</strong>a</td>
+<td>П п</td>
+</tr>
+<tr>
+<td>/ʁ/ /χ/ /x/</td>
+<td><strong>r</strong>io, ca<strong>rr</strong>o, po<strong>r</strong> favo<strong>r</strong></td>
+<td>X x (not in Serbian)</td>
+</tr>
+<tr>
+<td>/r/ /ɾ/</td>
+<td>f<strong>r</strong>io, ca<strong>r</strong>o, po<strong>r</strong> acaso</td>
+<td>Р р</td>
+</tr>
+<tr>
+<td>/s/</td>
+<td><strong>s</strong>aco, i<strong>ss</strong>o, bra<strong>ç</strong>o, má<strong>x</strong>imo, e<strong>s</strong>cola</td>
+<td>С с</td>
+</tr>
+<tr>
+<td>/z/</td>
+<td>ca<strong>s</strong>a, o<strong>s</strong>, do<strong>z</strong>e, e<strong>x</strong>istir</td>
+<td>S s (not in Serbian)</td>
+</tr>
+<tr>
+<td>/ʃ/</td>
+<td><strong>ch</strong>ave, bai<strong>x</strong>o, su<strong>sh</strong>i</td>
+<td>Ш ш</td>
+</tr>
+<tr>
+<td>/tʃ/</td>
+<td><strong>tch</strong>au, ri<strong>t</strong>mo, pon<strong>t</strong>e</td>
+<td>Ч ч</td>
+</tr>
+<tr>
+<td>/t/</td>
+<td><strong>t</strong>empo, á<strong>t</strong>omo</td>
+<td>Т т</td>
+</tr>
+<tr>
+<td>/u/</td>
+<td>r<strong>u</strong>a, l<strong>ú</strong>cido, sa<strong>ú</strong>de</td>
+<td>У у</td>
+</tr>
+<tr>
+<td>/v/</td>
+<td><strong>v</strong>ela, li<strong>v</strong>ro</td>
+<td>В в (reused from /ʋ/, which is not in pt-BR)</td>
+</tr>
+</tbody>
+</table>
+<p>Some example transliterations:</p>
+<ul>
+<li><em>Foi o cão que botou pra nós beber</em>: Фoи у кɐo кi ботоу пра нɔс бебер.</li>
+<li><em>Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca.</em>: Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.</li>
+<li><em>Ao vencedor, as batatas</em>: Aу вeнседор, ас бататас.</li>
+<li><em>Nada separa as classes como a língua. Fora a renda, claro</em>: Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.</li>
+</ul>
+<h2>Implementation</h2>
+<p>Now that I had a clear specification of the script, I could put together some code to transliterate pt-BR from the Latin
+to Serbilian Cyrilic. My weapon of choice for writing quick and dirty code for this was Ruby: loads of libraries and nice Unicode
+support. The algorithm is pretty simple: grab the text in latin script, tokenize it, extract the IPA pt-BR pronounciation, convert
+the phonemes to Serbilian, put the text together again.</p>
+<p>I used <a href="https://github.com/diasks2/pragmatic_tokenizer">pragmatic_tokenizer</a> for separating tokens and 
+<a href="http://espeak.sourceforge.net/">eSpeak</a> for extracting the IPA pronounciation.
+One interesting thing I found in during the implementation is that the case of a character depends on locale.
+Ruby handles this by just not handling natively at all, i.e.: <code>'é'.upcase == 'é'</code>. 
+For this reason, I also used the <a href="https://github.com/lang/unicode_utils">unicode_utils</a> gem, which does the locale-aware conversion.</p>
+<p>I also got some <a href="https://en.wikipedia.org/wiki/Pangram">pangrams</a> from <a href="http://clagnut.com/blog/2380/#Portuguese">this website</a>to test out if I had at least most of the phonemes covered by my script. </p>
+<p>One shortcoming of this approach is that sounds in pt-BR that depend on the context ("por favor" vs "por acaso", where the "r" changes its sound when before a vowel on the next word) get the wrong phonetic transliteration. This is a though problem to tackle: either we give up on having a 1x1 phonetic transcription, or we get words that have multiple forms, depending on the next word on the phrase. I won't go there for my little fun project -- if you have an easy solution please let me know!</p>
+<p>Finally, the code:</p>
+<div class="gist">
+    <script src='https://gist.github.com/e9ab9c1e662f7e8db188c3a29515246a.js'></script>
+    <noscript>
+        <div class="highlight"><pre><span class="c1">#!/usr/bin/ruby</span>
+<span class="nb">require</span> <span class="s1">&#39;logger&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;pragmatic_tokenizer&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;unicode_utils&#39;</span>
+
+<span class="k">class</span> <span class="nc">Serbilian</span>
+  <span class="no">SINGLE_LETTER_WORDS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;à&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;ã&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;ɐ̃&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;â&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;ɐ̃&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;é&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;э&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;ê&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;e&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;o&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;у&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ó&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;ɔ&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;ô&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;õ&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;õ&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;í&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;u&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;у&quot;</span>
+  <span class="p">}</span> 
+  <span class="no">PHONEME_TABLE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;&quot;</span>   <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;a&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;А&quot;</span><span class="p">,</span> <span class="s2">&quot;а&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;æ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;А&quot;</span><span class="p">,</span> <span class="s2">&quot;а&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɐ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;∀&quot;</span><span class="p">,</span> <span class="s2">&quot;ɐ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɐ̃&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;∀&quot;</span><span class="p">,</span> <span class="s2">&quot;ɐ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ã&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;∀&quot;</span><span class="p">,</span> <span class="s2">&quot;ɐ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;aɪ&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Aи&quot;</span><span class="p">,</span> <span class="s2">&quot;aи&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɐ̃ʊ̃&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;∀o&quot;</span><span class="p">,</span> <span class="s2">&quot;ɐo&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;aʊ&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Aу&quot;</span><span class="p">,</span> <span class="s2">&quot;aу&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;b&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Б&quot;</span><span class="p">,</span> <span class="s2">&quot;б&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;d&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Д&quot;</span><span class="p">,</span> <span class="s2">&quot;д&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;dʒ&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Џ&quot;</span><span class="p">,</span> <span class="s2">&quot;џ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;e&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Е&quot;</span><span class="p">,</span> <span class="s2">&quot;е&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;eɪ&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɛ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Э&quot;</span><span class="p">,</span> <span class="s2">&quot;э&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ə&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;f&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Ф&quot;</span><span class="p">,</span> <span class="s2">&quot;ф&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɡ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Г&quot;</span><span class="p">,</span> <span class="s2">&quot;г&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;i&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;И&quot;</span><span class="p">,</span> <span class="s2">&quot;и&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;iʊ&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Иу&quot;</span><span class="p">,</span> <span class="s2">&quot;иу&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɪ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Ј&quot;</span><span class="p">,</span> <span class="s2">&quot;ј&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;j&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Ј&quot;</span><span class="p">,</span> <span class="s2">&quot;ј&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ʒ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Ж&quot;</span><span class="p">,</span> <span class="s2">&quot;ж&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;k&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;К&quot;</span><span class="p">,</span> <span class="s2">&quot;к&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;l&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Л&quot;</span><span class="p">,</span> <span class="s2">&quot;л&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ʎ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Љ&quot;</span><span class="p">,</span> <span class="s2">&quot;љ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;m&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;М&quot;</span><span class="p">,</span> <span class="s2">&quot;м&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;n&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Н&quot;</span><span class="p">,</span> <span class="s2">&quot;н&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ŋ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Н&quot;</span><span class="p">,</span> <span class="s2">&quot;н&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɲ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Њ&quot;</span><span class="p">,</span> <span class="s2">&quot;њ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;o&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;О&quot;</span><span class="p">,</span> <span class="s2">&quot;о&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;õ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Õ&quot;</span><span class="p">,</span> <span class="s2">&quot;õ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;oɪ&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Oи&quot;</span><span class="p">,</span> <span class="s2">&quot;oи&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɔ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Ɔ&quot;</span><span class="p">,</span> <span class="s2">&quot;ɔ&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;p&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;П&quot;</span><span class="p">,</span> <span class="s2">&quot;п&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ɾ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Р&quot;</span><span class="p">,</span> <span class="s2">&quot;р&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;r&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Р&quot;</span><span class="p">,</span> <span class="s2">&quot;р&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;x&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ʁ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;s&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;С&quot;</span><span class="p">,</span> <span class="s2">&quot;с&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ʃ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Ш&quot;</span><span class="p">,</span> <span class="s2">&quot;ш&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;t&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Т&quot;</span><span class="p">,</span> <span class="s2">&quot;т&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;tʃ&quot;</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;Ч&quot;</span><span class="p">,</span> <span class="s2">&quot;ч&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ũ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;У&quot;</span><span class="p">,</span> <span class="s2">&quot;у&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ũ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;У&quot;</span><span class="p">,</span> <span class="s2">&quot;у&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ʊ&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;У&quot;</span><span class="p">,</span> <span class="s2">&quot;у&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;ʊ̃&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;У&quot;</span><span class="p">,</span> <span class="s2">&quot;у&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;у&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;У&quot;</span><span class="p">,</span> <span class="s2">&quot;у&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;v&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;В&quot;</span><span class="p">,</span> <span class="s2">&quot;в&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;w&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;у&quot;</span><span class="p">,</span> <span class="s2">&quot;у&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;y&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="o">]</span><span class="p">,</span>
+    <span class="s2">&quot;z&quot;</span>  <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="o">]</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="no">TOKENIZER</span> <span class="o">=</span> <span class="no">PragmaticTokenizer</span><span class="o">::</span><span class="no">Tokenizer</span><span class="o">.</span><span class="n">new</span> <span class="ss">:language</span> <span class="o">=&gt;</span> <span class="s2">&quot;pt-br&quot;</span><span class="p">,</span> <span class="ss">:downcase</span> <span class="o">=&gt;</span> <span class="kp">false</span>
+
+  <span class="no">LOGGER</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+  <span class="no">LOGGER</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">INFO</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">word?</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="ow">not</span> <span class="n">token</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/[[:word:]]+/</span><span class="p">)</span><span class="o">.</span><span class="n">nil?</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">downcase</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+    <span class="no">UnicodeUtils</span><span class="o">.</span><span class="n">downcase</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="ss">:pt</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">word_to_ipa</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">single_letter_replacement</span> <span class="o">=</span> <span class="no">SINGLE_LETTER_WORDS</span><span class="o">[</span><span class="n">downcase</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">)</span><span class="o">]</span>
+    <span class="k">if</span> <span class="n">single_letter_replacement</span>
+      <span class="n">single_letter_replacement</span>
+    <span class="k">else</span>
+      <span class="sx">%x{espeak -v pt-br --ipa=3 &quot;</span><span class="si">#{</span><span class="n">word</span><span class="si">}</span><span class="sx">&quot; -q}</span><span class="o">.</span><span class="n">strip</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">ipa_to_serbilian</span><span class="p">(</span><span class="n">ipa</span><span class="p">,</span> <span class="n">capitalize</span><span class="p">)</span>
+    <span class="n">serbilian</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">ipa</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span> 
+      <span class="n">clean_phoneme</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;ˈ&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;ˌ&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+      <span class="n">chars</span> <span class="o">=</span> <span class="no">PHONEME_TABLE</span><span class="o">[</span><span class="n">clean_phoneme</span><span class="o">]</span>
+      <span class="no">LOGGER</span><span class="o">.</span><span class="n">warn</span> <span class="p">(</span><span class="s2">&quot;missing phoneme table entry for /</span><span class="si">#{</span><span class="n">clean_phoneme</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span> <span class="k">unless</span> <span class="n">chars</span>
+      <span class="n">lcase</span> <span class="o">=</span> <span class="p">(</span><span class="n">capitalize</span> <span class="ow">and</span> <span class="n">i</span><span class="o">.</span><span class="n">zero?</span><span class="p">)</span> <span class="p">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="mi">1</span>
+      <span class="n">serbilian</span> <span class="o">&lt;&lt;</span> <span class="n">chars</span><span class="o">[</span><span class="n">lcase</span><span class="o">]</span> <span class="k">if</span> <span class="n">chars</span>
+    <span class="k">end</span>
+    <span class="n">serbilian</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">upcase?</span><span class="p">(</span><span class="n">letter</span><span class="p">)</span>
+    <span class="no">UnicodeUtils</span><span class="o">.</span><span class="n">upcase</span><span class="p">(</span><span class="n">letter</span><span class="p">,</span> <span class="ss">:pt</span><span class="p">)</span> <span class="o">==</span> <span class="n">letter</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">word_to_serbilian</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">ipa</span> <span class="o">=</span> <span class="n">word_to_ipa</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">serbilian</span> <span class="o">=</span> <span class="n">ipa_to_serbilian</span><span class="p">(</span><span class="n">ipa</span><span class="p">,</span> <span class="n">upcase?</span><span class="p">(</span><span class="n">word</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">))</span>
+    <span class="no">LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">#{</span><span class="n">word</span><span class="si">}</span><span class="s2">&#39; -&gt; &#39;</span><span class="si">#{</span><span class="n">ipa</span><span class="si">}</span><span class="s2">&#39; -&gt; &#39;</span><span class="si">#{</span><span class="n">serbilian</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+    <span class="n">serbilian</span> 
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">join_tokens</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">tokens</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">token</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+      <span class="n">res</span> <span class="o">&lt;&lt;</span> <span class="n">token</span>
+      <span class="n">next_token</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">tokens</span><span class="o">.</span><span class="n">length</span>
+      <span class="n">res</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; &quot;</span> <span class="k">if</span> <span class="n">next_token</span> <span class="ow">and</span> <span class="n">word?</span><span class="p">(</span><span class="n">next_token</span><span class="p">)</span> 
+    <span class="k">end</span>
+    <span class="n">res</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">ptbr_to_serbilian</span><span class="p">(</span><span class="n">ptbr</span><span class="p">)</span>
+    <span class="no">LOGGER</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;pt-br: </span><span class="si">#{</span><span class="n">ptbr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="no">TOKENIZER</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">ptbr</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">token</span><span class="o">|</span>
+      <span class="n">word?</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">?</span> <span class="n">word_to_serbilian</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">:</span> <span class="n">token</span>
+    <span class="k">end</span>
+    <span class="n">join_tokens</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">test_pangrams</span>
+    <span class="n">pangrams</span> <span class="o">=</span> <span class="o">[</span>
+      <span class="s2">&quot;Um pequeno jabuti xereta viu dez cegonhas felizes.&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Blitz prende ex-vesgo com cheque fajuto.&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Gazeta publica hoje no jornal uma breve nota de faxina na quermesse.&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Zebras caolhas de Java querem passar fax para moças gigantes de New York.&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Luís argüia à Júlia que brações, fé, chá, óxido, pôr, zângão eram palavras do português.&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;À noite, vovô Kowalsky vê o ímã cair no pé do pingüim queixoso e vovó põe açúcar no chá de tâmaras do jabuti feliz.&quot;</span>
+    <span class="o">]</span>
+
+    <span class="n">pangrams</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="n">ptbr_to_serbilian</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+    </noscript>
+</div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+       </section><!-- /#extras -->
+
+        <footer id="about" class="body">
+            <p>Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>; theme based on <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a></p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-32411032-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

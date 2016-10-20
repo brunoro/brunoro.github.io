@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>A Demons of the Cyclic Space l0dable for the rad1o</title>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="./theme/images/fire.png">
+        <link rel="stylesheet" href="./theme/css/main.css" type="text/css" />
+        <link href="./feed.rss" type="application/rss+xml" rel="alternate" title="machine burning RSS Feed" />
+
+        <!--[if IE]>
+                <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+        <!--[if lte IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie.css"/>
+                <script src="./js/IE8.js" type="text/javascript"></script><![endif]-->
+
+        <!--[if lt IE 7]>
+                <link rel="stylesheet" type="text/css" media="all" href="./css/ie6.css"/><![endif]-->
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <div class="social">
+				    <a href="./feed.rss" rel="alternate">
+					    <span></span>
+				    </a>
+
+				    <a href="https://www.linkedin.com/in/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://github.com/brunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://last.fm/user/gbrunoro">
+					    <span></span>
+				    </a>
+				    <a href="http://soundcloud.com/beise">
+					    <span></span>
+				    </a>
+                </div>
+                <h1><a href="."><span id="title0">machine burning</span><span id="title1">machine burning</span><span id="title2">machine burning</span> </a></h1>
+                </ul></nav>
+        </header><!-- /#banner -->
+        
+<section id="content" class="body">    
+<article>
+        <header> <h1 class="entry-title"><a href=""
+        rel="bookmark" title="Permalink to A Demons of the Cyclic Space l0dable for the rad1o">A Demons of the Cyclic Space l0dable for the rad1o</a></h1>  </header>
+<div class="post-info">
+        <abbr class="published" title="2016-01-09T00:00:00+01:00">
+                2016-01-09
+        </abbr>
+
+<p>in <a href="./category/rad1o.html">rad1o</a>. </p>
+<p>tags: <a href="./tag/rad1o.html">rad1o</a><a href="./tag/cellular automata.html">cellular automata</a><a href="./tag/32c3.html">32c3</a></p></div><!-- /.post-info -->        <div class="entry-content">
+        <p>I was one of the lucky ones that got hold of an amazing <a href="https://rad1o.badge.events.ccc.de/">rad1o</a> on the last <a href="https://events.ccc.de/camp/2015/wiki/Main_Page">Chaos Communication Camp</a>,
+but, apart from following some <a href="https://greatscottgadgets.com/sdr/">SDR tutorials</a> and messing around with transmitting and recieving FM signals, I couldn't
+invest much time in doing cool stuff using it.
+After watching the amazing <a href="https://media.ccc.de/v/32c3-7154-iridium_update">Iridium Update by sec and schneider</a> at the <a href="https://events.ccc.de/congress/2015/wiki/Static:Main_Page">32c3</a>, I decided to roll up my sleeves and implement something)
+(although not SDR related) to run on my rad1o. It'd be something neat looking yet quick to implement, that I could use to keep my badge's
+display busy when I was walking around on the congress. One algorithm quickly popped to my mind: the Demons of Cyclic Space.</p>
+<p><img alt="&quot;it's alive!&quot;" src="img/demons-rad1o.jpg" title="it runs!" /></p>
+<h3>Cyclic cycles in spaces</h3>
+<p>I first found out about this cellular automata though reading a collection of A.K. Dewdney's column "Computer Recreation" for Scientific American.
+The algorithm described in the article, called "A cellular universe of debris, droplets, defects, and demons", and later on his book
+<a href="http://www.amazon.com/The-Magic-Machine-Handbook-Computer/dp/0716721449">"Computer Magic"</a>, is pretty simple:</p>
+<ol>
+<li>Populate a 2D grid with out of random <em>n</em> states.</li>
+<li>At each step <em>t</em>, for every position <em>p</em> on the grid, check if any neighboring position (up, down, left, right) has the successor state <em>n + 1</em>.
+   The successiong of states is cyclic, so the successor of the state <em>n</em> is the state <em>0</em>.</li>
+<li>If yes, the state of <em>p</em> on step <em>t + 1</em> becomes it's successor.</li>
+</ol>
+<h3>Writing a l0dable</h3>
+<p>The rad1o <a href="https://github.com/rad1o/f1rmware">f1rmware</a> provides an easy way to write small interactive applications that can use the built-in joystick and display things on
+the tiny Nokia 6100 screen -- the l0dables. Those are C programs that get dynamically loaded by the f1rmware through a navigable menu.
+Their entry point is the <code>void ram(void)</code> function, that, for all effects, acts like the main method. The l0dable standard library is forked
+from the one developed for the <a href="http://www.r0ket.de/l0dable">r0cket</a>, and provides a clear API for basic build blocks like handling the display
+(initializing, drawing and closing), getting events from the joystick (4 directions + press), rendering fonts, etc.
+I couldn't find any text documentation, but the <a href="https://github.com/rad1o/f1rmware/blob/master/r0ketlib/display.h">source code</a> is
+<a href="https://github.com/rad1o/f1rmware/blob/master/r0ketlib/keyin.h">available</a> on <a href="https://github.com/rad1o/f1rmware/blob/master/r0ketlib/fonts.h">github</a>
+and is a breeze to understand if you have some knowledge of C. </p>
+<p>Deploying a l0dable on your rad1o is as simple as including the name of your <code>.c</code> file to the <code>C1D</code> array on the firmware Makefile, compiling and flashing again.
+Instructions on the dependencies and how to compile and flash the f1rmware can be found in the <a href="https://github.com/rad1o/f1rmware/blob/master/doc/build.md">rad1o wiki</a>.
+Notice that the name displayed on the menu will be the name of the <code>.c1d</code> file.</p>
+<h3>dem0ns</h3>
+<p>The implementation of the algorithm is pretty straightforward, but there are still some learnings worth highlighting:</p>
+<ul>
+<li>
+<p><em>memory size:</em> the automata needs two buffers to run, in order to keep the state at <em>t</em> and <em>t + 1</em>. As a rookie in microcontroller
+programming, I allocated two <code>uint8_t</code> buffers with the size of the screen 130x130 straight away. As it happens, the rad1o wouldn't even
+have memory one of such buffers. The solution involved using the video memory directly as the one of the buffers, and using a grain size of
+at least 2 pixels -- meaning 2x2 blocks, or a buffer size of at most 65x65.</p>
+</li>
+<li>
+<p><em>color palette:</em> in order to display the the automata on the screen, it's necessary to have a mapping between colors and state. To keep
+things simple, I used a linear mapping to the 8-bit (RRRGGGBB) color representation used on the device, ignoring the color component information.
+Surprisingly, this method yielded some pleasant colorschemes that I'd probably otherwise not think of myself.
+An important part of this step is ensuring that the range of possible colors is a multiple of the numer of states, so that the modular arithmetic
+works fine and the states cycle correctly.</p>
+</li>
+</ul>
+<p>The code for the l0dable is available on <a href="https://github.com/brunoro/f1rmware/commit/a9818fa7e3af40f21f76bcf715da61e823682f8e">my fork of the f1rmware</a></p>
+        </div><!-- /.entry-content -->
+
+</article>
+</section>
+        <section id="extras" class="body">
+       </section><!-- /#extras -->
+
+        <footer id="about" class="body">
+            <p>Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>; theme based on <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a></p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-32411032-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>

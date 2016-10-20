@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>machine burning</title><link href="http://hitnail.net/" rel="alternate"></link><link href="http://hitnail.net/feeds/ocaml.atom.xml" rel="self"></link><id>http://hitnail.net/</id><updated>2016-10-20T00:00:00+02:00</updated><entry><title>Building OCaml and C++ mixed projects with OCaml-Makefile</title><link href="http://hitnail.net/building-ocaml-and-c-mixed-projects-with-ocaml-makefile.html" rel="alternate"></link><updated>2016-10-20T00:00:00+02:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2016-10-20:building-ocaml-and-c-mixed-projects-with-ocaml-makefile.html</id><summary type="html">&lt;p&gt;One difficulty I faced in my recent adventures with OCaml was figuring out how to organize and build my tiny toy projects, which have some custom C++ code in the mix. 
+There's a &lt;a href="https://github.com/ocaml/ocamlbuild/blob/master/manual/manual.adoc#pros-cons-and-alternatives"&gt;lot of fragmentation&lt;/a&gt;
+in the OCaml ecosystem for build systems, and while &lt;a href="https://github.com/ocaml/ocamlbuild"&gt;ocamlbuild&lt;/a&gt; seems to be the most widely used tool,
+there's no consensus on the community of an &lt;em&gt;official&lt;/em&gt; solution. In the midst of all that mess, my only
+goal was to find something that required the minimum amount of configuration for me to get something running
+and still keep a mildly organized codebase. 
+The piece of software that met my requirements was &lt;a href="https://github.com/mmottl/ocaml-makefile"&gt;OCaml-Makefile&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It's very simple to use it: copy that OCaml-Makefile into the root of your project and create your Makefile containing
+&lt;code&gt;-include OCamlMakefile&lt;/code&gt; as the last line, and specify some variables:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;SOURCES&lt;/code&gt;: the OCaml and C source files.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;RESULT&lt;/code&gt;: the name of the resuting product.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PACKS&lt;/code&gt;: &lt;a href="https://github.com/ocaml/opam/"&gt;opam&lt;/a&gt; packages that should be linked.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That done, building binaries and libraries in native or bytecode, with debugging or profiling directives enabled if necessary, 
+is as easy as invoking a make target. The README of the OCamlMakefile goes through most of the use cases of the tool,
+but I still faced some minor trouble when trying to compile a piece of software that contained some C++ source files and was
+linked with C libraries -- and that's why I'm writing this post.&lt;/p&gt;
+&lt;p&gt;It turns out that there are two more important variables to take care of when compiling and linking C++ libs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;CXXFLAGS&lt;/code&gt;: the include path of headers used in your C++ code. The output of &lt;code&gt;pkg-config --cflags&lt;/code&gt;. Not adding the correct &lt;code&gt;-I&lt;/code&gt; flags here will result in a compile time error.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;CLIBS&lt;/code&gt;: the libraries used while linking your executable, without the &lt;code&gt;-l&lt;/code&gt; part. As you're using C++ code remember to add &lt;code&gt;c++&lt;/code&gt; (from &lt;code&gt;-lc++&lt;/code&gt;) here. Missing libs here will result in a &lt;code&gt;Undefined symbols for architecture x86_64:&lt;/code&gt; kind of error &lt;em&gt;at runtime&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I uploaded &lt;a href="https://github.com/brunoro/webcaml"&gt;webcaml&lt;/a&gt; as an example project with this setup that uses the &lt;a href="http://opencv.org/"&gt;OpenCV C++&lt;/a&gt; interface through ctypes and &lt;a href="https://libsdl.org/"&gt;SDL2&lt;/a&gt; through &lt;a href="http://erratique.ch/software/tsdl"&gt;tsdl&lt;/a&gt; to show a webcam feed (a herculean task by itself without the help of some established codebase). The approach used to interface with C++ using is the one described in &lt;a href="https://github.com/ocamllabs/ocaml-ctypes/issues/187"&gt;this github issue&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://twitter.com/elbeise/status/786926310929076224"&gt;&lt;img src="https://pbs.twimg.com/tweet_video_thumb/Cuu5OEKWYAAthVT.jpg"&gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="ocaml"></category><category term="opencv"></category></entry></feed>
