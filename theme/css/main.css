@@ -14,7 +14,7 @@
 /* Body */
 body {
     /*background: #6A6B69;*/
-    background: url(../images/hex.png) repeat #777877;
+    background: url(../images/hex.png) repeat #414141;
     color: #FFF1EE;
     font-size: 9.5pt; /* Base font size: 14px */
     font-family: 'Roboto', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -85,7 +85,9 @@ pre {
 .social a[href*='feed.rss'] span {
     background-image: url('../images/icons/rss.png');
 }
-
+.social a[href*='tumblr.com'] span {
+    background-image: url('../images/icons/tumblr.png');
+}
 /* code */
 pre {
   font-family: 'Inconsolata', 'Monaco', 'Consolas', monospace;
@@ -152,7 +154,7 @@ ol {
 .post-info {
     padding: 5px;
     font-size: 0.8em;
-    color: #444;
+    color: #999;
     margin-bottom: 10px;
 }
 
@@ -272,7 +274,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	Featured
 *****************/
 #featured {
-	background: #777877;
+	background: #414141;
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px;
@@ -294,7 +296,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	Body
 *****************/
 #content {
-	background: #777877;
+	background: #414141;
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px 20px;
