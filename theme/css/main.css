@@ -14,9 +14,10 @@
 /* Body */
 body {
     /*background: #6A6B69;*/
-    background: url(../images/hex.png) repeat #414141;
+    /* background: url(../images/hex.png) repeat #414141; */
+    background: #686868;
     color: #FFF1EE;
-    font-size: 9.5pt; /* Base font size: 14px */
+    font-size: 12pt; /* Base font size: 14px */
     font-family: 'Roboto', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     line-height: 1.429;
     margin: 0;
@@ -212,7 +213,7 @@ img {
 }
 
 /***** Layout *****/
-.body {clear: both; margin: 0 auto; width: 800px;}
+.body {clear: both; margin: 0 auto; width: 72%;}
 img.right figure.right {float: right; margin: 0 0 2em 2em;}
 img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
@@ -251,10 +252,10 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		margin: 0 auto 2em auto;
 		padding: 0;
 		text-align: center;
-		width: 800px;
+		width: 72%;
 	}
 	
-	#banner nav ul {list-style: none; margin: 0 auto; width: 800px;}
+	#banner nav ul {list-style: none; margin: 0 auto; width: 72%;}
 	#banner nav li {float: left; display: inline; margin: 0;}
 	
 	#banner nav a:link, #banner nav a:visited {
@@ -278,7 +279,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px;
-	width: 760px;
+	width: 72%;
 }
 
 #featured figure {
@@ -300,7 +301,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	margin-bottom: 2em;
 	overflow: hidden;
 	padding: 20px 20px;
-	width: 760px;
+	width: 72%;
 }
 
 /*
@@ -333,7 +334,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	margin-bottom: 2em;
 	overflow: hidden;
 	text-align: left;
-	width: 760px;
+	width: 72%;
     font-size: 0.8em
 }
 
