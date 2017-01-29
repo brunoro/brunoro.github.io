@@ -30,8 +30,17 @@ pre {
   padding: 2px;
 }
 
-#banner h1 span {
-    float: left;
+#banner img {
+  float: left;
+  max-height: 70px;
+  display: inline-block;
+}
+
+#banner span {
+    font-family: "Inconsolata","Monaco","Consolas",monospace;
+    font-size: 4.2em;
+    font-weight: 200;
+    /* float: left; */
     margin-bottom: 0;
 }
 
@@ -56,6 +65,7 @@ pre {
 .social {
     float: right;
     color: transparent;
+    padding-top: 46px;
 }
 
 .social a:hover {
@@ -222,7 +232,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 *****************/
 #banner {
 	margin: 0 auto;
-	padding: 2.5em 0 0 0;
+	padding: 1.12em 0 0 0;
 }
 
 	/* Banner */
