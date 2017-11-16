@@ -1,4 +1,4 @@
-/* 
+/*
  * machine burning template
  * forked from Smashing HTML5 by Enrique Ramírez (http://enrique-ramirez.com)
 */
@@ -99,6 +99,19 @@ pre {
 .social a[href*='tumblr.com'] span {
     background-image: url('../images/icons/tumblr.png');
 }
+.social a[href*='instagram.com'] span {
+    background-image: url('../images/icons/instagram.png');
+}
+.social a[href*='bandcamp.com'] span {
+    background-image: url('../images/icons/bandcamp.png');
+}
+.social a[href*='mixcloud.com'] span {
+    background-image: url('../images/icons/mixcloud.png');
+}
+.social a[href*='twitter.com'] span {
+    background-image: url('../images/icons/twitter.png');
+}
+
 /* code */
 pre {
   font-family: 'Inconsolata', 'Monaco', 'Consolas', monospace;
@@ -108,9 +121,9 @@ pre {
 h1 {font-size: 2.5em }
 h2 {font-size: 1.429em}
 h3 {font-size: 1.286em}
-h4 {font-size: 1.200em}	
-h5 {font-size: 1.143em}	
-h6 {font-size: 1em}	
+h4 {font-size: 1.200em}
+h5 {font-size: 1.143em}
+h6 {font-size: 1em}
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 200;
@@ -119,8 +132,12 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Inconsolata', 'Monaco', 'Consolas', monospace;
 }
 
+.hentry header h2 {
+  margin: 0;
+}
+
 h3, h4, h5, h6 { margin-top: .8em; }
-	
+
 hr { border: 0 solid #EEEEEE; }
 
 /* Anchors */
@@ -141,7 +158,7 @@ a:hover, a:active {
 h1 a:hover {
     background-color: inherit
 }
-	
+
 /* Paragraphs */
 p {margin-bottom: 1.143em;}
 
@@ -193,7 +210,7 @@ q {}
 
 /* Tables */
 table {margin: .5em auto 1.5em auto; width: 98%;}
-	
+
 	/* Thead */
 	thead th {padding: .5em .4em; text-align: left;}
 	thead td {}
@@ -201,14 +218,14 @@ table {margin: .5em auto 1.5em auto; width: 98%;}
 	/* Tbody */
 	tbody td {padding: .5em .4em;}
 	tbody th {}
-	
+
 	tbody .alt td {}
 	tbody .alt th {}
-	
+
 	/* Tfoot */
 	tfoot th {}
 	tfoot td {}
-	
+
 /* HTML5 tags */
 header, section, footer,
 aside, nav, article, figure {
@@ -250,9 +267,9 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		color: #F6CF74;
 		text-shadow: none;
 	}
-	
+
 	#banner h1 strong {font-size: 0.36em; font-weight: normal;}
-	
+
 	/* Main Nav */
 	#banner nav {
 		background: #FFF1EE;
@@ -264,10 +281,10 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		text-align: center;
 		width: 72%;
 	}
-	
+
 	#banner nav ul {list-style: none; margin: 0 auto; width: 72%;}
 	#banner nav li {float: left; display: inline; margin: 0;}
-	
+
 	#banner nav a:link, #banner nav a:visited {
 		color: #fff;
 		display: inline-block;
@@ -303,7 +320,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 #featured h2 {font-size: 1.5em; margin-bottom: 0.333em;}
 #featured h3 {font-size: 1.429em; margin-bottom: .5em;}
 
-/* 
+/*
 	Body
 *****************/
 #content {
@@ -368,16 +385,16 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	display: block;
 	clear: both;
 	border-bottom: 0px solid #eee;
-	padding: 1.5em 0;
+	padding: 0 0;
 }
 li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
-#content > .hentry {padding: 1em 0;}
+#content > .hentry {padding: 0 0;}
 .hentry img{display : none ;}
 
 /* entry title */
 .entry-title {
-    font-size: 2.0em; 
-    margin-bottom: 2px; 
+    font-size: 2.0em;
+    margin-bottom: 2px;
     margin-top: 0;
 }
     .entry-title a:link, .entry-title a:visited {
@@ -396,7 +413,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 	/* Blog Index */
 	#posts-list {list-style: none; margin: 0;}
 	#posts-list .hentry {padding-left: 10px; position: relative;}
-	
+
 	#posts-list footer {
 		left: 10px;
 		position: relative;
@@ -404,7 +421,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 		top: 0.5em;
 		width: 190px;
 	}
-	
+
 	/* About the Author */
 	#about-author {
 		background: #f9f9f9;
@@ -413,16 +430,16 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 		margin: 2em 0;
 		padding: 10px 20px 15px 20px;
 	}
-	
+
 	#about-author strong {
 		color: #C64350;
 		clear: both;
 		display: block;
 		font-size: 1.429em;
 	}
-	
+
 	#about-author .photo {border: 1px solid #ddd; float: left; margin: 5px 1em 0 0;}
-	
+
 	/* Comments */
 	#comments-list {list-style: none; margin: 0 1em;}
 	#comments-list blockquote {
@@ -433,18 +450,18 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 		padding: 15px 20px;
 	}
 	#comments-list footer {color: #888; padding: .5em 1em 0 0; text-align: right;}
-	
+
 	#comments-list li:nth-child(2n) blockquote {background: #F5f5f5;}
-	
+
 	/* Add a Comment */
 	#add-comment label {clear: left; float: left; text-align: left; width: 150px;}
 	#add-comment input[type='text'],
 	#add-comment input[type='email'],
 	#add-comment input[type='url'] {float: left; width: 200px;}
-	
+
 	#add-comment textarea {float: left; height: 150px; width: 495px;}
-	
+
 	#add-comment p.req {clear: both; margin: 0 .5em 1em 0; text-align: right;}
-	
+
 	#add-comment input[type='submit'] {float: right; margin: 0 .5em;}
 	#add-comment * {margin-bottom: .5em;}
