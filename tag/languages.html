@@ -257,12 +257,32 @@ This could be easily solved by adding stress marks like a dot under the letter (
 </tbody>
 </table>
 <p>Some example transliterations:</p>
-<ul>
-<li><em>Foi o cão que botou pra nós beber</em>: Фoи у кɐo кi ботоу пра нɔс бебер.</li>
-<li><em>Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca.</em>: Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.</li>
-<li><em>Ao vencedor, as batatas</em>: Aу вeнседор, ас бататас.</li>
-<li><em>Nada separa as classes como a língua. Fora a renda, claro</em>: Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Brazilian Portuguese</th>
+<th>Serbilian</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Foi o cão que botou pra nós beber</em></td>
+<td><strong>Фoи у кɐo кi ботоу пра нɔс бебер.</strong></td>
+</tr>
+<tr>
+<td><em>Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca.</em></td>
+<td><strong>Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.</strong></td>
+</tr>
+<tr>
+<td><em>Ao vencedor, as batatas</em></td>
+<td><strong>Aу вeнседор, ас бататас.</strong></td>
+</tr>
+<tr>
+<td><em>Nada separa as classes como a língua. Fora a renda, claro</em></td>
+<td><strong>Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.</strong></td>
+</tr>
+</tbody>
+</table>
 <h2>Implementation</h2>
 <p>Now that I had a clear specification of the script, I could put together some code to transliterate pt-BR from the Latin
 to Serbilian Cyrilic. My weapon of choice for writing quick and dirty code for this was Ruby: loads of libraries and nice Unicode
@@ -276,7 +296,162 @@ For this reason, I also used the <a href="https://github.com/lang/unicode_utils"
 <p>I also got some <a href="https://en.wikipedia.org/wiki/Pangram">pangrams</a> from <a href="http://clagnut.com/blog/2380/#Portuguese">this website</a>to test out if I had at least most of the phonemes covered by my script. </p>
 <p>One shortcoming of this approach is that sounds in pt-BR that depend on the context ("por favor" vs "por acaso", where the "r" changes its sound when before a vowel on the next word) get the wrong phonetic transliteration. This is a though problem to tackle: either we give up on having a 1x1 phonetic transcription, or we get words that have multiple forms, depending on the next word on the phrase. I won't go there for my little fun project -- if you have an easy solution please let me know!</p>
 <p>Finally, the code:</p>
-<p>[gist:id=e9ab9c1e662f7e8db188c3a29515246a,filetype=ruby]</p>                </article>
+<div class="gist">
+    <script src='https://gist.github.com/e9ab9c1e662f7e8db188c3a29515246a.js'></script>
+    <noscript>
+        <pre><code>#!/usr/bin/ruby
+require 'logger'
+require 'pragmatic_tokenizer'
+require 'unicode_utils'
+
+class Serbilian
+  SINGLE_LETTER_WORDS = {
+    "à" => "a", 
+    "ã" => "ɐ̃", 
+    "â" => "ɐ̃", 
+    "é" => "э", 
+    "ê" => "e",
+    "o" => "у",
+    "ó" => "ɔ", 
+    "ô" => "o", 
+    "õ" => "õ", 
+    "í" => "i", 
+    "u" => "у"
+  } 
+  PHONEME_TABLE = {
+    ""   => ["", ""],
+    "a"  => ["А", "а"],
+    "æ"  => ["А", "а"],
+    "ɐ"  => ["∀", "ɐ"],
+    "ɐ̃"  => ["∀", "ɐ"],
+    "ã"  => ["∀", "ɐ"],
+    "aɪ" => ["Aи", "aи"],
+    "ɐ̃ʊ̃" => ["∀o", "ɐo"],
+    "aʊ" => ["Aу", "aу"],
+    "b"  => ["Б", "б"],
+    "d"  => ["Д", "д"],
+    "dʒ" => ["Џ", "џ"],
+    "e"  => ["Е", "е"],
+    "eɪ" => ["E", "e"],
+    "ɛ"  => ["Э", "э"],
+    "ə"  => ["", ""],
+    "f"  => ["Ф", "ф"],
+    "ɡ"  => ["Г", "г"],
+    "i"  => ["И", "и"],
+    "iʊ" => ["Иу", "иу"],
+    "ɪ"  => ["Ј", "ј"],
+    "j"  => ["Ј", "ј"],
+    "ʒ"  => ["Ж", "ж"],
+    "k"  => ["К", "к"],
+    "l"  => ["Л", "л"],
+    "ʎ"  => ["Љ", "љ"],
+    "m"  => ["М", "м"],
+    "n"  => ["Н", "н"],
+    "ŋ"  => ["Н", "н"],
+    "ɲ"  => ["Њ", "њ"],
+    "o"  => ["О", "о"],
+    "õ"  => ["Õ", "õ"],
+    "oɪ" => ["Oи", "oи"],
+    "ɔ"  => ["Ɔ", "ɔ"],
+    "p"  => ["П", "п"],
+    "ɾ"  => ["Р", "р"],
+    "r"  => ["Р", "р"],
+    "x"  => ["X", "x"],
+    "ʁ"  => ["X", "x"],
+    "s"  => ["С", "с"],
+    "ʃ"  => ["Ш", "ш"],
+    "t"  => ["Т", "т"],
+    "tʃ" => ["Ч", "ч"],
+    "ũ"  => ["У", "у"],
+    "ũ"  => ["У", "у"],
+    "ʊ"  => ["У", "у"],
+    "ʊ̃"  => ["У", "у"],
+    "у"  => ["У", "у"],
+    "v"  => ["В", "в"],
+    "w"  => ["у", "у"],
+    "y"  => ["I", "i"],
+    "z"  => ["S", "s"],
+  }
+
+  TOKENIZER = PragmaticTokenizer::Tokenizer.new :language => "pt-br", :downcase => false
+
+  LOGGER = Logger.new(STDOUT)
+  LOGGER.level = Logger::INFO
+
+  def self.word?(token)
+    not token.match(/[[:word:]]+/).nil?
+  end
+
+  def self.downcase(letter)
+    UnicodeUtils.downcase(letter, :pt)
+  end
+
+  def self.word_to_ipa(word)
+    single_letter_replacement = SINGLE_LETTER_WORDS[downcase(word.strip)]
+    if single_letter_replacement
+      single_letter_replacement
+    else
+      %x{espeak -v pt-br --ipa=3 "#{word}" -q}.strip
+    end
+  end
+
+  def self.ipa_to_serbilian(ipa, capitalize)
+    serbilian = ""
+    ipa.split("_").each_with_index do |s, i| 
+      clean_phoneme = s.tr("ˈ", "").tr("ˌ", "")
+      chars = PHONEME_TABLE[clean_phoneme]
+      LOGGER.warn ("missing phoneme table entry for /#{clean_phoneme}/") unless chars
+      lcase = (capitalize and i.zero?) ? 0 : 1
+      serbilian << chars[lcase] if chars
+    end
+    serbilian
+  end
+
+  def self.upcase?(letter)
+    UnicodeUtils.upcase(letter, :pt) == letter
+  end
+
+  def self.word_to_serbilian(word)
+    ipa = word_to_ipa(word)
+    serbilian = ipa_to_serbilian(ipa, upcase?(word[0]))
+    LOGGER.debug("'#{word}' -> '#{ipa}' -> '#{serbilian}'")
+    serbilian 
+  end
+
+  def self.join_tokens(tokens)
+    res = ""
+    tokens.each_with_index do |token, i|
+      res << token
+      next_token = tokens[i + 1] if i + 1 < tokens.length
+      res << " " if next_token and word?(next_token) 
+    end
+    res
+  end
+
+  def self.ptbr_to_serbilian(ptbr)
+    LOGGER.debug("pt-br: #{ptbr}")
+    tokens = TOKENIZER.tokenize(ptbr).map do |token|
+      word?(token) ? word_to_serbilian(token) : token
+    end
+    join_tokens(tokens)
+  end
+
+  def self.test_pangrams
+    pangrams = [
+      "Um pequeno jabuti xereta viu dez cegonhas felizes.",
+      "Blitz prende ex-vesgo com cheque fajuto.",
+      "Gazeta publica hoje no jornal uma breve nota de faxina na quermesse.",
+      "Zebras caolhas de Java querem passar fax para moças gigantes de New York.",
+      "Luís argüia à Júlia que brações, fé, chá, óxido, pôr, zângão eram palavras do português.",
+      "À noite, vovô Kowalsky vê o ímã cair no pé do pingüim queixoso e vovó põe açúcar no chá de tâmaras do jabuti feliz."
+    ]
+
+    pangrams.map { |p| ptbr_to_serbilian(p) }
+  end
+end
+</code></pre>
+    </noscript>
+</div>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
        </section><!-- /#extras -->

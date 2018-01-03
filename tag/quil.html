@@ -73,7 +73,79 @@ the construction that'd result from the process. </p>
 <p><img alt="The prime Kepler-Bouwkamp constant" src="img/prime-kepler-bouwkamp.png" /></p>
 <p>I really like those kind of constructions, so I implemented it using <a href="https://github.com/quil/quil">Quil</a>
 to get an idea how it looks. Here comes the code:</p>
-<p>[gist:id=6984849,filetype=clojure]</p>                </article>
+<div class="gist">
+    <script src='https://gist.github.com/6984849.js'></script>
+    <noscript>
+        <pre><code>(ns kepler-bouwkamp.core
+  (:use quil.core))
+
+(def tau 6.283185307179586)
+
+(defn circle [cx cy r]
+  "Draws a circle centered at (cx, cy) with radius r."
+  (let 
+    [d (* r 2)]
+    (ellipse cx cy d d)))
+
+(defn pivot [px py ox oy angle]
+  "Pivots (px, py) by angle using (ox, oy) as an axis."
+  (if (zero? angle)
+    [px py]
+    (let [nx  (- px ox)
+          ny  (- py oy)
+          sin (Math/sin angle)
+          cos (Math/cos angle)]
+      [(+ ox (- (* nx cos) (* ny sin)))
+       (+ oy (+ (* nx sin) (* ny cos)))])))
+
+(defn polygon [cx cy radius sides]
+  "Draws a polygon centered at (cx, cy) with the 
+   given radius and number of sides."
+  (let [angle (/ tau sides)
+        ox    (+ cx radius)]
+    (doseq 
+      [i (range sides)]
+      (let
+        [[sx sy] (pivot ox cy cx cy (* i angle))
+         [ex ey] (pivot ox cy cx cy (* (inc i) angle)]
+        (line sx sy ex ey)))))
+
+(defn ins-radius [radius sides] 
+  "Returns the inscribed radius of a polygon with
+   a given radius and number of sides."
+  (* radius (Math/cos (/ (/ tau 2) sides))))
+
+(defn circle-inscribe-polygon [cx cy rad sides]
+  "Draws a circle and the inscribed polygon with the given number
+   of sides, centered at (cx, cy) and with radius rad."
+  (let 
+    [ins (ins-radius rad sides)]
+    (circle cx cy rad)
+    (polygon cx cy rad sides)
+    ins))
+
+(defn setup []
+  (smooth)
+  (frame-rate 1)
+  (background 255))
+
+(defn draw []
+  (stroke 0)
+  (stroke-weight 1)
+  (let [cx  (/ (width) 2) 
+        cy  (/ (height) 2)
+        rad (- (min cx cy) 10)] ; add some padding to the radius
+    (reduce #(circle-inscribe-polygon cx cy %1 %2) rad 
+      [3 5 7 11 13 17 19 23 27 31]))) ; the sequence will converge before that
+
+(defn -main []
+  (sketch 
+    :title "Kepler-Bouwkamp constant"
+    :setup setup
+    :draw draw
+    :size [600 600]))</code></pre>
+    </noscript>
+</div>                </article>
             </aside><!-- /#featured -->
         <section id="extras" class="body">
        </section><!-- /#extras -->

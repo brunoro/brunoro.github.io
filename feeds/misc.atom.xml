@@ -220,12 +220,32 @@ This could be easily solved by adding stress marks like a dot under the letter (
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Some example transliterations:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Foi o cão que botou pra nós beber&lt;/em&gt;: Фoи у кɐo кi ботоу пра нɔс бебер.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca.&lt;/em&gt;: Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Ao vencedor, as batatas&lt;/em&gt;: Aу вeнседор, ас бататас.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Nada separa as classes como a língua. Fora a renda, claro&lt;/em&gt;: Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Brazilian Portuguese&lt;/th&gt;
+&lt;th&gt;Serbilian&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Foi o cão que botou pra nós beber&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Фoи у кɐo кi ботоу пра нɔс бебер.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca.&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Ao vencedor, as batatas&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Aу вeнседор, ас бататас.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Nada separa as classes como a língua. Fora a renda, claro&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h2&gt;Implementation&lt;/h2&gt;
 &lt;p&gt;Now that I had a clear specification of the script, I could put together some code to transliterate pt-BR from the Latin
 to Serbilian Cyrilic. My weapon of choice for writing quick and dirty code for this was Ruby: loads of libraries and nice Unicode
@@ -239,7 +259,162 @@ For this reason, I also used the &lt;a href="https://github.com/lang/unicode_uti
 &lt;p&gt;I also got some &lt;a href="https://en.wikipedia.org/wiki/Pangram"&gt;pangrams&lt;/a&gt; from &lt;a href="http://clagnut.com/blog/2380/#Portuguese"&gt;this website&lt;/a&gt;to test out if I had at least most of the phonemes covered by my script. &lt;/p&gt;
 &lt;p&gt;One shortcoming of this approach is that sounds in pt-BR that depend on the context ("por favor" vs "por acaso", where the "r" changes its sound when before a vowel on the next word) get the wrong phonetic transliteration. This is a though problem to tackle: either we give up on having a 1x1 phonetic transcription, or we get words that have multiple forms, depending on the next word on the phrase. I won't go there for my little fun project -- if you have an easy solution please let me know!&lt;/p&gt;
 &lt;p&gt;Finally, the code:&lt;/p&gt;
-&lt;p&gt;[gist:id=e9ab9c1e662f7e8db188c3a29515246a,filetype=ruby]&lt;/p&gt;</summary><category term="languages"></category><category term="cyrilic"></category><category term="serbian"></category><category term="portuguese"></category></entry><entry><title>A list of symbols for keys found on most keyboards</title><link href="http://hitnail.net/a-list-of-symbols-for-keys-found-on-most-keyboards.html" rel="alternate"></link><updated>2016-06-28T00:00:00-03:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2016-06-28:a-list-of-symbols-for-keys-found-on-most-keyboards.html</id><summary type="html">&lt;p&gt;This is a handy list of symbols that can help a lot when laying down keyboard shortcuts on 
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/e9ab9c1e662f7e8db188c3a29515246a.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;#!/usr/bin/ruby
+require 'logger'
+require 'pragmatic_tokenizer'
+require 'unicode_utils'
+
+class Serbilian
+  SINGLE_LETTER_WORDS = {
+    "à" =&gt; "a", 
+    "ã" =&gt; "ɐ̃", 
+    "â" =&gt; "ɐ̃", 
+    "é" =&gt; "э", 
+    "ê" =&gt; "e",
+    "o" =&gt; "у",
+    "ó" =&gt; "ɔ", 
+    "ô" =&gt; "o", 
+    "õ" =&gt; "õ", 
+    "í" =&gt; "i", 
+    "u" =&gt; "у"
+  } 
+  PHONEME_TABLE = {
+    ""   =&gt; ["", ""],
+    "a"  =&gt; ["А", "а"],
+    "æ"  =&gt; ["А", "а"],
+    "ɐ"  =&gt; ["∀", "ɐ"],
+    "ɐ̃"  =&gt; ["∀", "ɐ"],
+    "ã"  =&gt; ["∀", "ɐ"],
+    "aɪ" =&gt; ["Aи", "aи"],
+    "ɐ̃ʊ̃" =&gt; ["∀o", "ɐo"],
+    "aʊ" =&gt; ["Aу", "aу"],
+    "b"  =&gt; ["Б", "б"],
+    "d"  =&gt; ["Д", "д"],
+    "dʒ" =&gt; ["Џ", "џ"],
+    "e"  =&gt; ["Е", "е"],
+    "eɪ" =&gt; ["E", "e"],
+    "ɛ"  =&gt; ["Э", "э"],
+    "ə"  =&gt; ["", ""],
+    "f"  =&gt; ["Ф", "ф"],
+    "ɡ"  =&gt; ["Г", "г"],
+    "i"  =&gt; ["И", "и"],
+    "iʊ" =&gt; ["Иу", "иу"],
+    "ɪ"  =&gt; ["Ј", "ј"],
+    "j"  =&gt; ["Ј", "ј"],
+    "ʒ"  =&gt; ["Ж", "ж"],
+    "k"  =&gt; ["К", "к"],
+    "l"  =&gt; ["Л", "л"],
+    "ʎ"  =&gt; ["Љ", "љ"],
+    "m"  =&gt; ["М", "м"],
+    "n"  =&gt; ["Н", "н"],
+    "ŋ"  =&gt; ["Н", "н"],
+    "ɲ"  =&gt; ["Њ", "њ"],
+    "o"  =&gt; ["О", "о"],
+    "õ"  =&gt; ["Õ", "õ"],
+    "oɪ" =&gt; ["Oи", "oи"],
+    "ɔ"  =&gt; ["Ɔ", "ɔ"],
+    "p"  =&gt; ["П", "п"],
+    "ɾ"  =&gt; ["Р", "р"],
+    "r"  =&gt; ["Р", "р"],
+    "x"  =&gt; ["X", "x"],
+    "ʁ"  =&gt; ["X", "x"],
+    "s"  =&gt; ["С", "с"],
+    "ʃ"  =&gt; ["Ш", "ш"],
+    "t"  =&gt; ["Т", "т"],
+    "tʃ" =&gt; ["Ч", "ч"],
+    "ũ"  =&gt; ["У", "у"],
+    "ũ"  =&gt; ["У", "у"],
+    "ʊ"  =&gt; ["У", "у"],
+    "ʊ̃"  =&gt; ["У", "у"],
+    "у"  =&gt; ["У", "у"],
+    "v"  =&gt; ["В", "в"],
+    "w"  =&gt; ["у", "у"],
+    "y"  =&gt; ["I", "i"],
+    "z"  =&gt; ["S", "s"],
+  }
+
+  TOKENIZER = PragmaticTokenizer::Tokenizer.new :language =&gt; "pt-br", :downcase =&gt; false
+
+  LOGGER = Logger.new(STDOUT)
+  LOGGER.level = Logger::INFO
+
+  def self.word?(token)
+    not token.match(/[[:word:]]+/).nil?
+  end
+
+  def self.downcase(letter)
+    UnicodeUtils.downcase(letter, :pt)
+  end
+
+  def self.word_to_ipa(word)
+    single_letter_replacement = SINGLE_LETTER_WORDS[downcase(word.strip)]
+    if single_letter_replacement
+      single_letter_replacement
+    else
+      %x{espeak -v pt-br --ipa=3 "#{word}" -q}.strip
+    end
+  end
+
+  def self.ipa_to_serbilian(ipa, capitalize)
+    serbilian = ""
+    ipa.split("_").each_with_index do |s, i| 
+      clean_phoneme = s.tr("ˈ", "").tr("ˌ", "")
+      chars = PHONEME_TABLE[clean_phoneme]
+      LOGGER.warn ("missing phoneme table entry for /#{clean_phoneme}/") unless chars
+      lcase = (capitalize and i.zero?) ? 0 : 1
+      serbilian &lt;&lt; chars[lcase] if chars
+    end
+    serbilian
+  end
+
+  def self.upcase?(letter)
+    UnicodeUtils.upcase(letter, :pt) == letter
+  end
+
+  def self.word_to_serbilian(word)
+    ipa = word_to_ipa(word)
+    serbilian = ipa_to_serbilian(ipa, upcase?(word[0]))
+    LOGGER.debug("'#{word}' -&gt; '#{ipa}' -&gt; '#{serbilian}'")
+    serbilian 
+  end
+
+  def self.join_tokens(tokens)
+    res = ""
+    tokens.each_with_index do |token, i|
+      res &lt;&lt; token
+      next_token = tokens[i + 1] if i + 1 &lt; tokens.length
+      res &lt;&lt; " " if next_token and word?(next_token) 
+    end
+    res
+  end
+
+  def self.ptbr_to_serbilian(ptbr)
+    LOGGER.debug("pt-br: #{ptbr}")
+    tokens = TOKENIZER.tokenize(ptbr).map do |token|
+      word?(token) ? word_to_serbilian(token) : token
+    end
+    join_tokens(tokens)
+  end
+
+  def self.test_pangrams
+    pangrams = [
+      "Um pequeno jabuti xereta viu dez cegonhas felizes.",
+      "Blitz prende ex-vesgo com cheque fajuto.",
+      "Gazeta publica hoje no jornal uma breve nota de faxina na quermesse.",
+      "Zebras caolhas de Java querem passar fax para moças gigantes de New York.",
+      "Luís argüia à Júlia que brações, fé, chá, óxido, pôr, zângão eram palavras do português.",
+      "À noite, vovô Kowalsky vê o ímã cair no pé do pingüim queixoso e vovó põe açúcar no chá de tâmaras do jabuti feliz."
+    ]
+
+    pangrams.map { |p| ptbr_to_serbilian(p) }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;</summary><category term="languages"></category><category term="cyrilic"></category><category term="serbian"></category><category term="portuguese"></category></entry><entry><title>A list of symbols for keys found on most keyboards</title><link href="http://hitnail.net/a-list-of-symbols-for-keys-found-on-most-keyboards.html" rel="alternate"></link><updated>2016-06-28T00:00:00-03:00</updated><author><name>gus</name></author><id>tag:hitnail.net,2016-06-28:a-list-of-symbols-for-keys-found-on-most-keyboards.html</id><summary type="html">&lt;p&gt;This is a handy list of symbols that can help a lot when laying down keyboard shortcuts on 
 tutorials or README pages. The * marks symbols that are not commonly used; those keys
 are usually referred by their names or an abbreviation.&lt;/p&gt;
 &lt;table&gt;
@@ -319,4 +494,76 @@ the construction that'd result from the process. &lt;/p&gt;
 &lt;p&gt;&lt;img alt="The prime Kepler-Bouwkamp constant" src="img/prime-kepler-bouwkamp.png" /&gt;&lt;/p&gt;
 &lt;p&gt;I really like those kind of constructions, so I implemented it using &lt;a href="https://github.com/quil/quil"&gt;Quil&lt;/a&gt;
 to get an idea how it looks. Here comes the code:&lt;/p&gt;
-&lt;p&gt;[gist:id=6984849,filetype=clojure]&lt;/p&gt;</summary><category term="clojure"></category><category term="quil"></category><category term="math"></category></entry></feed>
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/6984849.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;(ns kepler-bouwkamp.core
+  (:use quil.core))
+
+(def tau 6.283185307179586)
+
+(defn circle [cx cy r]
+  "Draws a circle centered at (cx, cy) with radius r."
+  (let 
+    [d (* r 2)]
+    (ellipse cx cy d d)))
+
+(defn pivot [px py ox oy angle]
+  "Pivots (px, py) by angle using (ox, oy) as an axis."
+  (if (zero? angle)
+    [px py]
+    (let [nx  (- px ox)
+          ny  (- py oy)
+          sin (Math/sin angle)
+          cos (Math/cos angle)]
+      [(+ ox (- (* nx cos) (* ny sin)))
+       (+ oy (+ (* nx sin) (* ny cos)))])))
+
+(defn polygon [cx cy radius sides]
+  "Draws a polygon centered at (cx, cy) with the 
+   given radius and number of sides."
+  (let [angle (/ tau sides)
+        ox    (+ cx radius)]
+    (doseq 
+      [i (range sides)]
+      (let
+        [[sx sy] (pivot ox cy cx cy (* i angle))
+         [ex ey] (pivot ox cy cx cy (* (inc i) angle)]
+        (line sx sy ex ey)))))
+
+(defn ins-radius [radius sides] 
+  "Returns the inscribed radius of a polygon with
+   a given radius and number of sides."
+  (* radius (Math/cos (/ (/ tau 2) sides))))
+
+(defn circle-inscribe-polygon [cx cy rad sides]
+  "Draws a circle and the inscribed polygon with the given number
+   of sides, centered at (cx, cy) and with radius rad."
+  (let 
+    [ins (ins-radius rad sides)]
+    (circle cx cy rad)
+    (polygon cx cy rad sides)
+    ins))
+
+(defn setup []
+  (smooth)
+  (frame-rate 1)
+  (background 255))
+
+(defn draw []
+  (stroke 0)
+  (stroke-weight 1)
+  (let [cx  (/ (width) 2) 
+        cy  (/ (height) 2)
+        rad (- (min cx cy) 10)] ; add some padding to the radius
+    (reduce #(circle-inscribe-polygon cx cy %1 %2) rad 
+      [3 5 7 11 13 17 19 23 27 31]))) ; the sequence will converge before that
+
+(defn -main []
+  (sketch 
+    :title "Kepler-Bouwkamp constant"
+    :setup setup
+    :draw draw
+    :size [600 600]))&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;</summary><category term="clojure"></category><category term="quil"></category><category term="math"></category></entry></feed>

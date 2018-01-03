@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>machine burning</title><link>http://hitnail.net/</link><description></description><atom:link href="http://hitnail.net/feeds/gus.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 15 Nov 2017 00:00:00 -0200</lastBuildDate><item><title>Livecoding #1</title><link>http://hitnail.net/livecoding-1.html</link><description>&lt;p&gt;Is there a purest form of digital electronic music, akin to what acapella singing or hand drumming are to &lt;em&gt;acoustic&lt;/em&gt; music?&lt;/p&gt;
 &lt;p&gt;&lt;img alt="https://www.mixcloud.com/beise/livecoding-1-20171110-almeida-centro-de-inspira%C3%A7%C3%A3o/" src="https://thumbnailer.mixcloud.com/unsafe/600x600/extaudio/7/4/4/5/3ccb-9b8f-41e2-976c-459d15f0eb60" /&gt;&lt;/p&gt;
-&lt;p&gt;I've always been a fan of all-synthesized aesthetics, a lot of which is reflected in my own music production (check out my &lt;a href="https://beise.bandcamp.com"&gt;stuff on bandcamp&lt;/a&gt;, but , Boiling down digital electronic music to its essence, free from the sound and UX design biases of Ableton, Native Instruments et al., tempted me a lot -- specially being a programmer -- and required lower level tools and more powerful abstractions.&lt;/p&gt;
+&lt;p&gt;I've always been a fan of all-synthesized aesthetics, a lot of which is reflected in my own music production (check out my &lt;a href="https://beise.bandcamp.com"&gt;stuff on bandcamp&lt;/a&gt; btw). Boiling down digital electronic music to its essence, free from the sound and UX design biases of Ableton, Native Instruments et al., tempted me a lot -- specially being a programmer -- and required lower level tools and more powerful abstractions.&lt;/p&gt;
 &lt;p&gt;With that in mind, I started reading into the basics of audio design and synthesis, and eventually found exactly what I've been looking for with &lt;a href="https://supercollider.github.io"&gt;SuperCollider&lt;/a&gt;: code meets concert, science meets art, algorithm meet music. And all of that is GPL open source!
 From the &lt;a href="https://en.wikipedia.org/wiki/SuperCollider"&gt;wikipedia page&lt;/a&gt; itself:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -259,12 +259,32 @@ This could be easily solved by adding stress marks like a dot under the letter (
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Some example transliterations:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;Foi o cão que botou pra nós beber&lt;/em&gt;: Фoи у кɐo кi ботоу пра нɔс бебер.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca.&lt;/em&gt;: Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Ao vencedor, as batatas&lt;/em&gt;: Aу вeнседор, ас бататас.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Nada separa as classes como a língua. Fora a renda, claro&lt;/em&gt;: Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Brazilian Portuguese&lt;/th&gt;
+&lt;th&gt;Serbilian&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Foi o cão que botou pra nós beber&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Фoи у кɐo кi ботоу пра нɔс бебер.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Acho a velocidade um prazer de cretinos. Ainda conservo o deleite dos bondes que não chegam nunca.&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Ашу а велосидаџi ун праsер џi кречинус. Аинда консэрву у делeчi дус бонџiс кi нɐo шегɐo нунка.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Ao vencedor, as batatas&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Aу вeнседор, ас бататас.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;Nada separa as classes como a língua. Fora a renda, claro&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;Нада сепара ас класiс кому а лингуа. Фɔра а xeнда, клару.&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h2&gt;Implementation&lt;/h2&gt;
 &lt;p&gt;Now that I had a clear specification of the script, I could put together some code to transliterate pt-BR from the Latin
 to Serbilian Cyrilic. My weapon of choice for writing quick and dirty code for this was Ruby: loads of libraries and nice Unicode
@@ -278,7 +298,162 @@ For this reason, I also used the &lt;a href="https://github.com/lang/unicode_uti
 &lt;p&gt;I also got some &lt;a href="https://en.wikipedia.org/wiki/Pangram"&gt;pangrams&lt;/a&gt; from &lt;a href="http://clagnut.com/blog/2380/#Portuguese"&gt;this website&lt;/a&gt;to test out if I had at least most of the phonemes covered by my script. &lt;/p&gt;
 &lt;p&gt;One shortcoming of this approach is that sounds in pt-BR that depend on the context ("por favor" vs "por acaso", where the "r" changes its sound when before a vowel on the next word) get the wrong phonetic transliteration. This is a though problem to tackle: either we give up on having a 1x1 phonetic transcription, or we get words that have multiple forms, depending on the next word on the phrase. I won't go there for my little fun project -- if you have an easy solution please let me know!&lt;/p&gt;
 &lt;p&gt;Finally, the code:&lt;/p&gt;
-&lt;p&gt;[gist:id=e9ab9c1e662f7e8db188c3a29515246a,filetype=ruby]&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Thu, 15 Sep 2016 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2016-09-15:serbilian-writing-brazilian-portuguese-in-serbian-cyrilic.html</guid><category>languages</category><category>cyrilic</category><category>serbian</category><category>portuguese</category></item><item><title>Making XCode bearable: a plugin list</title><link>http://hitnail.net/making-xcode-bearable-a-plugin-list.html</link><description>&lt;p&gt;Let's face it, using XCode in 2016 is a burden that iOS developers are forced to bear. 
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/e9ab9c1e662f7e8db188c3a29515246a.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;#!/usr/bin/ruby
+require 'logger'
+require 'pragmatic_tokenizer'
+require 'unicode_utils'
+
+class Serbilian
+  SINGLE_LETTER_WORDS = {
+    "à" =&gt; "a", 
+    "ã" =&gt; "ɐ̃", 
+    "â" =&gt; "ɐ̃", 
+    "é" =&gt; "э", 
+    "ê" =&gt; "e",
+    "o" =&gt; "у",
+    "ó" =&gt; "ɔ", 
+    "ô" =&gt; "o", 
+    "õ" =&gt; "õ", 
+    "í" =&gt; "i", 
+    "u" =&gt; "у"
+  } 
+  PHONEME_TABLE = {
+    ""   =&gt; ["", ""],
+    "a"  =&gt; ["А", "а"],
+    "æ"  =&gt; ["А", "а"],
+    "ɐ"  =&gt; ["∀", "ɐ"],
+    "ɐ̃"  =&gt; ["∀", "ɐ"],
+    "ã"  =&gt; ["∀", "ɐ"],
+    "aɪ" =&gt; ["Aи", "aи"],
+    "ɐ̃ʊ̃" =&gt; ["∀o", "ɐo"],
+    "aʊ" =&gt; ["Aу", "aу"],
+    "b"  =&gt; ["Б", "б"],
+    "d"  =&gt; ["Д", "д"],
+    "dʒ" =&gt; ["Џ", "џ"],
+    "e"  =&gt; ["Е", "е"],
+    "eɪ" =&gt; ["E", "e"],
+    "ɛ"  =&gt; ["Э", "э"],
+    "ə"  =&gt; ["", ""],
+    "f"  =&gt; ["Ф", "ф"],
+    "ɡ"  =&gt; ["Г", "г"],
+    "i"  =&gt; ["И", "и"],
+    "iʊ" =&gt; ["Иу", "иу"],
+    "ɪ"  =&gt; ["Ј", "ј"],
+    "j"  =&gt; ["Ј", "ј"],
+    "ʒ"  =&gt; ["Ж", "ж"],
+    "k"  =&gt; ["К", "к"],
+    "l"  =&gt; ["Л", "л"],
+    "ʎ"  =&gt; ["Љ", "љ"],
+    "m"  =&gt; ["М", "м"],
+    "n"  =&gt; ["Н", "н"],
+    "ŋ"  =&gt; ["Н", "н"],
+    "ɲ"  =&gt; ["Њ", "њ"],
+    "o"  =&gt; ["О", "о"],
+    "õ"  =&gt; ["Õ", "õ"],
+    "oɪ" =&gt; ["Oи", "oи"],
+    "ɔ"  =&gt; ["Ɔ", "ɔ"],
+    "p"  =&gt; ["П", "п"],
+    "ɾ"  =&gt; ["Р", "р"],
+    "r"  =&gt; ["Р", "р"],
+    "x"  =&gt; ["X", "x"],
+    "ʁ"  =&gt; ["X", "x"],
+    "s"  =&gt; ["С", "с"],
+    "ʃ"  =&gt; ["Ш", "ш"],
+    "t"  =&gt; ["Т", "т"],
+    "tʃ" =&gt; ["Ч", "ч"],
+    "ũ"  =&gt; ["У", "у"],
+    "ũ"  =&gt; ["У", "у"],
+    "ʊ"  =&gt; ["У", "у"],
+    "ʊ̃"  =&gt; ["У", "у"],
+    "у"  =&gt; ["У", "у"],
+    "v"  =&gt; ["В", "в"],
+    "w"  =&gt; ["у", "у"],
+    "y"  =&gt; ["I", "i"],
+    "z"  =&gt; ["S", "s"],
+  }
+
+  TOKENIZER = PragmaticTokenizer::Tokenizer.new :language =&gt; "pt-br", :downcase =&gt; false
+
+  LOGGER = Logger.new(STDOUT)
+  LOGGER.level = Logger::INFO
+
+  def self.word?(token)
+    not token.match(/[[:word:]]+/).nil?
+  end
+
+  def self.downcase(letter)
+    UnicodeUtils.downcase(letter, :pt)
+  end
+
+  def self.word_to_ipa(word)
+    single_letter_replacement = SINGLE_LETTER_WORDS[downcase(word.strip)]
+    if single_letter_replacement
+      single_letter_replacement
+    else
+      %x{espeak -v pt-br --ipa=3 "#{word}" -q}.strip
+    end
+  end
+
+  def self.ipa_to_serbilian(ipa, capitalize)
+    serbilian = ""
+    ipa.split("_").each_with_index do |s, i| 
+      clean_phoneme = s.tr("ˈ", "").tr("ˌ", "")
+      chars = PHONEME_TABLE[clean_phoneme]
+      LOGGER.warn ("missing phoneme table entry for /#{clean_phoneme}/") unless chars
+      lcase = (capitalize and i.zero?) ? 0 : 1
+      serbilian &lt;&lt; chars[lcase] if chars
+    end
+    serbilian
+  end
+
+  def self.upcase?(letter)
+    UnicodeUtils.upcase(letter, :pt) == letter
+  end
+
+  def self.word_to_serbilian(word)
+    ipa = word_to_ipa(word)
+    serbilian = ipa_to_serbilian(ipa, upcase?(word[0]))
+    LOGGER.debug("'#{word}' -&gt; '#{ipa}' -&gt; '#{serbilian}'")
+    serbilian 
+  end
+
+  def self.join_tokens(tokens)
+    res = ""
+    tokens.each_with_index do |token, i|
+      res &lt;&lt; token
+      next_token = tokens[i + 1] if i + 1 &lt; tokens.length
+      res &lt;&lt; " " if next_token and word?(next_token) 
+    end
+    res
+  end
+
+  def self.ptbr_to_serbilian(ptbr)
+    LOGGER.debug("pt-br: #{ptbr}")
+    tokens = TOKENIZER.tokenize(ptbr).map do |token|
+      word?(token) ? word_to_serbilian(token) : token
+    end
+    join_tokens(tokens)
+  end
+
+  def self.test_pangrams
+    pangrams = [
+      "Um pequeno jabuti xereta viu dez cegonhas felizes.",
+      "Blitz prende ex-vesgo com cheque fajuto.",
+      "Gazeta publica hoje no jornal uma breve nota de faxina na quermesse.",
+      "Zebras caolhas de Java querem passar fax para moças gigantes de New York.",
+      "Luís argüia à Júlia que brações, fé, chá, óxido, pôr, zângão eram palavras do português.",
+      "À noite, vovô Kowalsky vê o ímã cair no pé do pingüim queixoso e vovó põe açúcar no chá de tâmaras do jabuti feliz."
+    ]
+
+    pangrams.map { |p| ptbr_to_serbilian(p) }
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Thu, 15 Sep 2016 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2016-09-15:serbilian-writing-brazilian-portuguese-in-serbian-cyrilic.html</guid><category>languages</category><category>cyrilic</category><category>serbian</category><category>portuguese</category></item><item><title>Making XCode bearable: a plugin list</title><link>http://hitnail.net/making-xcode-bearable-a-plugin-list.html</link><description>&lt;p&gt;Let's face it, using XCode in 2016 is a burden that iOS developers are forced to bear. 
 All the crashes, the eternal indexing, the terrible refactoring functionality, the weird
 build fails solved by re-opening the editor, the inability to (sometimes) run individual
 unit tests, and other annoyances are already well-known by daily users of the tool.
@@ -463,7 +638,79 @@ the construction that'd result from the process. &lt;/p&gt;
 &lt;p&gt;&lt;img alt="The prime Kepler-Bouwkamp constant" src="img/prime-kepler-bouwkamp.png" /&gt;&lt;/p&gt;
 &lt;p&gt;I really like those kind of constructions, so I implemented it using &lt;a href="https://github.com/quil/quil"&gt;Quil&lt;/a&gt;
 to get an idea how it looks. Here comes the code:&lt;/p&gt;
-&lt;p&gt;[gist:id=6984849,filetype=clojure]&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Mon, 14 Oct 2013 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2013-10-14:the-kepler-bouwkamp-constant.html</guid><category>clojure</category><category>quil</category><category>math</category></item><item><title>Elixir: Debugging and Inspection - weeks 11 and 12</title><link>http://hitnail.net/elixir-debugging-and-inspection-weeks-11-and-12.html</link><description>&lt;p&gt;The two final productive weeks of Debugging and Inspection on Summer of Code have been quite busy.
+&lt;div class="gist"&gt;
+    &lt;script src='https://gist.github.com/6984849.js'&gt;&lt;/script&gt;
+    &lt;noscript&gt;
+        &lt;pre&gt;&lt;code&gt;(ns kepler-bouwkamp.core
+  (:use quil.core))
+
+(def tau 6.283185307179586)
+
+(defn circle [cx cy r]
+  "Draws a circle centered at (cx, cy) with radius r."
+  (let 
+    [d (* r 2)]
+    (ellipse cx cy d d)))
+
+(defn pivot [px py ox oy angle]
+  "Pivots (px, py) by angle using (ox, oy) as an axis."
+  (if (zero? angle)
+    [px py]
+    (let [nx  (- px ox)
+          ny  (- py oy)
+          sin (Math/sin angle)
+          cos (Math/cos angle)]
+      [(+ ox (- (* nx cos) (* ny sin)))
+       (+ oy (+ (* nx sin) (* ny cos)))])))
+
+(defn polygon [cx cy radius sides]
+  "Draws a polygon centered at (cx, cy) with the 
+   given radius and number of sides."
+  (let [angle (/ tau sides)
+        ox    (+ cx radius)]
+    (doseq 
+      [i (range sides)]
+      (let
+        [[sx sy] (pivot ox cy cx cy (* i angle))
+         [ex ey] (pivot ox cy cx cy (* (inc i) angle)]
+        (line sx sy ex ey)))))
+
+(defn ins-radius [radius sides] 
+  "Returns the inscribed radius of a polygon with
+   a given radius and number of sides."
+  (* radius (Math/cos (/ (/ tau 2) sides))))
+
+(defn circle-inscribe-polygon [cx cy rad sides]
+  "Draws a circle and the inscribed polygon with the given number
+   of sides, centered at (cx, cy) and with radius rad."
+  (let 
+    [ins (ins-radius rad sides)]
+    (circle cx cy rad)
+    (polygon cx cy rad sides)
+    ins))
+
+(defn setup []
+  (smooth)
+  (frame-rate 1)
+  (background 255))
+
+(defn draw []
+  (stroke 0)
+  (stroke-weight 1)
+  (let [cx  (/ (width) 2) 
+        cy  (/ (height) 2)
+        rad (- (min cx cy) 10)] ; add some padding to the radius
+    (reduce #(circle-inscribe-polygon cx cy %1 %2) rad 
+      [3 5 7 11 13 17 19 23 27 31]))) ; the sequence will converge before that
+
+(defn -main []
+  (sketch 
+    :title "Kepler-Bouwkamp constant"
+    :setup setup
+    :draw draw
+    :size [600 600]))&lt;/code&gt;&lt;/pre&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Mon, 14 Oct 2013 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2013-10-14:the-kepler-bouwkamp-constant.html</guid><category>clojure</category><category>quil</category><category>math</category></item><item><title>Elixir: Debugging and Inspection - weeks 11 and 12</title><link>http://hitnail.net/elixir-debugging-and-inspection-weeks-11-and-12.html</link><description>&lt;p&gt;The two final productive weeks of Debugging and Inspection on Summer of Code have been quite busy.
 I've done a lot of refactoring on IEx code and added shiny new features to showcase
 the power of the debugging infrastructure being developed.&lt;/p&gt;
 &lt;h3&gt;Server-Evaluator-Reader&lt;/h3&gt;
@@ -708,135 +955,4 @@ disabling any formatting done by the pretty printer.&lt;/p&gt;
 was accepcted on &lt;a href="google-melange.com/gsoc/homepage/google/gsoc2013"&gt;Google Summer of Code 2013&lt;/a&gt;! 
 This means that until 15 September I'll be quite busy developing code inspection tools and a basic 
 CLI debugger functionality for the great &lt;a href="http://www.elixir-lang.org"&gt;Elixir&lt;/a&gt; language.&lt;/p&gt;
-&lt;p&gt;Also, this blog see some love at least for the next weeks, as I'll post weekly reports on the state of the project here (:&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Mon, 27 May 2013 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2013-05-27:debugging-and-inspecting-elixir-on-summer-of-code-2013.html</guid><category>gsoc2013</category><category>elixir</category></item><item><title>NVIDIA blob, Macbook 7,1 and EFI boot</title><link>http://hitnail.net/nvidia-blob-macbook-71-and-efi-boot.html</link><description>&lt;p&gt;The user experience for a developer under Linux is way more flexible than under Mac OS X,
-specially talking about package management, which is light-years more evolved on the open
-source world. But, on the other hand, some hassle can be experienced from bad hardware 
-support and buggy drivers. That's definetely the case with the NVIDIA 320m card on the 
-Macbook 7,1 using a EFI boot. The lack of support of the NVIDIA drivers is already known
-from many recent facts such as &lt;a href="ihttp://www.youtube.com/watch?v=MShbP3OpASA"&gt;that Linus Torvalds interview&lt;/a&gt; 
-and the &lt;a href="http://www.phoronix.com/scan.php?page=news_item&amp;amp;px=MTEyNTE"&gt;10 million GPU order&lt;/a&gt; they've lost to AMD.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="&amp;quot;A picture is worth a thousand words&amp;quot;" src="img/fuck-you-nvidia.jpg" title="A picture is worth a thousand words" /&gt;&lt;/p&gt;
-&lt;p&gt;Apple decided to ship the Macbooks using a different boot technology than the old BIOS that
-we see on most hardware; Mac OS X boots using a wonky EFI (Extended Firmware Interface) implementation.
-That said, it does not use the old MBR partition tables, but the more flexible GUID Partition Tables.
-Not to care about the true intentions of switching to EFI boot and the bizarre hybrid MBR setup Apple
-proposes for booting Windows and other legacy software (sic), the main issue resides on the fact that
-the proprietary NVIDIA driver reads&lt;/p&gt;
-&lt;p&gt;Some precious information regarding booting from UEFI devices may be found on the &lt;a href="https://help.ubuntu.com/community/UEFIBooting"&gt;Ubuntu documentation&lt;/a&gt;. There are quite a few forum threads with no conclusive answers about this issue, such as
-&lt;a href="http://www.nvnews.net/vbulletin/showthread.php?t=180737&amp;amp;highlight=linux+EFI"&gt;this one&lt;/a&gt;, &lt;a href="http://forums.gentoo.org/viewtopic-p-7071700.html?sid=57d7b854338e2647b9ba910f7674263a"&gt;this one&lt;/a&gt; and &lt;a href="https://bbs.archlinux.org/viewtopic.php?id=142664"&gt;this one&lt;/a&gt; only to mention a few. A NVIDIA developer already spoke about
-the problem at &lt;a href="http://www.nvnews.net/vbulletin/showthread.php?t=174006&amp;amp;page=2&amp;amp;highlight=linux+EFI"&gt;nvnews forum thread&lt;/a&gt; saying that they have plans on addressing it.&lt;/p&gt;
-&lt;p&gt;The &lt;strong&gt;nouveau&lt;/strong&gt; reverse engineered driver does an excellent job for daily use of the machine. The lack
-of support of the official driver closes the door to massive parallel CUDA programming, and also causes 
-bad perfomance when up to OpenGL development and playing games, as hardware acceleration
-is very much needed to guarantee a smooth ride on those applications.&lt;/p&gt;
-&lt;p&gt;It's quite a shame that NVIDIA still haven't fixed this issue on a 2009 machine, given that
-the UEFI booting is to become the standard for newer hardware. Also, gaming on Linux is getting
-a lot of attention with &lt;a href="http://www.phoronix.com/scan.php?page=article&amp;amp;item=valve_linux_dampfnudeln&amp;amp;num=1"&gt;Valve's initiative&lt;/a&gt;
-and the great &lt;a href="http://humblebundle.com"&gt;Humble Indie Bundle&lt;/a&gt; with great games for the platform.&lt;/p&gt;
-&lt;p&gt;This whole experience just showed me that getting Apple hardware, despite its beauty and hype factor,
-may not be a good option if you have plans on using it as a serious Linux box.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Wed, 07 Nov 2012 00:00:00 -0200</pubDate><guid>tag:hitnail.net,2012-11-07:nvidia-blob-macbook-71-and-efi-boot.html</guid><category>linux</category><category>osx</category><category>macbook</category><category>efi</category><category>nvidia</category></item><item><title>Hello from Emacsland</title><link>http://hitnail.net/hello-from-emacsland.html</link><description>&lt;p&gt;This is my first post from the Emacs (+ Markdown mode) side of the world. Muscle memory still
-tricks me many times with :wq and :%s lapses, but I must say: it feels good.
-The Finger yoga can be quite tricky when coming from the distinct vi-style editing
-logic.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="POV of this post" src="img/meta-emacs-post-image.png" /&gt;&lt;/p&gt;
-&lt;p&gt;I'm still setting up my environment (including getting wombat instead of this bizarre colorscheme), 
-but my main concern now is grasp this distinct buffer mobility. 
-This &lt;a href="http://hyperpolyglot.org/text-mode-editors"&gt;hyperpolyglot.org page on text editors&lt;/a&gt; has shown
-itself amazingly useful.&lt;/p&gt;
-&lt;p&gt;I'll draft a new post when I get to show off one of those
-&lt;a href="http://www.youtube.com/watch?v=EQAd41VAXWo"&gt;amazing emacs tricks&lt;/a&gt;.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Wed, 19 Sep 2012 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2012-09-19:hello-from-emacsland.html</guid><category>emacs</category><category>text editor</category></item><item><title>Linux on a Macbook part II: the drill</title><link>http://hitnail.net/linux-on-a-macbook-part-ii-the-drill.html</link><description>&lt;p&gt;The Arch Linux installation process wasn't much different on a Macbook than it would be on another laptop.
-Installing the bootloader comes as the main issue, but even though it was quickly solved. It's always helpful
-to have another device connected to the internet so you can read the &lt;a href="https://wiki.archlinux.org/index.php/MacBook"&gt;Arch&lt;/a&gt; 
-and &lt;a href="http://en.gentoo-wiki.com/wiki/Apple_Macbook"&gt;Gentoo&lt;/a&gt; Macbook wiki pages during the process.
-Also, you'll need wired internet access on some steps of the installation.&lt;/p&gt;
-&lt;p&gt;Start by downloading the core iso at archlinux.org and burning it on a CD. 
-I have not tried to boot from a USB flash drive. Boot it on your Macbook by holding the C key on startup.
-When you get a working shell, it's time to partition the hard drive using a GPT table. You won't be able
-to this using the bundled cfdisk application, so connect to the internet and install cgdisk from the gptfdisk package:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;# connect to the internet
-$ dhcpcd
-# install the package
-$ pacman -Sy gptfdisk
-# partition your main disk
-$ cgdisk /dev/sda
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;You should create a separate /boot partition. For instance, my disk looks like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Name    Type    Size 
-----    ----    ----
-EFI     vfat    200Mb
-boot    ext2    100Mb
-swap    swap    2Gb
-root    ext4    60Gb
-home    ext4    170Gb
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now start the installation running /arch/setup. Select your timezone and your system clock looks fine with UTC time.
-On the prepare hard disk step just create the filesystems on the partition table you created before.
-Keep the setup normally until the bootloader step - &lt;strong&gt;don't install a bootloader&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Quit the arch setup menu and return to the shell. Install UEFI version of GRUB2 following the 
-&lt;a href="https://wiki.archlinux.org/index.php/Grub2"&gt;guide on the Arch wiki&lt;/a&gt;. Run to generate the config files needed to boot:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;grub-mkconfig -o /boot/grub/grub.cfg
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now we just need to tell the built-in bootloader that our GRUB2 is bootable. 
-To do this go fetch your Mac OS X install disk and boot from it. Select your
-language and then open Terminal.app, it should be on the top menu under &lt;em&gt;Utils/Terminal.app&lt;/em&gt;.
-You're going to &lt;em&gt;bless&lt;/em&gt; your boot partition (the filenames depend on the previous step):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;bless --mount&lt;span class="o"&gt;=&lt;/span&gt;/Volumes/EFI  --file&lt;span class="o"&gt;=&lt;/span&gt;/Volumes/EFI/efi/arch/grub-x86_64.efi --setBoot
-&lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Now your Arch Linux should boot from GRUB2 after a couple of seconds stuck on the blue-ish EFI screen.
-The next challeng is the post-install party, get your energy drinks.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Fri, 06 Jul 2012 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2012-07-06:linux-on-a-macbook-part-ii-the-drill.html</guid><category>linux</category><category>osx</category><category>macbook</category></item><item><title>I'm giving emacs a shot</title><link>http://hitnail.net/im-giving-emacs-a-shot.html</link><description>&lt;p&gt;Since the beggining of my adventures on the Lisp side of the universe with Clojure and Scheme,
-I've seen a lot of tutorials made by developers with seemly ninja skills on emacs doing some
-magical text editing (for instance &lt;a href="http://vimeo.com/22798433"&gt;this one from Sam Aaron&lt;/a&gt;).
-But after seeing a live showcase of the emacs possibilities for LaTeX editing, similar to 
-&lt;a href="http://www.youtube.com/watch?v=LJgOWxwrEMw"&gt;this video&lt;/a&gt;, I really got motivated to give emacs
-a fresh try.&lt;/p&gt;
-&lt;p&gt;So, I'm starting to learn the emacs-fu and finger yoga in order to get to reproduce that workflow
-at least for my Clojure and LaTex needs. Initally I'll try not to use any vim-like solution for emacs
-such as &lt;a href="http://emacswiki.org/emacs/ViperMode"&gt;Viper&lt;/a&gt; and &lt;a href="http://emacswiki.org/emacs/Evil"&gt;Evil&lt;/a&gt;.
-My goal is to have some strong emacsy editing skills in order to compare the achievable productivity of both.&lt;/p&gt;
-&lt;p&gt;I have to say that the emacs community seems much more aware of the capabilities of the tool. It is
-still kept like a hidden treasure under the siege of a Lisp dialect.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Sun, 24 Jun 2012 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2012-06-24:im-giving-emacs-a-shot.html</guid><category>emacs</category><category>text editor</category></item><item><title>Linux on a Macbook part I: the fair jugdement</title><link>http://hitnail.net/linux-on-a-macbook-part-i-the-fair-jugdement.html</link><description>&lt;p&gt;It wasn't hard to embrace Mac OS X when I bought my Macbook, back in 2010.
-It's a very good looking and practical UNIX flavor running on sexy designed hardware.
-And it is pretty usable out-of-the box, unless you like tweaking your system to the last 
-variable and compiler flag, like many of us Linux people like to.&lt;/p&gt;
-&lt;p&gt;Everything seemed fine although kind of awkward on my Mac OS X setup. I even got used to the
-pain of not having a proper package manager (&lt;a href="https://github.com/mxcl/homebrew"&gt;Homebrew&lt;/a&gt;, 
-you're awesome, but still no &lt;a href="https://wiki.archlinux.org/index.php/Pacman"&gt;pacman&lt;/a&gt; + 
-&lt;a href="https://wiki.archlinux.org/index.php/Arch_Build_System"&gt;ABS&lt;/a&gt;.
-I had &lt;a href="https://github.com/fikovnik/ShiftIt"&gt;ShiftIt&lt;/a&gt; and Spaces helping me emulate an efficient
-window manager and got used to the Mac way of not letting you have things the way you want. 
-I could enjoy having all the fancy transitions/eye-candy and yet be confortable with my beloved 
-geeky environiment.&lt;/p&gt;
-&lt;p&gt;All of a sudden things started to become weird and slow, painfully slow. I don't know what went
-wrong, but some fellow Mac users told me it was time for reformatting my laptop. That's what I'm
-doing. After reasoning over the pros and cons, I'm finally getting Linux installed on my Macbook.&lt;/p&gt;
-&lt;p&gt;So, here are my pros and cons list about Mac OS X:&lt;/p&gt;
-&lt;h2&gt;Pros&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Have a working system since first logging in&lt;/li&gt;
-&lt;li&gt;Full hardware compatibility&lt;/li&gt;
-&lt;li&gt;Music software such as Logic, Ableton Live and VST instruments&lt;/li&gt;
-&lt;li&gt;The Adobe suite (it turns out it can be useful for a programmer)&lt;/li&gt;
-&lt;li&gt;Having some problems sorted out for you like backups, network config, etc.&lt;/li&gt;
-&lt;li&gt;Working iPod syncronization&lt;/li&gt;
-&lt;li&gt;No xrandr magic to be done when using an external display.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Cons&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;No package management&lt;/li&gt;
-&lt;li&gt;Not customizable&lt;/li&gt;
-&lt;li&gt;No real choice apart &lt;em&gt;The Apple Way ©&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Can get painfully slow&lt;/li&gt;
-&lt;li&gt;Harsh disk usage due to static linking&lt;/li&gt;
-&lt;li&gt;Does not present a good service management interface&lt;/li&gt;
-&lt;li&gt;Struggle to keep files up-to-date with my Linux stations  (not quite OS X related, but very relevant for me)&lt;/li&gt;
-&lt;li&gt;A filesystem that can only be fully rw mounted from OS X&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;It seems like a clear win for Linux.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Mon, 04 Jun 2012 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2012-06-04:linux-on-a-macbook-part-i-the-fair-jugdement.html</guid><category>linux</category><category>osx</category><category>macbook</category></item></channel></rss>
+&lt;p&gt;Also, this blog see some love at least for the next weeks, as I'll post weekly reports on the state of the project here (:&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">gus</dc:creator><pubDate>Mon, 27 May 2013 00:00:00 -0300</pubDate><guid>tag:hitnail.net,2013-05-27:debugging-and-inspecting-elixir-on-summer-of-code-2013.html</guid><category>gsoc2013</category><category>elixir</category></item></channel></rss>
