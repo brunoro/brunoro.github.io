@@ -30,7 +30,9 @@ const pointsStr = (ps: number[][]): string =>
 const inscribedRadius = (r: number, n: number): number => r * Math.cos((tau / 2) / n)
 
 // The visuals will converge before this
-const primes = [3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37, 41, 43, 47]
+const primes = [
+    3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+]
 
 const draw = () => {
     const element = document.querySelector('#bouwkamp')
