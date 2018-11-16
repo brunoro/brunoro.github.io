@@ -33,7 +33,16 @@ const inscribedRadius = (r: number, n: number): number => r * Math.cos((tau / 2)
 const primes = [3, 5, 7, 11, 13, 17, 19, 23, 27, 31]
 
 const draw = () => {
-    const w = 600, h = 600, r = 300, cx = w / 2, cy = h / 2
+    const element = document.querySelector('#bouwkamp')
+    const style = getComputedStyle(element)
+
+    const w = parseInt(style.width), h = parseInt(style.height)
+
+    const elm = document.createElement('svg')
+    element.appendChild(elm)
+
+    const stroke = 0.666
+    const r = (w / 2) - stroke * 2, cx = w / 2, cy = h / 2
     const svg = d3.select('svg').attr('width', w).attr('height', h)
 
     const dur = 1000
@@ -45,7 +54,7 @@ const draw = () => {
         svg.append('circle')
         .attr('cx', cx).attr('cy', cy).attr('r', r)
         .attr('stroke', 'black')
-        .attr('stroke-width', 1)
+        .attr('stroke-width', stroke)
         .attr('fill', 'white')
         .attr('class', tag)
         
@@ -53,7 +62,7 @@ const draw = () => {
         .data([polygon(cx, cy, r, n)])
         .attr('points', pointsStr)
         .attr('stroke', 'black')
-        .attr('stroke-width', 1)
+        .attr('stroke-width', stroke)
         .attr('fill', 'white')
         .attr('class', tag)
 
