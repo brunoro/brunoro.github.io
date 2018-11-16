@@ -55,6 +55,16 @@ const draw = () => {
         return ins
     }
     primes.reduce(drawReducer, r)
+
+    const dur = 1000
+    let rot = 0
+    setInterval(() => {
+        rot -= 20
+        svg.transition()
+           .duration(dur)
+           .ease(d3.easeLinear)
+           .attr('transform', `rotate(${rot})`)
+    }, dur)
 }
 
 draw()
