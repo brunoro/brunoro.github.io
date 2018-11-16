@@ -36,7 +36,8 @@ const draw = () => {
     const element = document.querySelector('#bouwkamp')
     const style = getComputedStyle(element)
 
-    const w = parseInt(style.width), h = parseInt(style.height)
+    const s = d3.min([style.width, style.height].map(parseInt))
+    const w = s, h = s
 
     const elm = document.createElement('svg')
     element.appendChild(elm)
