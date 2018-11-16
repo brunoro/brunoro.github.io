@@ -33,17 +33,21 @@ const inscribedRadius = (r: number, n: number): number => r * Math.cos((tau / 2)
 const primes = [3, 5, 7, 11, 13, 17, 19, 23, 27, 31]
 
 const draw = () => {
-    const w = 600, h = 600, r = 290, cx = w / 2, cy = h / 2
+    const w = 600, h = 600, r = 300, cx = w / 2, cy = h / 2
     const svg = d3.select('svg').attr('width', w).attr('height', h)
 
-    const drawReducer = (r: number, n: number): number => {
-        console.log('inscribed polygon!', svg)
+    const dur = 1000
+    const rot: { [n: number]: number } = {}
+    const drawReducer = (r: number, n: number, i: number): number => {
         const ins = inscribedRadius(r, n)
+        const tag = `n${n}`
+
         svg.append('circle')
         .attr('cx', cx).attr('cy', cy).attr('r', r)
         .attr('stroke', 'black')
         .attr('stroke-width', 1)
         .attr('fill', 'white')
+        .attr('class', tag)
         
         svg.append('polygon')
         .data([polygon(cx, cy, r, n)])
@@ -51,20 +55,27 @@ const draw = () => {
         .attr('stroke', 'black')
         .attr('stroke-width', 1)
         .attr('fill', 'white')
+        .attr('class', tag)
+
+        rot[n] = 0
+
+        setInterval(() => {
+            const inc = i % 2 == 0 ? -20 : 20
+            const interpolator = () => d3.interpolateString(
+                `rotate(${rot[n]}, ${cx}, ${cy})`, `rotate(${rot[n] + inc}, ${cx}, ${cy})`
+            )
+            d3.selectAll(`.${tag}`)
+            .transition()
+            .duration(dur)
+            .ease(d3.easeLinear)
+            .attrTween('transform', interpolator)
+
+            rot[n] += inc
+        }, dur)
 
         return ins
     }
     primes.reduce(drawReducer, r)
-
-    const dur = 1000
-    let rot = 0
-    setInterval(() => {
-        rot -= 20
-        svg.transition()
-           .duration(dur)
-           .ease(d3.easeLinear)
-           .attr('transform', `rotate(${rot})`)
-    }, dur)
 }
 
 draw()
