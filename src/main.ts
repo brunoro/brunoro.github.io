@@ -36,7 +36,7 @@ const draw = () => {
     const element = document.querySelector('#bouwkamp')
     const style = getComputedStyle(element)
 
-    const s = d3.min([style.width, style.height].map(parseInt))
+    const s = d3.max([d3.min([style.width, style.height].map(parseInt)), 600])
     const w = s, h = s
 
     const elm = document.createElement('svg')
