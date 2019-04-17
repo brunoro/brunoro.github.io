@@ -13,6 +13,22 @@
                 font-family: ObjectivityThin;
                 src: url("/Objectivity-Thin.otf") format("opentype");
             }
+            ul {
+                list-style: none;
+                padding-left: 0;
+            }
+            li {
+                height: 14pt;
+                font-family: monospace;
+            }
+            li a {
+                font-size: 10pt;
+                color: #333;
+            }
+            li a:hover {
+                color: #711;
+                font-weight: bold;
+            }
             .title {
                 display: block;
                 font-family: IBM3270, 'Courier New', Courier, monospace;
@@ -25,16 +41,13 @@
                 font-size: 16pt;
                 /* letter-spacing: 3.86; */
             }
-            .social {
+            .section {
                 display: block;
+                margin-bottom: 20pt;
             }
             .container {
                 display: flex;
                 flex-direction: row;
-            }
-            #bouwkamp {
-                width: 600px;
-                height: 600px;
             }
             .card {
                 width: 600px;
@@ -42,10 +55,30 @@
                 margin: 20px;
                 font-family: ObjectivityLight, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
-            #content div {
-                margin: 20px;
+            .list-header {
+                font-size: 16pt;
+                margin-bottom: 8pt;
+                font-family: ObjectivityLight, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            #bouwkamp {
+                width: 600px;
+                height: 600px;
+            }
+            #header {
+                margin-bottom: 30pt;
+            }
+            .section li {
+                display: flex;
+                flex-direction: row;
+            }
+            .bloc-lil{
+                flex: 2;
+            }
+            .bloc-big{
+                flex: 5;
             }
         </style>
+        <title>hitnail.net</title>
     </head>
     <body>
         <div class="container">
@@ -59,12 +92,44 @@
                     <span class="subtitle">electronic music</span>
                     <span class="subtitle">generative art</span>
                 </div>
-                <div id="social">
-                    <a href="https://twitter.com/elbeise" class="social">twitter</a>
-                    <a href="https://github.com/brunoro" class="social">github</a>
-                    <a href="https://beise.bandcamp.com" class="social">bandcamp</a>
-                    <a href="https://www.linkedin.com/in/gbrunoro/" class="social">linkedin</a>
-                </div>
+                <ul class="section" id="social">
+                    <li class="list-header">at</li>
+                    <li>
+                        <a class="bloc-lil" href="https://beise.bandcamp.com">bandcamp</a>
+                        <span class="bloc-big">// musik production</span>
+                    </li>
+                    <li>
+                        <a class="bloc-lil" href="https://github.com/brunoro">github</a>
+                        <span class="bloc-big">// libre coding</span>
+                    </li>
+                    <li>
+                        <a class="bloc-lil" href="https://www.linkedin.com/in/gbrunoro/">linkedin</a>
+                        <span class="bloc-big">// hire me</span>
+                    </li>
+                    <li>
+                        <a class="bloc-lil" href="https://twitter.com/elbeise">twitter</a>
+                        <span class="bloc-big">// stream of thoughts</span>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">hello [at] hitnail dot net</a>
+                        <span class="bloc-big">// write me</span>
+                    </li>
+                </ul>
+                <ul class="section" id="livecoding">
+                    <li class="list-header">selected livecoding sets</li>
+                    <li>
+                        <span class="bloc-lil">2019-02-14</span>
+                        <a class="bloc-big" href="https://www.youtube.com/watch?v=jX0KpOq7cNo">TOPLAP15</a>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">2018-03-10</span>
+                        <a class="bloc-big" href="https://www.youtube.com/watch?v=uHccmQ683sc">algosix/algoraveSP replay</a>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">2017-11-10</span>
+                        <a class="bloc-big" href="https://www.mixcloud.com/beise/livecoding-1-20171110-almeida-centro-de-inspira%C3%A7%C3%A3o">almeida</a>
+                    </li>
+                </ul>
             </div>
         </div>
         <script src="/main.bundle.js"></script>
