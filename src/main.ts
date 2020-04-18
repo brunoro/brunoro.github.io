@@ -1,93 +1,93 @@
-import * as d3 from 'd3'
+import * as d3 from 'd3';
 
-const tau = 6.283185307179586
+const tau = 6.283185307179586;
 
 // Pivots (px, py) by angle using (ox, oy) as an axis
 const pivot = (px: number, py: number, ox: number, oy: number, angle: number): [number, number] => {
-    if (angle == 0) { return [px, py] }
-    const nx = px - ox
-    const ny = py - oy
-    const sin = Math.sin(angle)
-    const cos = Math.cos(angle)
-    return [ox + (nx * cos) - (ny * sin), oy + (nx * sin) - (ny * cos)]
-}
+    if (angle === 0) { return [px, py]; }
+    const nx = px - ox;
+    const ny = py - oy;
+    const sin = Math.sin(angle);
+    const cos = Math.cos(angle);
+    return [ox + (nx * cos) - (ny * sin), oy + (nx * sin) - (ny * cos)];
+};
 
 // Calculates the coordinates a polygon centered at (cx, cy) with the given radius and number of sides
 const polygon = (cx: number, cy: number, r: number, n: number): number[][] => {
-    const angle = tau / n
-    const ox = cx + r
-    const p: number[][] = Array(n)
-    for (let i=0; i < n; i++) {
-        p[i] = pivot(ox, cy, cx, cy, i * angle)
+    const angle = tau / n;
+    const ox = cx + r;
+    const p: number[][] = Array(n);
+    for (let i = 0; i < n; i++) {
+        p[i] = pivot(ox, cy, cx, cy, i * angle);
     }
-    return p
-}
+    return p;
+};
 
-const pointsStr = (ps: number[][]): string => 
-    ps.map(p => p.map(n => n.toString()).join(',')).join(' ')
+const pointsStr = (ps: number[][]): string =>
+    ps.map(p => p.map(n => n.toString()).join(',')).join(' ');
 
 // Returns the inscribed radius of a polygon with a given radius and number of sides
-const inscribedRadius = (r: number, n: number): number => r * Math.cos((tau / 2) / n)
+const inscribedRadius = (r: number, n: number): number => r * Math.cos((tau / 2) / n);
 
 // The visuals will converge before this
 const primes = [
     3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
-]
+];
 
 const draw = () => {
-    const element = document.querySelector('#bouwkamp')
-    const style = getComputedStyle(element)
+    const element = document.querySelector('#bouwkamp');
+    const style = getComputedStyle(element);
 
-    const s = d3.max([d3.min([style.width, style.height].map(parseInt)), 600])
-    const w = s, h = s
+    const s = d3.max([d3.min([style.width, style.height].map(parseInt)), 600]);
+    const w = s, h = s;
 
-    const elm = document.createElement('svg')
-    element.appendChild(elm)
+    const elm = document.createElement('svg');
+    element.appendChild(elm);
 
-    const stroke = 0.666
-    const r = (w / 2) - stroke * 2, cx = w / 2, cy = h / 2
-    const svg = d3.select('svg').attr('width', w).attr('height', h)
+    const stroke = 0.666;
+    const r = (w / 2) - stroke * 2, cx = w / 2, cy = h / 2;
+    const svg = d3.select('svg').attr('width', w).attr('height', h);
 
-    const dur = 1000
-    const rot: { [n: number]: number } = {}
+    const dur = 1000;
+    const rot: { [n: number]: number } = {};
     const drawReducer = (r: number, n: number, i: number): number => {
-        const ins = inscribedRadius(r, n)
-        const tag = `n${n}`
+        const ins = inscribedRadius(r, n);
+        const tag = `n${n}`;
 
         svg.append('circle')
         .attr('cx', cx).attr('cy', cy).attr('r', r)
         .attr('stroke', 'black')
         .attr('stroke-width', stroke)
         .attr('fill', 'white')
-        .attr('class', tag)
-        
+        .attr('class', tag);
+
         svg.append('polygon')
         .data([polygon(cx, cy, r, n)])
         .attr('points', pointsStr)
         .attr('stroke', 'black')
         .attr('stroke-width', stroke)
         .attr('fill', 'white')
-        .attr('class', tag)
+        .attr('class', tag);
 
-        rot[n] = 0
+        rot[n] = 0;
 
         setInterval(() => {
-            const inc = i % 2 == 0 ? -20 : 20
+            const inc = i % 2 === 0 ? -20 : 20;
             const interpolator = () => d3.interpolateString(
                 `rotate(${rot[n]}, ${cx}, ${cy})`, `rotate(${rot[n] + inc}, ${cx}, ${cy})`
-            )
+            );
             d3.selectAll(`.${tag}`)
             .transition()
             .duration(dur)
             .ease(d3.easeLinear)
-            .attrTween('transform', interpolator)
+            .attrTween('transform', interpolator);
 
-            rot[n] += inc
-        }, dur)
+            rot[n] += inc;
+        }, dur);
 
-        return ins
-    }
-    primes.reduce(drawReducer, r)
-}
+        return ins;
+    };
+    primes.reduce(drawReducer, r);
+};
 
-draw()
+draw();
