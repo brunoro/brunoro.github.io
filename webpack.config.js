@@ -15,7 +15,9 @@ module.exports = {
         filename: '[name].bundle.js',
         path: DESTINATION
     },
-
+    optimization: {
+	usedExports: true,
+    },
     resolve: {
         extensions: ['.ts', '.js'],
         modules: [
