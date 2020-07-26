@@ -101436,6 +101436,8 @@ require("p5");
 
 require("p5/lib/addons/p5.sound");
 
+var synth = new p5_1.PolySynth();
+
 var Connection = /*#__PURE__*/function () {
   function Connection(p5, a, b, end) {
     _classCallCheck(this, Connection);
@@ -101446,7 +101448,6 @@ var Connection = /*#__PURE__*/function () {
     this.end = end;
     this.stepsToGo = 0;
     this.numSteps = 30;
-    this.synth = new p5_1.MonoSynth();
   }
 
   _createClass(Connection, [{
@@ -101454,7 +101455,7 @@ var Connection = /*#__PURE__*/function () {
     value: function hit() {
       var dist = this.a.pos.dist(this.end);
       var freq = Math.round((600 - dist) / 50) * 50;
-      this.synth.play(freq, 0, 0, 1);
+      synth.play(freq, 0, 0, 1);
       this.stepsToGo = this.numSteps;
       this.b.hit();
     }
@@ -108613,44 +108614,44 @@ var sketch = function sketch(p5) {
   };
 
   p5.mousePressed = function () {
-    if (p5.mouseButton == p5.LEFT) {
-      var pos = mousePos();
+    // @ts-ignore
+    p5.userStartAudio();
+    var pos = mousePos();
 
-      if (brushSelector.mousePressed(pos)) {
-        return;
-      }
+    if (brushSelector.mousePressed(pos)) {
+      return;
+    }
 
-      var _iterator3 = _createForOfIteratorHelper(ops),
-          _step3;
+    var _iterator3 = _createForOfIteratorHelper(ops),
+        _step3;
 
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var _step3$value = _slicedToArray(_step3.value, 2),
-              _ = _step3$value[0],
-              _op = _step3$value[1];
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var _step3$value = _slicedToArray(_step3.value, 2),
+            _ = _step3$value[0],
+            _op = _step3$value[1];
 
-          if (_op.contains(pos)) {
-            selected = _op;
-            _op.selected = true;
-            break;
-          }
+        if (_op.contains(pos)) {
+          selected = _op;
+          _op.selected = true;
+          break;
         }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
       }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
 
-      if (selected) {
-        brushSelector.applyTool(selected, mousePos());
-      } else {
-        var op = brushSelector.createOp(opId, pos);
+    if (selected) {
+      brushSelector.applyTool(selected, mousePos());
+    } else {
+      var op = brushSelector.createOp(opId, pos);
 
-        if (op) {
-          addOp(op);
-          selected = op;
-          op.selected = true;
-        }
+      if (op) {
+        addOp(op);
+        selected = op;
+        op.selected = true;
       }
     }
   };
@@ -108710,7 +108711,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36599" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46667" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
