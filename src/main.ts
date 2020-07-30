@@ -27,7 +27,7 @@ const inscribedRadius = (r: number, n: number): number => r * Math.cos((Math.PI)
 
 // The visuals will converge before this
 const primes = [
-    3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+    3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37, 41
 ];
 
 const draw = () => {

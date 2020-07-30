@@ -78,31 +78,23 @@
                 flex: 5;
             }
             polygon {
-                animation-duration: 15.5s;
-                animation-iteration-count: infinite;
+                box-shadow: 0 0 0 #000;
+                transform: translate3d(0,0,0);
                 transform-origin: 50% 50%;
             }
             .cw {
-                animation-name: rotCW;
+                animation: rotCW 16s infinite linear;
             }
             .ccw {
-                animation-name: rotCCW;
+                animation: rotCCW 16s infinite linear;
             }
             @keyframes rotCW {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
+                0% { transform: rotate(0deg) }
+                100% { transform: rotate(360deg) }
             }
             @keyframes rotCCW {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(-360deg);
-                }
+                0% { transform: rotate(0deg) }
+                100% { transform: rotate(-360deg) }
             }
         </style>
         <title>hitnail.net</title>
