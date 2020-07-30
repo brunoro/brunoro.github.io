@@ -1,7 +1,3 @@
-import * as d3 from 'd3';
-
-const tau = 6.283185307179586;
-
 // Pivots (px, py) by angle using (ox, oy) as an axis
 const pivot = (px: number, py: number, ox: number, oy: number, angle: number): [number, number] => {
     if (angle === 0) { return [px, py]; }
@@ -14,7 +10,7 @@ const pivot = (px: number, py: number, ox: number, oy: number, angle: number): [
 
 // Calculates the coordinates a polygon centered at (cx, cy) with the given radius and number of sides
 const polygon = (cx: number, cy: number, r: number, n: number): number[][] => {
-    const angle = tau / n;
+    const angle = Math.PI * 2 / n;
     const ox = cx + r;
     const p: number[][] = Array(n);
     for (let i = 0; i < n; i++) {
@@ -27,7 +23,7 @@ const pointsStr = (ps: number[][]): string =>
     ps.map(p => p.map(n => n.toString()).join(',')).join(' ');
 
 // Returns the inscribed radius of a polygon with a given radius and number of sides
-const inscribedRadius = (r: number, n: number): number => r * Math.cos((tau / 2) / n);
+const inscribedRadius = (r: number, n: number): number => r * Math.cos((Math.PI) / n);
 
 // The visuals will converge before this
 const primes = [
@@ -38,54 +34,41 @@ const draw = () => {
     const element = document.querySelector('#bouwkamp');
     const style = getComputedStyle(element);
 
-    const s = d3.max([d3.min([style.width, style.height].map(parseInt)), 600]);
-    const w = s, h = s;
+    const s = Math.max(Math.min(parseInt(style.width), parseInt(style.height)), 600);
 
-    const elm = document.createElement('svg');
-    element.appendChild(elm);
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttributeNS(null, 'width', s.toString());
+    svg.setAttributeNS(null, 'height', s.toString());
+    element.appendChild(svg);
 
     const stroke = 0.666;
-    const r = (w / 2) - stroke * 2, cx = w / 2, cy = h / 2;
-    const svg = d3.select('svg').attr('width', w).attr('height', h);
+    const c = s / 2;
+    const r = c - stroke * 2;
 
-    const dur = 1000;
-    const rot: { [n: number]: number } = {};
+    const cs = c.toString();
+    const strokes = stroke.toString();
+
     const drawReducer = (r: number, n: number, i: number): number => {
-        const ins = inscribedRadius(r, n);
-        const tag = `n${n}`;
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttributeNS(null, 'cx', cs);
+        circle.setAttributeNS(null, 'cy', cs);
+        circle.setAttributeNS(null, 'r', r.toString());
+        circle.setAttributeNS(null, 'stroke', 'black');
+        circle.setAttributeNS(null, 'stroke-width', strokes);
+        circle.setAttributeNS(null, 'fill', 'white');
+        svg.appendChild(circle);
 
-        svg.append('circle')
-        .attr('cx', cx).attr('cy', cy).attr('r', r)
-        .attr('stroke', 'black')
-        .attr('stroke-width', stroke)
-        .attr('fill', 'white')
-        .attr('class', tag);
+        const points = polygon(c, c, r, n);
+        const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        poly.setAttributeNS(null, 'points', points.map(coords => coords.join(',')).join(' '));
+        poly.setAttributeNS(null, 'stroke', 'black');
+        poly.setAttributeNS(null, 'stroke-width', strokes);
+        poly.setAttributeNS(null, 'fill', 'white');
+        poly.setAttributeNS(null, 'class', i % 2 == 0 ? 'cw' : 'ccw');
+        svg.appendChild(poly);
 
-        svg.append('polygon')
-        .data([polygon(cx, cy, r, n)])
-        .attr('points', pointsStr)
-        .attr('stroke', 'black')
-        .attr('stroke-width', stroke)
-        .attr('fill', 'white')
-        .attr('class', tag);
+        return inscribedRadius(r, n);
 
-        rot[n] = 0;
-
-        setInterval(() => {
-            const inc = i % 2 === 0 ? -20 : 20;
-            const interpolator = () => d3.interpolateString(
-                `rotate(${rot[n]}, ${cx}, ${cy})`, `rotate(${rot[n] + inc}, ${cx}, ${cy})`
-            );
-            d3.selectAll(`.${tag}`)
-            .transition()
-            .duration(dur)
-            .ease(d3.easeLinear)
-            .attrTween('transform', interpolator);
-
-            rot[n] += inc;
-        }, dur);
-
-        return ins;
     };
     primes.reduce(drawReducer, r);
 };
