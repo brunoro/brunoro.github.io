@@ -77,17 +77,35 @@
             .bloc-big {
                 flex: 5;
             }
+            polygon {
+                box-shadow: 0 0 0 #000;
+                transform: translate3d(0,0,0);
+                transform-origin: 50% 50%;
+            }
+            .cw {
+                animation: rotCW 16s infinite linear;
+            }
+            .ccw {
+                animation: rotCCW 16s infinite linear;
+            }
+            @keyframes rotCW {
+                0% { transform: rotate(0deg) }
+                100% { transform: rotate(360deg) }
+            }
+            @keyframes rotCCW {
+                0% { transform: rotate(0deg) }
+                100% { transform: rotate(-360deg) }
+            }
         </style>
         <title>hitnail.net</title>
     </head>
     <body>
         <div class="container">
             <div class="card" id="bouwkamp">
-                <svg></svg>
             </div>
             <div class="card" id="content">
                 <div id="header">
-                    <span class="title">b e i s e</span>
+                    <span class="title">hitnail.net</span>
                     <span class="subtitle">software development</span>
                     <span class="subtitle">electronic music</span>
                     <span class="subtitle">generative art</span>
@@ -116,7 +134,7 @@
                     <li>
                         <span class="bloc-lil">2020-03-22</span>
                         <a class="bloc-big" href="https://youtu.be/kI75F1jpJ5k">eulerroom equinox</a>
-		    </li>
+        		    </li>
                     <li>
                         <span class="bloc-lil">2019-02-14</span>
                         <a class="bloc-big" href="https://www.youtube.com/watch?v=jX0KpOq7cNo">TOPLAP15</a>
