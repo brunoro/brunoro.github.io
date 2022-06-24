@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <script type="module" src="./src/index.ts"></script>
+        <style>
+            @font-face {
+                font-family: IBM3270;
+                src: url("./font/IBM3270-Medium.ttf") format("truetype");
+            }
+            @font-face {
+                font-family: ObjectivityLight;
+                src: url("./font/Objectivity-Light.otf") format("opentype");
+            }
+            @font-face {
+                font-family: ObjectivityThin;
+                src: url("./font/Objectivity-Thin.otf") format("opentype");
+            }
+            ul {
+                list-style: none;
+                padding-left: 0;
+            }
+            li {
+                height: 14pt;
+                font-family: monospace;
+            }
+            li a {
+                font-size: 10pt;
+                color: #333;
+            }
+            li a:hover {
+                color: #711;
+                font-weight: bold;
+            }
+            .title {
+                display: block;
+                font-family: IBM3270, 'Courier New', Courier, monospace;
+                font-size: 28pt;
+            }
+            .subtitle {
+                display: block;
+                font-family: ObjectivityThin, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-style: italic;
+                font-size: 14pt;
+                /* letter-spacing: 3.86; */
+            }
+            .section {
+                display: block;
+                margin-bottom: 20pt;
+            }
+            .container {
+                display: flex;
+                flex-direction: row;
+            }
+            .card {
+                width: 600px;
+                height: 600px;
+                margin: 20px;
+                font-family: ObjectivityLight, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .list-header {
+                font-size: 16pt;
+                margin-bottom: 8pt;
+                font-family: ObjectivityLight, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            #bouwkamp {
+                width: 600px;
+                height: 600px;
+            }
+            #header {
+                margin-bottom: 30pt;
+            }
+            .section li {
+                display: flex;
+                flex-direction: row;
+            }
+            .bloc-lil {
+                flex: 2;
+            }
+            .bloc-big {
+                flex: 5;
+            }
+            polygon {
+                box-shadow: 0 0 0 #000;
+                transform: translate3d(0,0,0);
+                transform-origin: 50% 50%;
+            }
+            .cw {
+                animation: rotCW 16s infinite linear;
+            }
+            .ccw {
+                animation: rotCCW 16s infinite linear;
+            }
+            @keyframes rotCW {
+                0% { transform: rotate(0deg) }
+                100% { transform: rotate(360deg) }
+            }
+            @keyframes rotCCW {
+                0% { transform: rotate(0deg) }
+                100% { transform: rotate(-360deg) }
+            }
+        </style>
+        <title>hitnail.net</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card" id="bouwkamp">
+            </div>
+            <div class="card" id="content">
+                <div id="header">
+                    <span class="title">hitnail.net</span>
+                    <span class="subtitle">diverse digital objects</span>
+                </div>
+                <ul class="section">
+                    <li class="list-header">daw music</li>
+                    <li>
+                        <a class="bloc-lil" href="https://beise.bandcamp.com">bandcamp</a>
+                    </li>
+                </ul>
+                <ul class="section">
+                    <li class="list-header">livecoding sets</li>
+                    <li>
+                        <span class="bloc-lil">2021-12-12</span>
+                        <a class="bloc-big" href="https://youtu.be/8TrtuSZpx10?t=4660">algorave brasil 2021</a>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">2020-12-13</span>
+                        <a class="bloc-big" href="https://www.youtube.com/watch?v=tMRAJQ0LWAA&t=8854s">algorave brasil 2020</a>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">2020-03-22</span>
+                        <a class="bloc-big" href="https://youtu.be/kI75F1jpJ5k">eulerroom equinox</a>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">2019-02-14</span>
+                        <a class="bloc-big" href="https://www.youtube.com/watch?v=jX0KpOq7cNo">TOPLAP15</a>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">2018-03-10</span>
+                        <a class="bloc-big" href="https://www.youtube.com/watch?v=uHccmQ683sc">algosix/algoraveSP replay</a>
+                    </li>
+                    <li>
+                        <span class="bloc-lil">2017-11-10</span>
+                        <a class="bloc-big" href="https://www.mixcloud.com/beise/livecoding-1-20171110-almeida-centro-de-inspira%C3%A7%C3%A3o">almeida centro de inspiração</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
