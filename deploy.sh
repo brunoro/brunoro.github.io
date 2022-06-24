@@ -1,5 +1,5 @@
 #!/bin/bash
-npm run build.prod
+npm run build
 cp src/index.html dist/
 cp src/*.otf dist/
 cp src/*.ttf dist/

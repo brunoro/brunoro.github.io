@@ -1,102 +1,134 @@
 <html>
     <head>
-        <style>
-            @font-face {
-                font-family: IBM3270;
-                src: url("/IBM3270-Medium.ttf") format("truetype");
-            }
-            @font-face {
-                font-family: ObjectivityLight;
-                src: url("/Objectivity-Light.otf") format("opentype");
-            }
-            @font-face {
-                font-family: ObjectivityThin;
-                src: url("/Objectivity-Thin.otf") format("opentype");
-            }
-            ul {
-                list-style: none;
-                padding-left: 0;
-            }
-            li {
-                height: 14pt;
-                font-family: monospace;
-            }
-            li a {
-                font-size: 10pt;
-                color: #333;
-            }
-            li a:hover {
-                color: #711;
-                font-weight: bold;
-            }
-            .title {
-                display: block;
-                font-family: IBM3270, 'Courier New', Courier, monospace;
-                font-size: 28pt;
-            }
-            .subtitle {
-                display: block;
-                font-family: ObjectivityThin, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                font-style: italic;
-                font-size: 16pt;
-                /* letter-spacing: 3.86; */
-            }
-            .section {
-                display: block;
-                margin-bottom: 20pt;
-            }
-            .container {
-                display: flex;
-                flex-direction: row;
-            }
-            .card {
-                width: 600px;
-                height: 600px;
-                margin: 20px;
-                font-family: ObjectivityLight, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
-            .list-header {
-                font-size: 16pt;
-                margin-bottom: 8pt;
-                font-family: ObjectivityLight, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
-            #bouwkamp {
-                width: 600px;
-                height: 600px;
-            }
-            #header {
-                margin-bottom: 30pt;
-            }
-            .section li {
-                display: flex;
-                flex-direction: row;
-            }
-            .bloc-lil {
-                flex: 2;
-            }
-            .bloc-big {
-                flex: 5;
-            }
-            polygon {
-                box-shadow: 0 0 0 #000;
-                transform: translate3d(0,0,0);
-                transform-origin: 50% 50%;
-            }
-            .cw {
-                animation: rotCW 16s infinite linear;
-            }
-            .ccw {
-                animation: rotCCW 16s infinite linear;
-            }
-            @keyframes rotCW {
-                0% { transform: rotate(0deg) }
-                100% { transform: rotate(360deg) }
-            }
-            @keyframes rotCCW {
-                0% { transform: rotate(0deg) }
-                100% { transform: rotate(-360deg) }
-            }
-        </style>
+        <script src="/index.b71e74eb.js" defer=""></script>
+        <style>@font-face {
+  font-family: IBM3270;
+  src: url("IBM3270-Medium.0875fe74.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: ObjectivityLight;
+  src: url("Objectivity-Light.c7b7b3cc.otf") format("opentype");
+}
+
+@font-face {
+  font-family: ObjectivityThin;
+  src: url("Objectivity-Thin.54470aaf.otf") format("opentype");
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  height: 14pt;
+  font-family: monospace;
+}
+
+li a {
+  color: #333;
+  font-size: 10pt;
+}
+
+li a:hover {
+  color: #711;
+  font-weight: bold;
+}
+
+.title {
+  font-family: IBM3270, Courier New, Courier, monospace;
+  font-size: 28pt;
+  display: block;
+}
+
+.subtitle {
+  font-family: ObjectivityThin, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14pt;
+  font-style: italic;
+  display: block;
+}
+
+.section {
+  margin-bottom: 20pt;
+  display: block;
+}
+
+.container {
+  flex-direction: row;
+  display: flex;
+}
+
+.card {
+  width: 600px;
+  height: 600px;
+  margin: 20px;
+  font-family: ObjectivityLight, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.list-header {
+  margin-bottom: 8pt;
+  font-family: ObjectivityLight, Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16pt;
+}
+
+#bouwkamp {
+  width: 600px;
+  height: 600px;
+}
+
+#header {
+  margin-bottom: 30pt;
+}
+
+.section li {
+  flex-direction: row;
+  display: flex;
+}
+
+.bloc-lil {
+  flex: 2;
+}
+
+.bloc-big {
+  flex: 5;
+}
+
+polygon {
+  transform-origin: 50%;
+  transform: translate3d(0, 0, 0);
+  box-shadow: 0 0 #000;
+}
+
+.cw {
+  animation: rotCW 16s linear infinite;
+}
+
+.ccw {
+  animation: rotCCW 16s linear infinite;
+}
+
+@keyframes rotCW {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotCCW {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+</style>
         <title>hitnail.net</title>
     </head>
     <body>
@@ -106,20 +138,15 @@
             <div class="card" id="content">
                 <div id="header">
                     <span class="title">hitnail.net</span>
-                    <span class="subtitle">software development</span>
-                    <span class="subtitle">electronic music</span>
-                    <span class="subtitle">generative art</span>
+                    <span class="subtitle">diverse digital objects</span>
                 </div>
-                <ul class="section" id="social">
-                    <li class="list-header">find me</li>
+                <ul class="section">
+                    <li class="list-header">daw music</li>
                     <li>
                         <a class="bloc-lil" href="https://beise.bandcamp.com">bandcamp</a>
                     </li>
-                    <li>
-                        <a class="bloc-lil" href="https://telegram.me/beise">telegram</a>
-                    </li>
                 </ul>
-                <ul class="section" id="livecoding">
+                <ul class="section">
                     <li class="list-header">livecoding sets</li>
                     <li>
                         <span class="bloc-lil">2021-12-12</span>
@@ -148,6 +175,5 @@
                 </ul>
             </div>
         </div>
-        <script src="/main.bundle.js"></script>
     </body>
 </html>
