@@ -36,22 +36,26 @@ const primes = [3, 5, 7, 11, 13, 17, 19, 23, 27, 31, 37, 41];
 
 // Draw
 const draw = () => {
-  const element = document.querySelector("#bouwkamp");
-  if (!element) {
+  const container = document.querySelector("#bouwkamp");
+  if (!container) {
     return;
   }
 
-  const style = getComputedStyle(element);
-
-  const s = Math.max(
-    Math.min(parseInt(style.width), parseInt(style.height)),
-    600
-  );
+  const style = getComputedStyle(container);
+  const margin = parseInt(style.margin);
+  const s =
+    Math.min(
+      window.innerWidth,
+      window.innerHeight,
+      parseInt(style.maxWidth),
+      parseInt(style.maxHeight)
+    ) -
+    2 * margin;
 
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttributeNS(null, "width", s.toString());
   svg.setAttributeNS(null, "height", s.toString());
-  element.appendChild(svg);
+  container.appendChild(svg);
 
   const stroke = 1;
   const c = s / 2;
