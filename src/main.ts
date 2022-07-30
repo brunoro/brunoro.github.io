@@ -64,6 +64,12 @@ const draw = () => {
   const cs = c.toString();
   const strokeStr = stroke.toString();
 
+  const body = document.querySelector("body");
+  if (!body) {
+    return;
+  }
+  const strokeColor = getComputedStyle(body).color;
+
   const drawReducer = (r: number, n: number, i: number): number => {
     const ns = "http://www.w3.org/2000/svg";
 
@@ -71,7 +77,7 @@ const draw = () => {
     circle.setAttribute("cx", cs);
     circle.setAttribute("cy", cs);
     circle.setAttribute("r", r.toString());
-    circle.setAttribute("stroke", "#0e458d");
+    circle.setAttribute("stroke", strokeColor);
     circle.setAttribute("stroke-width", strokeStr);
     circle.setAttribute("fill", "white");
     svg.appendChild(circle);
@@ -82,7 +88,7 @@ const draw = () => {
       "points",
       points.map((coords) => coords.join(",")).join(" ")
     );
-    poly.setAttribute("stroke", "black");
+    poly.setAttribute("stroke", strokeColor);
     poly.setAttribute("stroke-width", strokeStr);
     poly.setAttribute("fill", "white");
     poly.setAttribute("class", i % 2 === 0 ? "cw" : "ccw");
@@ -99,7 +105,7 @@ window.addEventListener("DOMContentLoaded", draw);
 let animated = false;
 let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-const setAnimationRunning = (isRunning: boolean) => {
+const setAnimationPlayState = (isRunning: boolean) => {
   animated = isRunning;
 
   const polygons = document.getElementsByTagName("polygon");
@@ -112,15 +118,15 @@ const animateThreeSecs = () => {
   if (timeoutId) {
     clearTimeout(timeoutId);
   }
-  setAnimationRunning(true);
-  timeoutId = setTimeout(() => setAnimationRunning(false), 3000);
+  setAnimationPlayState(true);
+  timeoutId = setTimeout(() => setAnimationPlayState(false), 3000);
 };
 
 const toggleAnimation = (isRunning: boolean) => {
   if (timeoutId) {
     clearTimeout(timeoutId);
   }
-  setAnimationRunning(isRunning);
+  setAnimationPlayState(isRunning);
 };
 
 const bouwkamp = document.getElementById("bouwkamp");

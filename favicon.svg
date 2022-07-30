@@ -14,7 +14,7 @@
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
      id="namedview22"
-     pagecolor="#ffffff"
+     pagecolor="#616161"
      bordercolor="#eeeeee"
      borderopacity="1"
      inkscape:pageshadow="0"
@@ -23,7 +23,7 @@
      showgrid="false"
      inkscape:zoom="1.779703"
      inkscape:cx="205.0904"
-     inkscape:cy="226.72323"
+     inkscape:cy="159.29624"
      inkscape:window-width="1920"
      inkscape:window-height="1080"
      inkscape:window-x="0"
@@ -40,19 +40,26 @@
        id="rect4711" />
   </defs>
   <rect
-     style="fill:#ffffff;fill-opacity:1;stroke:none"
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.699417"
      id="rect10329"
-     width="410.74271"
-     height="404.56189"
-     x="-1.123783"
-     y="0"
-     ry="31.465923" />
-  <text
-     xml:space="preserve"
-     id="text4709"
-     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect4711);fill:#0e458d;fill-opacity:1;stroke:none"
-     transform="matrix(11.169034,0,0,11.169034,-327.86327,-409.26465)"><tspan
-       x="29.779297"
-       y="69.103516"
-       id="tspan14278">★</tspan></text>
+     width="287.28027"
+     height="282.95731"
+     x="143.62027"
+     y="-143.06792"
+     ry="0"
+     transform="rotate(45)" />
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.699417"
+     id="rect10329-0"
+     width="287.27927"
+     height="282.95831"
+     x="61.359661"
+     y="60.52158"
+     ry="0" />
+  <circle
+     style="fill:#0e458d;fill-opacity:1;stroke-width:0.834008"
+     id="path1088"
+     cx="205"
+     cy="202"
+     r="115.74965" />
 </svg>

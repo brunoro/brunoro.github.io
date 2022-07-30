@@ -70,6 +70,12 @@ li a:hover {
 .list-date {
   margin-right: 25px;
 }
+#discography li sup {
+  margin-left: 5px;
+  font-size: 6pt;
+}
+
+/* logo animation */
 polygon {
   box-shadow: 0 0 0 #000;
   transform: translate3d(0,0,0);
