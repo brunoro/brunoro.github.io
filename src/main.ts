@@ -53,12 +53,12 @@ const draw = () => {
   svg.setAttributeNS(null, "height", s.toString());
   element.appendChild(svg);
 
-  const stroke = 0.666;
+  const stroke = 1;
   const c = s / 2;
   const r = c - stroke * 2;
 
   const cs = c.toString();
-  const strokes = stroke.toString();
+  const strokeStr = stroke.toString();
 
   const drawReducer = (r: number, n: number, i: number): number => {
     const ns = "http://www.w3.org/2000/svg";
@@ -67,8 +67,8 @@ const draw = () => {
     circle.setAttribute("cx", cs);
     circle.setAttribute("cy", cs);
     circle.setAttribute("r", r.toString());
-    circle.setAttribute("stroke", "black");
-    circle.setAttribute("stroke-width", strokes);
+    circle.setAttribute("stroke", "#0e458d");
+    circle.setAttribute("stroke-width", strokeStr);
     circle.setAttribute("fill", "white");
     svg.appendChild(circle);
 
@@ -79,7 +79,7 @@ const draw = () => {
       points.map((coords) => coords.join(",")).join(" ")
     );
     poly.setAttribute("stroke", "black");
-    poly.setAttribute("stroke-width", strokes);
+    poly.setAttribute("stroke-width", strokeStr);
     poly.setAttribute("fill", "white");
     poly.setAttribute("class", i % 2 === 0 ? "cw" : "ccw");
     svg.appendChild(poly);
